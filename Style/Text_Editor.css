@@ -1,0 +1,796 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Questrial&display=swap');
+
+:root {
+  --color-1st: LightCoral;
+  --color-2nd: GhostWhite;
+  --color-3rd: Gainsboro;
+}
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
+  cursor:url("../Icon/cursor.svg"), default;
+}
+
+*:focus {
+  outline: none;
+}
+
+.far{
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+.fas{
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+
+body {
+  background-color: LightCoral;
+  /* background-image: url("../Background/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: top; */
+  font-family: "Comfortaa", cursive;
+  font-size: 15px;
+  margin: 0;
+  transition:all 1s ease-in-out;
+}
+
+.body_button{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.dark_mode_btn_home{
+  /* background-color: #d83a56; */
+  font-family: "Comfortaa", cursive;
+  border-radius: 0.3rem;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+	font-size: 1.0em;
+	cursor:url("../Icon/pointinghand.svg"), default;
+	background: none;
+	border: none;
+	outline: none;
+  padding: 7px;
+  height: 35px;
+}
+.dark_mode_btn_home:hover{
+  padding: 9px;
+  background-color: #FF616D;
+  transition:all 0.3s ease-in-out;
+}
+
+#btn{
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 10px;
+  background: none;
+  border: none;
+  border-radius: 0.3rem;
+  cursor:url("../Icon/pointinghand.svg"), default;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+  color: #ffffff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#btn:hover{
+  background-color: #FF616D;
+  transition:all 0.3s ease-in-out;
+}
+
+.loader{
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: #16191e;
+  position: relative;
+}
+.loader>div{
+  height: 100px;
+  width: 100px;
+  border: 15px solid #45474b;
+  border-top-color: #2a88e6;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 50%;
+  animation: spin 1.5s infinite linear;
+}
+@keyframes spin{
+  100%{
+      transform: rotate(360deg);
+  }
+}
+
+/* custom scroll bar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 100%;
+  cursor:url("../Icon/pointinghand.svg"), default;
+  overflow-y: scroll;
+}
+::-webkit-scrollbar-track {
+  background: rgb(129, 129, 129);
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(204, 204, 252);
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(199, 199, 250);
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+
+::-webkit-resizer {
+  z-index: 9;
+  position: initial;
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent #ec1717 #ec1717 transparent;
+  box-shadow: 9px 8px 15px rgba(0, 0, 0, 0.199);
+  /* outline: 2px solid yellow; */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  font-size: 2.8em;
+  margin-top: 1.4em;
+  margin-bottom: 0%;
+  font-family: 'Titillium Web', sans-serif;
+}
+#img{
+  width: 50px;
+  padding-right: 10px;
+  padding-left: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+#sub_title {
+  color: #fff;
+  text-align: center;
+  font-weight: 300;
+  text-shadow: 0 1px 0 rgba(167, 109, 109, 0.2);
+  font-size: 2.8em;
+  margin-top: 0em;
+  margin-bottom: 2%;
+  display: block;
+  font-size: 1.4em;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.window {
+  display: flex;
+  flex-direction: column;
+  width: 547px;
+  height: 337px;
+  background: GhostWhite;
+  border-radius: 0.3rem;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  /* transition: all 1s ease-in; */
+  min-width: 450px;
+  min-height: 220px;
+  position: relative;
+}
+
+.window-titlebar {
+  display: flex;
+  align-items: center;
+  height: 45px;
+  max-height: 45px;
+  background: Gainsboro;
+  position: relative;
+  border: none;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.096);
+}
+
+.action-buttons {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  padding-left: 5px;
+  width: 80%;
+  max-width: 80%;
+  height: 30px;
+  /* position: fixed; */
+}
+.filename {
+  display: flex;
+  height: 21px;
+  padding-left: 1em;
+  padding-top: 2px;
+  margin: 0%;
+  text-align: right;
+  border: none;
+  background: transparent;
+  color: rgb(126, 81, 81);
+}
+
+.filename:hover {
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+.button_area{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	height: 30px;
+	width: 50%;
+	padding-right: 10px;
+}
+.button_area button{
+	height: 28px;
+	width: 45px;
+	font-family: "PT Mono", monospace;
+	font-size: 15px;
+	/* margin: 5px; */
+  margin: 2px;
+	background-color: lightcoral;
+	border: 0px rgb(48, 48, 48) solid;
+	border-radius: 5px;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+	cursor:url("../Icon/pointinghand.svg"), default;
+}
+.button_area .large_small{
+  display: flex;
+  margin-right: 20px;
+  visibility: hidden;
+}
+.button_area .large_small .larger{
+	height: 28px;
+	width: 35px;
+	font-family: "PT Mono", monospace;
+	font-size: 15px;
+  background-color: transparent;
+	border: none;
+	border-radius: 5px;
+	/* margin: 5px; */
+  margin: 2px;
+	box-shadow: none;
+	cursor:url("../Icon/pointinghand.svg"), default;
+}
+.button_area .large_small .small{
+	height: 28px;
+	width: 35px;
+	font-family: "PT Mono", monospace;
+	font-size: 15px;
+  background-color: transparent;
+	border: none;
+	border-radius: 5px;
+	/* margin: 5px; */
+  margin: 2px;
+	box-shadow: none;
+	cursor:url("../Icon/pointinghand.svg"), default;
+}
+.button_area button:hover{
+	background-color: #d83a56;
+	transition:all 0.3s ease-in-out;
+}
+
+#icon{
+  font-size: 16px;
+  color:rgb(29, 24, 24);
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+#icon_doc{
+  /* height: 30px; */
+  font-size: 18px;
+  color:rgb(29, 24, 24);
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+.cross {
+  /* position: absolute; */
+  background: #d83a56;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  margin: 5px;
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+.max {
+  /* position: absolute; */
+  background: Orange;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  margin: 5px;
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+.min {
+  /* position: absolute; */
+  background: limegreen;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  margin: 5px;
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+.cross_popup {
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  width: 70px;
+  font-family: "PT Mono", monospace;
+  font-size: 17px;
+  background-color: #d83a56;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 1px 1px;
+  position: absolute;
+  z-index: 1;
+  top: 20%;
+  left: 100px;
+  margin-left: 0px;
+  flex-wrap: wrap;
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+.max_popup {
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  width: 70px;
+  font-family: "PT Mono", monospace;
+  font-size: 17px;
+  background-color: Orange;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 1px 1px;
+  position: absolute;
+  z-index: 1;
+  top: 20%;
+  left: 100px;
+  margin-left: 0px;
+  flex-wrap: wrap;
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+.min_popup {
+  visibility: hidden;
+  display: flex;
+  justify-content: center;
+  width: 140px;
+  font-family: "PT Mono", monospace;
+  font-size: 14px;
+  background-color: limegreen;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 3.5px 1px;
+  position: absolute;
+  z-index: 1;
+  top: 20%;
+  left: 100px;
+  margin-left: 0px;
+  flex-wrap: wrap;
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+.cross:hover .cross_popup {
+  visibility: visible;
+}
+.max:hover .max_popup {
+  visibility: visible;
+}
+.min:hover .min_popup {
+  visibility: visible;
+}
+
+.window-body {
+  display: flex;
+  position: relative;
+  /* height: 300px; */
+  height: 100%;
+  /* width: 547px; */
+  transition: all 2s ease;
+  /* overflow-y: scroll */
+}
+#body_editor{
+  display: flex;
+}
+
+.code-input {
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  border: none;
+  /* font-family: "PT Mono", monospace; */
+  font-family: 'Questrial', sans-serif;
+  font-size: 0.9rem;
+  background: transparent;
+  white-space: pre-wrap;
+  line-height: 1.5em;
+  word-wrap: break-word;
+  overflow-y: scroll;
+}
+
+.code-input {
+  opacity: 0.7;
+  margin: 0;
+  /* color: #999; */
+  color: #f54747;
+  resize: none;
+  overflow-y: scroll;
+}
+#open {
+  font-family: "Comfortaa", cursive;
+  margin: 5px;
+  display: none;
+  background-color: #d83a56 ;
+  border: 3px rgb(48, 48, 48) solid;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  box-shadow: 0 9px 12px rgba(0, 0, 0, 0.2);
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+#open:hover {
+	background-color: #66de93;
+	transition:all 0.5s ease-in-out;
+}
+.functions {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#save {
+  font-family: "Comfortaa", cursive;
+  margin: 5px;
+  background-color: #66de93;
+  border: 3px rgb(48, 48, 48) solid;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  box-shadow: 0 9px 12px rgba(0, 0, 0, 0.2);
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+#copy_paste {
+  font-family: "Comfortaa", cursive;
+  margin: 5px;
+  background-color: #66de93;
+  border: 3px rgb(48, 48, 48) solid;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+#save:hover {
+	background-color: #d83a56;
+	transition:all 0.3s ease-in-out;
+}
+#copy_paste:hover {
+	background-color: #d83a56;
+	transition:all 0.3s ease-in-out;
+}
+
+.credits {
+  color: rgb(252, 204, 204);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  margin-top: 2em;
+  font-size: 0.8em;
+  opacity: 1;
+  padding-bottom: 10px;
+}
+
+
+/*dark mode editor*/
+
+.dark_mode_active{
+	background: #282835;
+	transition:all 1s ease-in-out;
+}
+.dark_mode_active .window{
+	background-color: #282835;
+  border-radius: 0.2rem;
+}
+.dark_mode_active .window-body{
+	background: #282835;
+}
+.dark_mode_active .code-input{
+  background: #282835;
+	color: #ddd;
+	transition:all 0.5s ease-in-out;
+}
+
+/* dark mode page */
+
+.dark_mode_active_home {
+	background: #1c1c25;
+  /* background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("../Background/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: top; */
+	transition:all 1s ease-in-out;
+  transition: all 0.5s ease;
+}
+.dark_mode_active_home .dark_mode_btn_home{
+	color: #ddd;
+	transition:all 1s ease-in-out;
+}
+.dark_mode_active_home .title{
+	color: lightcoral;
+	transition:all 1s ease-in-out;
+}
+.dark_mode_active_home #sub_title{
+	color: #FF616D;
+	transition:all 1s ease-in-out;
+}
+ .dark_mode_active_home #save:hover {
+	color: #ddd;
+}
+.dark_mode_active_home #copy_paste:hover {
+	color: #ddd;
+}
+.dark_mode_active_home .error{
+  background: #282835;
+	color: #ddd;
+}
+.dark_mode_active_home .error .message{
+  background: #282835;
+	color: #ddd;
+	transition:all 0.5s ease-in-out;
+}
+.dark_mode_active_home .message_two{
+  background: #282835;
+	color: #ddd;
+}
+.dark_mode_active_home .message_two .message_m{
+  background: #282835;
+	color: #ddd;
+	transition:all 0.5s ease-in-out;
+}
+
+
+/*Error Window Style*/
+.error {
+  flex-direction: column;
+  position: absolute;
+  margin-left: 300px;
+  margin-right: 400px;
+  margin-top: 300px;
+  margin-bottom: 200px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 394px;
+  height: 155px;
+  background-color: GhostWhite;
+  border-radius: 0.3rem;
+  box-shadow: 0 8px 12px rgb(0 0 0 / 15%);
+  overflow: hidden;
+  cursor: move;
+  display: none;
+}
+
+.title_error {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 45px;
+  color: rgb(126, 81, 81);
+  font-size: 13px;
+  text-shadow: 0 0 #fff;
+  position: relative;
+  background: Gainsboro;
+  transition:all 0.5s ease-in-out;
+}
+.error_action{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition:all 0.5s ease-in-out;
+}
+.message{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  transition:all 0.5s ease-in-out;
+}
+.header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+#error_img{
+  width: 75px;
+  padding: 10px;
+  transition:all 1.5s ease-in-out;
+}
+.cross_e {
+  /* position: absolute; */
+  background: #d83a56;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  margin: 5px;
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+.max_e {
+  /* position: absolute; */
+  background: rgb(179, 178, 178);
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  margin: 5px;
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+.min_e {
+  /* position: absolute; */
+  background: rgb(206, 206, 206);
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  margin: 5px;
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+.ok{
+  background-color: gainsboro;
+  width: 45px;
+  height: 30px;
+  border: none;
+  border-radius: 0.3rem;
+  box-shadow: 0 8px 12px rgb(0 0 0 / 7%);
+  cursor:url("../Icon/pointinghand.svg"), default;
+  transition:all 0.5s ease-in-out;
+}
+
+/*Message Window Style*/
+.message_two {
+  flex-direction: column;
+  position: absolute;
+  margin-left: 600px;
+  margin-right: 400px;
+  margin-top: 300px;
+  margin-bottom: 200px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 290px;
+  height: 155px;
+  background-color: GhostWhite;
+  border-radius: 0.3rem;
+  box-shadow: 0 8px 12px rgb(0 0 0 / 15%);
+  overflow: hidden;
+  cursor: move;
+  transition: 10s ease all smooth;
+  display: none;
+}
+
+.title_message {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 35px;
+  color: rgb(126, 81, 81);
+  font-size: 13px;
+  text-shadow: 0 0 #fff;
+  position: relative;
+  background: Gainsboro;
+  transition:all 0.5s ease-in-out;
+}
+.message_action{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.message_m{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  transition:all 0.5s ease-in-out;
+}
+.header_m{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  font-family: 'Titillium Web', sans-serif;
+  transition:all 0.5s ease-in-out;
+}
+
+#message_img{
+  width: 65px;
+  padding-right: 5px;
+  transition:all 1.5s ease-in-out;
+}
+.cross_m {
+  /* position: absolute; */
+  background: #d83a56;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  margin: 5px;
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+.max_m {
+  /* position: absolute; */
+  background: rgb(179, 178, 178);
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  margin: 5px;
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+.min_m {
+  /* position: absolute; */
+  background: rgb(206, 206, 206);
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  margin: 5px;
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+.ok_m{
+  background-color: gainsboro;
+  width: 45px;
+  height: 30px;
+  border: none;
+  border-radius: 0.3rem;
+  box-shadow: 0 8px 12px rgb(0 0 0 / 7%);
+  cursor:url("../Icon/pointinghand.svg"), default;
+}
+
+

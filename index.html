@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="Style/Text_Editor.css" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link rel="shortcut icon" href="Icon/textstorm.png" type="image/x-icon" />
+  <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.3.0/firebase-database.js"></script>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-database.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link rel=”manifest” href='manifest.json'>
+  <link rel="manifest" href="/manifest.json" crossorigin="use-credentials">
+  <title>TextStorm</title>
+</head>
+<style>
+  .mystyle {
+    display: none;
+  }
+</style>
+
+<body oncontextmenu="return false" onload="Loading()">
+  <div class="loader" id="loader">
+    <div></div>
+  </div>
+  <div class="body_button">
+  <button class="dark_mode_btn_home"><i class="far fa-moon-o" aria-hidden="true"></i> Dark Theme</button>
+  <button id="btn"><i class="fas fa-expand"></i></button>
+</div>
+
+  <main class="view">
+
+    <h1 class="title">
+      <img src="Icon/textstorm.png" id="img">
+      Textstorm
+    </h1>
+    <p id="sub_title">A simple web text/notes editor with Mac design</p>
+
+    <div class="window" id="editor">
+      <div class="window-titlebar" id="titlebar">
+        <div class="action-buttons">
+
+          <div class="cross" onclick="winClose()">
+              <span class="cross_popup">Close</span>
+          </div>
+
+          <div class="max" onclick="winResize()">
+            <span class="max_popup">Resize</span>
+          </div>
+
+
+          <div class="min" onclick="winMinimize()">
+            <span class="min_popup" id="min_popup_change">Minimize/Maximize</span>
+          </div>
+
+
+          <p class="filename" id="fileid" onclick="renameFile()">Untitled.txt</p>
+        </div>
+        <div class="button_area">
+          <div class="large_small" id="large_small">
+            <button class="larger" id="large"><i class="fas fa-plus"></i></button>
+            <button class="small" id="small"><i class="fas fa-minus"></i></button>
+          </div>
+          <button class="dark_mode_btn"><i class="far fa-moon-o" aria-hidden="true"></i></button>
+          <button onclick="editableOption()" id="editbutton">
+          </button>
+        </div>
+
+      </div>
+      <div class="window-body" id="body_editor">
+        <textarea class="code-input" id="apnatext" onKeyDown="limitText(this,50)"
+          onKeyUp="limitText(this,50)">Write your Text here</textarea>
+      </div>
+    </div>
+    <div>
+      <button id="open" onclick="openwindow()">Open Textstorm Window</button>
+    </div>
+    <div class="functions" id="function">
+      <button id="save" onclick="saveText()">Save</button>
+      <button id="copy_paste" onclick="myCopy()">
+        Copy
+      </button>
+    </div>
+    <div class="credits">
+      Developed by Dwijottam Dutta
+    </div>
+  </main>
+
+  <div class="error" id="error_id">
+    <div class="title_error">
+      <div class="error_action">
+        <div class="cross_e" onclick="errorClose()"></div>
+        <div class="max_e"></div>
+        <div class="min_e"></div>
+      </div>
+      Anonymous Trial Finished
+    </div>
+    <div class="message">
+      <div class="header">
+        <img src="images/error.png" alt="error" id="error_img">
+        You have consumed anonymous usage, now you have to verify yourself for writing unlimited text in TextStorm
+      </div>
+      <button class="ok" onclick="validation_mess()">OK</button>
+    </div>
+  </div>
+
+  <div class="message_two" id="message_id">
+    <div class="title_message">
+      <div class="message_action">
+        <div class="cross_m" onclick="messageClose()"></div>
+        <div class="max_m"></div>
+        <div class="min_m"></div>
+      </div>
+      File System
+    </div>
+    <div class="message_m">
+      <div class="header_m">
+        <img src="images/save.png" alt="message" id="message_img">
+        Text/Notes Successfully Saved
+      </div>
+      <button class="ok_m" onclick="messageClose()">OK</button>
+    </div>
+  </div>
+
+  <script>
+  </script>
+  <script src="Js/Text_Editor.js"></script>
+  <script src="Js/Text_Editor_window.js"></script>
+  <script>
+    let load = document.getElementById("loader");
+    function Loading(){
+      load.style.display="none";
+    }
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.onkeydown = function (e) {
+      // Hacking Protection                    LOL
+      // if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+      //    return false;
+      // }
+      if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+        return false;
+      }
+      else if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+        return false;
+      }
+      else if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+        return false;
+      }
+      else if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+        e.preventDefault();
+        saveText();
+      }
+
+    }
+  </script>
+
+
+
+  <!-- FireBase Database Setup Script -->
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script> -->
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
+  <!--<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script> -->
+  <!-- <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script> -->
+
+</body>
+
+</html>
