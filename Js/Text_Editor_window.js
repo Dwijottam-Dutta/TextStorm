@@ -8,7 +8,7 @@ const showNotification = () => {
 	// create a new notification
 	const notification = new Notification('TextStorm', {
 		body: 'A simple text/notes editor with Mac Design, developed by Dwijottam Dutta',
-		icon: '../Icon/textstorm.png'
+		icon: '/Icon/textstorm.png'
 	});
 
 	// close the notification after 10 seconds

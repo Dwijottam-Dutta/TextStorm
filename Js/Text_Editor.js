@@ -1,7 +1,4 @@
 console.log("Welcome to TextStorm");
-const audio = new Audio('Music/startup.mp3');
-// audio.autoplay = true;
-audio.load()
 
 // getting few global variables
 let myDocument = document.documentElement;
@@ -120,7 +117,6 @@ dark_mode_btn_home.addEventListener('click', function () {
 	if (dark_mode_status_home == false) {
 		dark_mode_btn_home.innerHTML = '<i class="fa fa-sun-o" aria-hidden="true"></i> Light Theme';
 		dark_mode_status_home = true;
-		audio.play();
 	} else {
 		dark_mode_btn_home.innerHTML = '<i class="far fa-moon-o" aria-hidden="true"></i> Dark Theme';
 		dark_mode_status_home = false;
