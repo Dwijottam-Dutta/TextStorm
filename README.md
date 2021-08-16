@@ -3,6 +3,8 @@
 
 A simple web text/notes editor with Mac design
 
+#### Version 2.1
+
 
 ## Top Features
 
