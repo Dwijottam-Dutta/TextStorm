@@ -31,9 +31,9 @@
     <div></div>
   </div>
   <div class="body_button">
-  <button class="dark_mode_btn_home"><i class="far fa-moon-o" aria-hidden="true"></i> Dark Theme</button>
-  <button id="btn"><i class="fas fa-expand"></i></button>
-</div>
+    <button class="dark_mode_btn_home"><i class="far fa-moon-o" aria-hidden="true"></i> Dark Theme</button>
+    <button id="btn"><i class="fas fa-expand"></i></button>
+  </div>
 
   <main class="view">
 
@@ -48,7 +48,7 @@
         <div class="action-buttons">
 
           <div class="cross" onclick="winClose()">
-              <span class="cross_popup">Close</span>
+            <span class="cross_popup">Close</span>
           </div>
 
           <div class="max" onclick="winResize()">
@@ -89,7 +89,7 @@
       </button>
     </div>
     <div class="credits">
-      Developed by Dwijottam Dutta
+      Developed by <b><u><a id="dev_link" href="https://dwijottam-dutta.github.io/portfolio/about.html">Dwijottam Dutta</a></u></b>
     </div>
   </main>
 
@@ -135,15 +135,15 @@
   <script src="Js/Text_Editor_window.js"></script>
   <script>
     let load = document.getElementById("loader");
-    function Loading(){
-      load.style.display="none";
+    function Loading() {
+      load.style.display = "none";
     }
     document.addEventListener('contextmenu', event => event.preventDefault());
     document.onkeydown = function (e) {
       // Hacking Protection                    LOL
-      // if(e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-      //    return false;
-      // }
+      if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+        return false;
+      }
       if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
         return false;
       }
