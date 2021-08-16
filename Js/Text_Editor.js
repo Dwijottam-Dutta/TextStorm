@@ -123,6 +123,13 @@ dark_mode_btn_home.addEventListener('click', function () {
 	}
 });
 
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+    $("body").addClass("non");
+}
+else{
+  null
+}
+
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 var firebaseConfig = {
