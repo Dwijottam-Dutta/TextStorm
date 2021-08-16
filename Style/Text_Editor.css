@@ -221,10 +221,11 @@ main {
   border-radius: 0.3rem;
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  /* transition: all 1s ease-in; */
+  transition: all 1s ease-in;
   min-width: 450px;
   min-height: 220px;
   position: relative;
+  animation: MoveUp 2.5s linear;
 }
 
 .window-titlebar {
@@ -863,6 +864,15 @@ main {
     text-align: center;
     font-size: 8px;
     font-family: 'Comfortaa', cursive;
+  }
+
+  @keyframes MoveUp {
+    0%{
+      transform: translate(-120%, 130%);
+    }
+    90%{
+      transform: translate(0%, 0%);
+    }
   }
 
 
