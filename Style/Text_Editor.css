@@ -46,6 +46,7 @@ body {
   font-family: "Comfortaa", cursive;
   font-size: 15px;
   margin: 0;
+  height: 100%;
   transition:all 1s ease-in-out;
 }
 
@@ -72,6 +73,7 @@ body {
 	border: none;
 	outline: none;
   padding: 7px;
+  width: 153px;
   height: 35px;
   transition:all 0.5s ease;
 }
@@ -99,6 +101,37 @@ body {
 #btn:hover{
   background-color: #FF616D;
   transition:all 0.5s ease;
+}
+
+.taskbar{
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  left: 10px;
+  width: 15%;
+  background: rgba(255, 255, 255, 0.281);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 3.0px );
+  -webkit-backdrop-filter: blur( 3.0px );
+  border-radius: 10px 10px 0px 0px;
+  height: 40px;
+}
+
+#sub_sub_title {
+  position: fixed;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-weight: 400;
+  text-shadow: 0 1px 0 rgba(167, 109, 109, 0.2);
+  font-size: 2.8em;
+  margin-top: 0em;
+  margin-right:5%;
+  margin-bottom: 2%;
+  font-size: 1.1em;
+  width: 100%;
+  font-family: 'Comfortaa', cursive;
 }
 
 .loader{
@@ -221,7 +254,7 @@ main {
   border-radius: 0.3rem;
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: all 1s ease-in;
+  transition: none;
   min-width: 450px;
   min-height: 220px;
   position: relative;
@@ -579,6 +612,10 @@ main {
 	color: #FF616D;
 	transition:all 1s ease-in-out;
 }
+.dark_mode_active_home #sub_sub_title{
+	color: #FF616D;
+	transition:all 1s ease-in-out;
+}
  .dark_mode_active_home #save:hover {
 	color: #ddd;
 }
@@ -872,6 +909,7 @@ main {
     }
     90%{
       transform: translate(0%, 0%);
+      
     }
   }
 

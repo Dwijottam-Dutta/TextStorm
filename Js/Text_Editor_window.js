@@ -6,7 +6,7 @@ $(".window").draggable();
 // create and show the notification
 const showNotification = () => {
 	// create a new notification
-	const notification = new Notification('TextStorm', {
+	const notification = new Notification('TextStorm V.2.1', {
 		body: 'A simple text/notes editor with Mac Design, developed by Dwijottam Dutta',
 		icon: "Icon/textstorm.png"
 	});
