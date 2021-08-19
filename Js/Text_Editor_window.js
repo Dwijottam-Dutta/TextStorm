@@ -5,20 +5,26 @@ $(".window").draggable();
 
 // create and show the notification
 const showNotification = () => {
-	// create a new notification
-	const notification = new Notification('TextStorm V.2.1', {
-		body: 'A simple text/notes editor with Mac Design, developed by Dwijottam Dutta',
-		icon: "Icon/textstorm.png"
-	});
+	const database = firebase.database();
+	database.ref("Notification").on('value', function (snapshot) {
+		body_id = snapshot.val().body;
+		title_id = snapshot.val().title;
+		// create a new notification
+		const notification = new Notification(title_id, {
+			body: body_id,
+			icon: "Icon/textstorm.png"
+		});
+		
 
-	// close the notification after 10 seconds
-	setTimeout(() => {
-		notification.close();
-	}, 15 * 1000);
+		// close the notification after 10 seconds
+		setTimeout(() => {
+			notification.close();
+		}, 20 * 1000);
 
-	// navigate to a URL when clicked
-	notification.addEventListener('click', () => {
-		null
+		// navigate to a URL when clicked
+		notification.addEventListener('click', () => {
+			null
+		});
 	});
 }
 
@@ -68,14 +74,14 @@ function validation_mess() {
 		var database = firebase.database();
 		let client_text = document.getElementById("apnatext").value;   //getting text from client to server
 		let filecontent = document.getElementById("fileid").innerHTML;
-		let data={
+		let data = {
 			User: userproduct,
 			Data: client_text,
 			File_Data: filecontent
 		}
 		var ref = database.ref("Users_Data/" + userproduct);
-  		ref.set(data);
-		console.log("Hello"+userproduct)
+		ref.set(data);
+		console.log("Hello" + userproduct)
 		let errordump = document.getElementById("error_id");
 		errordump.style.display = "none";
 		localStorage.setItem("$verfication", "$verified$");
