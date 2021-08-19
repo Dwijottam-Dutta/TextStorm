@@ -868,6 +868,9 @@ main {
   .non .body_button {
     display: none;
   }
+  .non .loader {
+    display: none;
+  }
   .non .phone_wrapper{
     display: flex;
   flex-direction: column;
