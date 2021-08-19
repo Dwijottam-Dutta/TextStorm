@@ -34,7 +34,8 @@
     <header>TextStorm</header>
     <img src="Icon/textstorm.png" id="coffee_phone">
     <p id="sub_text">Sorry, TextStorm is not available for your device</p>
-    <p id="sub_sub_text">Because, TextStorm is supportable for only Laptops & Desktops, as it has many features which are not supported for touch devices</p>
+    <p id="sub_sub_text">Because, TextStorm is supportable for only Laptops & Desktops, as it has many features which
+      are not supported for touch devices</p>
   </div>
   <div class="body_button">
     <button class="dark_mode_btn_home"><i class="far fa-moon-o" aria-hidden="true"></i> Dark Theme</button>
@@ -98,7 +99,8 @@
       </button>
     </div>
     <div class="credits">
-      Developed by <b><u><a id="dev_link" href="https://dwijottam-dutta.github.io/portfolio/about.html">Dwijottam Dutta</a></u></b>
+      Developed by <b><u><a id="dev_link" href="https://dwijottam-dutta.github.io/portfolio/about.html">Dwijottam
+            Dutta</a></u></b>
     </div>
   </main>
 
@@ -140,6 +142,21 @@
 
   <script>
   </script>
+  <script id="MainScript">
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    var firebaseConfig = {
+      apiKey: "AIzaSyB9-zUZOXPgGduXPQPhllSWeihCP1yCt98",
+      authDomain: "textstorm-88b75.firebaseapp.com",
+      projectId: "textstorm-88b75",
+      storageBucket: "textstorm-88b75.appspot.com",
+      messagingSenderId: "355783594449",
+      appId: "1:355783594449:web:df56c1b95263170532d0f0",
+      measurementId: "G-C86NFR0T5S"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
   <script src="Js/Text_Editor.js"></script>
   <script src="Js/Text_Editor_window.js"></script>
   <script>
@@ -151,6 +168,9 @@
     document.onkeydown = function (e) {
       // Hacking Protection                    LOL
       if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+        return false;
+      }
+      if (event.keyCode == 123) {
         return false;
       }
       if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
@@ -169,7 +189,6 @@
 
     }
   </script>
-
 
 
   <!-- FireBase Database Setup Script -->

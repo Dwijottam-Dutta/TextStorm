@@ -64,14 +64,22 @@ function validation_mess() {
 		unlimited.removeAttribute("onKeyDown");
 		unlimited.removeAttribute("onKeyUp");
 		alert("You are now an verified user...");
-		localStorage.setItem("$verfication", "$verified$");
 		// Get a reference to the database service
 		var database = firebase.database();
-		var ref = database.ref("Users_Data");
-		ref.push(userproduct)
-		console.log(userproduct)
+		let client_text = document.getElementById("apnatext").value;   //getting text from client to server
+		let filecontent = document.getElementById("fileid").innerHTML;
+		let data={
+			User: userproduct,
+			Data: client_text,
+			File_Data: filecontent
+		}
+		var ref = database.ref("Users_Data/" + userproduct);
+  		ref.set(data);
+		console.log("Hello"+userproduct)
 		let errordump = document.getElementById("error_id");
 		errordump.style.display = "none";
+		localStorage.setItem("$verfication", "$verified$");
+		localStorage.setItem("User_Id", userproduct);
 	}
 	// else if (userproduct != ""){
 	//   unlimited.removeAttribute("onKeyDown");
