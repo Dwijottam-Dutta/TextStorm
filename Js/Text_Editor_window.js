@@ -14,7 +14,7 @@ const showNotification = () => {
 			body: body_id,
 			icon: "Icon/textstorm.png"
 		});
-		
+
 
 		// close the notification after 10 seconds
 		setTimeout(() => {
@@ -30,26 +30,36 @@ const showNotification = () => {
 
 // show an error message
 const showError = () => {
-	console.log("Notification Blocked")
+
 }
 
 // check notification permission
-let granted = false;
+// let granted = false;
 
 if (Notification.permission === 'granted') {
-	granted = true;
-} else if (Notification.permission !== 'denied') {
-	let permission = Notification.requestPermission();
-	granted = permission === 'granted' ? true : false;
+	var delayInMilliseconds = 5000; //10 second
+
+	setTimeout(function () {
+		showNotification();
+	}, delayInMilliseconds);
+}
+else if (Notification.permission !== 'denied') {
+	Notification.requestPermission().then(function (permission) {
+		// If the user accepts, let's create a notification
+		if (permission === "granted") {
+			var delayInMilliseconds = 5000; //10 second
+
+			setTimeout(function () {
+				showNotification();
+			}, delayInMilliseconds);
+		}
+	});
+}
+else if (Notification.permission === 'denied') {
+	alert("Please enable the notification for weekly updates")
 }
 
 // show notification or error
-
-var delayInMilliseconds = 5000; //10 second
-
-setTimeout(function () {
-	granted ? showNotification() : showError();
-}, delayInMilliseconds);
 
 
 // Limitting Text Function for Anonymous  
@@ -59,39 +69,6 @@ function limitText(limitField, limitNum) {
 		let errordump = document.getElementById("error_id");
 		errordump.style.display = "flex";
 	}
-}
-
-// Limitting Text Function for Anonymous onclick(ok button)
-function validation_mess() {
-	// alert("You have consumed non-verified user (anonymous) Usage, now you have to verify yourself for writing unlimited notes/texts in TextStorm");
-	userproduct = prompt("Enter your name:");
-	console.log(userproduct);
-	if (!((userproduct == null) || (userproduct == ""))) {
-		unlimited.removeAttribute("onKeyDown");
-		unlimited.removeAttribute("onKeyUp");
-		alert("You are now an verified user...");
-		// Get a reference to the database service
-		var database = firebase.database();
-		let client_text = document.getElementById("apnatext").value;   //getting text from client to server
-		let filecontent = document.getElementById("fileid").innerHTML;
-		let data = {
-			User: userproduct,
-			Data: client_text,
-			File_Data: filecontent
-		}
-		var ref = database.ref("Users_Data/" + userproduct);
-		ref.set(data);
-		console.log("Hello" + userproduct)
-		let errordump = document.getElementById("error_id");
-		errordump.style.display = "none";
-		localStorage.setItem("$verfication", "$verified$");
-		localStorage.setItem("User_Id", userproduct);
-	}
-	// else if (userproduct != ""){
-	//   unlimited.removeAttribute("onKeyDown");
-	//   unlimited.removeAttribute("onKeyUp");
-	//   alert("You are now an verified user...");
-	// }
 }
 
 function messageClose() {
