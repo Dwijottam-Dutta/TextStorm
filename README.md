@@ -25,6 +25,6 @@ A simple web text/notes editor with Mac design
   
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[Apache-2.0 Licence](https://choosealicense.com/licenses/apache-2.0/)
 
   
