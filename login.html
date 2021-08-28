@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="Style/signup.css">
+  <link rel="stylesheet" href="Style/login.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-database.js"></script>
@@ -13,7 +13,7 @@
   <script src="Js/signup_initialize.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
   <link rel="shortcut icon" href="Icon/textstorm.png" type="image/x-icon" />
-  <title>TextStorm - Sign Up</title>
+  <title>TextStorm - Log In</title>
 </head>
 <style>
   .loader {
@@ -32,17 +32,7 @@
         <p>A simple web text/notes editor with Mac design</p>
       </div>
       <form action="#" autocomplete="off">
-        <div id="error-text"></div>
-        <div class="name-details" id="login_out">
-          <div class="field input">
-            <label>First Name</label>
-            <input type="text" name="ffname" id="ffname" placeholder="First name" required>
-          </div>
-          <div class="field input">
-            <label>Last Name</label>
-            <input type="text" name="llname" id="llname" placeholder="Last name" required>
-          </div>
-        </div>
+        <div class="error-text"></div>
         <div class="field input">
           <label>Email Address</label>
           <input type="text" name="email" id="email" placeholder="Enter your email" required>
@@ -60,16 +50,18 @@
           <input type="submit" name="submit" id="button" value="Continue with TextStorm">
         </div>
       </form>
-      <div class="link">Already have an account? <a href="login.html">Login now</a></div>
+      <div class="link">Don't have an account? <a href="index.html">Sign Up</a></div>
       <div class="credits">
         Developed by <b><u><a id="dev_link" href="https://dwijottam-dutta.github.io/portfolio/about.html">Dwijottam
               Dutta</a></u></b>
       </div>
     </section>
   </div>
+  <script>
+  </script>
 
   <script src="Js/pass-show-hide.js"></script>
-  <script src="Js/signup.js"></script>
+  <script src="Js/login.js"></script>
 
 </body>
 
