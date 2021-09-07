@@ -24,7 +24,6 @@ if ((UserVerification == "$verified$") && (!(UserVerification == null))) {
     database_ref.child("Users_Data").orderByChild("Password").once("value", function (snapshot) {
       let snap_val = snapshot.val(); // on newer SDKs, this may be snapshot.key
       var keys = Object.keys(snap_val);
-      console.log(keys)
       // for (let i = 0; i < keys.length; i++) {
       //   let element = keys[i];
       //   let initials = snap_val[element].Password;
@@ -40,12 +39,16 @@ if ((UserVerification == "$verified$") && (!(UserVerification == null))) {
         });
       }
       else {
-        localStorage.clear();
+        localStorage.removeItem("$verfication");
+        localStorage.removeItem("User_Id");
+        localStorage.removeItem("User_Name");
       }
     });
   }
   else {
-    localStorage.clear();
+    localStorage.removeItem("$verfication");
+    localStorage.removeItem("User_Id");
+    localStorage.removeItem("User_Name");
     location.reload();
   }
 }
@@ -107,7 +110,9 @@ form.onsubmit = (e) => {
             }, 2000);
           }
           else {
-            localStorage.clear();
+              localStorage.removeItem("$verfication");
+              localStorage.removeItem("User_Id");
+              localStorage.removeItem("User_Name");
           }
         });
       }
