@@ -169,9 +169,9 @@
     document.addEventListener('contextmenu', event => event.preventDefault());
     document.onkeydown = function (e) {
       // Hacking Protection                    LOL
-      // if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-      //   return false;
-      // }
+      if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+        return false;
+      }
       if (event.keyCode == 123) {
         return false;
       }
