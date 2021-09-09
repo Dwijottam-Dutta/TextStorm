@@ -150,14 +150,14 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
-  background-color: #16191e;
+  background-color: transparent;
   position: relative;
 }
 .loader>div{
   height: 100px;
   width: 100px;
-  border: 15px solid #45474b;
-  border-top-color: #2a88e6;
+  border: 15px solid #3d3f42;
+  border-top-color: #ff6767;
   position: absolute;
   margin: auto;
   top: 0;

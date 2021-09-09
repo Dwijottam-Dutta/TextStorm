@@ -24,7 +24,7 @@
   }
 </style>
 
-<body oncontextmenu="return false" onload="Loading()">
+<body oncontextmenu="return false">
   <div class="loader" id="loader">
     <div></div>
   </div>
@@ -113,12 +113,12 @@
         <div class="max_e"></div>
         <div class="min_e"></div>
       </div>
-      Anonymous Trial Finished
+      Anonymous Verification
     </div>
     <div class="message">
       <div class="header">
         <img src="Images/error.png" alt="error" id="error_img">
-        You have consumed anonymous usage, now you have to verify yourself for writing unlimited text in TextStorm
+        You are not a verified user
       </div>
       <button class="ok" onclick="validation_mess()">OK</button>
     </div>
@@ -169,9 +169,9 @@
     document.addEventListener('contextmenu', event => event.preventDefault());
     document.onkeydown = function (e) {
       // Hacking Protection                    LOL
-      if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-        return false;
-      }
+      // if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+      //   return false;
+      // }
       if (event.keyCode == 123) {
         return false;
       }

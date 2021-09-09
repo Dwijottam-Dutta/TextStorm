@@ -35,6 +35,7 @@ function makeid(length) {
 
 // Details: While it is verified check that id id null or not, if not then check that the id is available or not
 if ((UserVerification == "$verified$") && (!(UserVerification == null))) {
+    document.getElementById("loader").style.display = "block";
     if (!((UserIdVerification == null) || (UserIdVerification == "")) && !((UserNameVerification == null) || (UserNameVerification == ""))) {
         const database_ref = firebase.database().ref();  //different because ref added means refernce
         database_ref.child("Users_Data").orderByChild("Password").once("value", function (snapshot) {
@@ -55,11 +56,12 @@ if ((UserVerification == "$verified$") && (!(UserVerification == null))) {
                     localStorage.setItem("User_Name", user_database);
                     localStorage.setItem("User's Data", user_data);
                     localStorage.setItem("File Name", user_filedata);
+                    document.getElementById("loader").style.display = "none";
                 });
             }
             else {
                 localStorage.clear();
-                alert("You are kicked out...");
+                alert("You are signed out...");
                 validation_mess();
             }
         });
@@ -129,6 +131,8 @@ if (UserData == "" || UserData == null) {
 
 // Limitting Text Function for Anonymous onclick(ok button)
 function validation_mess() {
+    let errordump = document.getElementById("error_id");
+    errordump.style.display = "none";
     window.location.replace("index.html");
     // if (!((userpass == null) || (userpass == ""))) {
     // 	unlimited.removeAttribute("onKeyDown");
