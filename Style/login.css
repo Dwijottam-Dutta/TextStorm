@@ -84,7 +84,7 @@ backdrop-filter: blur( 4px );
   margin: 20px 0;
   width: 90%;
 }
-.form form #error-text{
+.form form #error{
   color: #721c24;
   padding: 8px 10px;
   text-align: center;

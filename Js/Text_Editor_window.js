@@ -62,14 +62,14 @@ else if (Notification.permission === 'denied') {
 // show notification or error
 
 
-// Limitting Text Function for Anonymous  
-function limitText(limitField, limitNum) {
-	if (limitField.value.length > limitNum) {
-		limitField.value = limitField.value.substring(0, limitNum);
-		let errordump = document.getElementById("error_id");
-		errordump.style.display = "flex";
-	}
-}
+// // Limitting Text Function for Anonymous  
+// function limitText(limitField, limitNum) {
+// 	if (limitField.value.length > limitNum) {
+// 		limitField.value = limitField.value.substring(0, limitNum);
+// 		let errordump = document.getElementById("error_id");
+// 		errordump.style.display = "flex";
+// 	}
+// }
 
 function messageClose() {
 	let messagedump = document.getElementById("message_id");
