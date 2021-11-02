@@ -1,0 +1,88 @@
+.dark_mode_active_home {
+    background: #1c1c25;
+    background-image: url("../Background/background_night.jpg");
+    /* background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("../Background/background.jpg"); */
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: top;
+    transition: all 0.5s ease;
+}
+
+.dark_mode_active_home .navbar {
+    background-color: #171920d7;
+    transition: all 1s ease;
+}
+
+.dark_mode_active_home .navbar .trademark {
+    color: #ddd;
+}
+
+.dark_mode_active_home .navbar .trademark #trademark_text {
+    font-family: "Ubuntu", sans-serif;
+    font-weight: 550;
+}
+
+.dark_mode_active_home .navbar .main_ul {
+    color: #ddd;
+    transition: all 1s ease;
+  }
+.dark_mode_active_home .navbar .main_ul .main_li {
+    color: #ddd;
+  }
+
+
+  .dark_mode_active_home .navbar .main_ul .main_li .file_dropdown{
+    background: linear-gradient(#1f2127ce, #171920d7);
+    transition: all 1s ease;
+  }
+  .dark_mode_active_home .navbar .main_ul .main_li .file_dropdown .file_dropdown_li{
+    color: #ddd;
+  }
+
+
+.dark_mode_active_home .dark_mode_btn_home {
+    color: #ddd;
+    transition: all 1s ease;
+}
+
+.dark_mode_active_home #user_welcome {
+    color: #ddd;
+    transition: all 1s ease;
+}
+
+.dark_mode_active_home #clock {
+    color: #ddd;
+    transition: all 1s ease;
+  }
+
+.dark_mode_active_home #btn {
+    color: #ddd;
+}
+
+.dark_mode_active_home .error {
+    background: #282835;
+    color: #ddd;
+}
+
+.dark_mode_active_home .error .message {
+    background: #282835;
+    color: #ddd;
+    transition: all 0.5s ease-in-out;
+}
+
+.dark_mode_active_home .message_two {
+    background: #282835;
+    color: #ddd;
+}
+
+.dark_mode_active_home .message_two .message_m {
+    background: #282835;
+    color: #ddd;
+    transition: all 0.5s ease-in-out;
+}
+
+.dark_mode_active_home .textstorm_about_wrapper .textstorm_about_report_bug{
+    border: 4px #333 solid;
+    transition: all 0.5s ease-in-out;
+}

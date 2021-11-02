@@ -1,0 +1,411 @@
+/* **************************File*Header********************************** 
+
+* File Name: TextStorm.css
+*
+* File Description: Main CSS File for TextStorm
+*
+* Author:   Dwijottam Dutta
+
+* ************************************************************************** */
+
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+:root {
+  --color-1st: LightCoral;
+  --color-2nd: GhostWhite;
+  --color-3rd: Gainsboro;
+}
+
+@font-face {
+  font-family: "MyWebFont";
+  src: url("/fonts/SF-Pro-Display-Medium.otf") format("otf");
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  padding: 0%;
+  margin: 0%;
+  cursor: url("../Icon/cursor.svg"), default;
+}
+
+*:focus {
+  outline: none;
+}
+
+body {
+  background-image: url("../Background/background.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: "Nunito", sans-serif;
+  background-position: center;
+  font-size: 15px;
+  margin: 0;
+  height: 100%;
+  transition: all 1s ease-in-out;
+  overflow: hidden;
+}
+
+/* Navbar Starts from here */
+header {
+  width: 100%;
+  height: 10%;
+  position: relative;
+  z-index: 9;
+  clear: both;
+}
+
+/* Class Styling for No Selection */
+.none_select {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+            supported by Chrome, Edge, Opera and Firefox */
+}
+
+#contextMenu{
+  /* width: 100%;
+  height: 130%; */
+  background: linear-gradient(#e6e5ea, #e9e7ea);
+  display: none;
+  position: absolute;
+}
+
+.STARTUP_SCREEN {
+  height: 100vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  background: rgb(17, 17, 17);
+  position: absolute;
+  z-index: 10;
+  transition: all 3s ease-in-out;
+}
+
+.STARTUP_SCREEN_PARENT {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  flex-direction: column;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateX(-50%) translateY(-70%);
+  -webkit-transform: translate(-50%, -70%);
+  transform: translate(-50%, -70%);
+}
+
+#STARTUP_TRADEMARK_ICON {
+  width: 190px;
+}
+
+#STARTUP_TRADEMARK {
+  margin-top: 10px;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-size: 33px;
+  color: #ddd;
+}
+
+.STARTUP_SCREEN .loader {
+  margin-top: 30px;
+  height: 30px;
+  width: 30px;
+  border: 9px solid #3d3f42;
+  border-top-color: #ff6767;
+  border-radius: 50%;
+  animation: spin 1.5s infinite linear;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* custom scroll bar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 100%;
+  cursor: url("../Icon/pointinghand.svg"), pointer;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(129, 129, 129);
+  cursor: url("../Icon/pointinghand.svg"), pointer;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(204, 204, 252);
+  cursor: url("../Icon/pointinghand.svg"), pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(199, 199, 250);
+  cursor: url("../Icon/pointinghand.svg"), pointer;
+}
+
+.window::-webkit-resizer {
+  z-index: 9;
+  position: initial;
+  border-width: 18px;
+  border-style: solid;
+  border-color: transparent #333 #333 transparent;
+  box-shadow: 9px 8px 15px rgba(0, 0, 0, 0.199);
+  /* outline: 2px solid #333; */
+}
+
+i:before {
+  cursor: url("../Icon/pointinghand.svg"), pointer;
+}
+
+i {
+  cursor: url("../Icon/pointinghand.svg"), pointer;
+}
+
+.navbar {
+  /* position: fixed; */
+  display: flex;
+  clear: both;
+  height: 30px;
+  background: #f8e4e5;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  transition: all 1s ease;
+}
+
+.navbar .trademark {
+  display: flex;
+  margin-left: 10px;
+  align-items: center;
+  color: #333;
+}
+
+.navbar .trademark #trademark_text {
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+  margin-left: 5px;
+}
+
+.navbar .trademark #trademark_ico {
+  width: 20px;
+}
+
+.navbar .main_ul {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+  color: #333;
+  width: 60%;
+  /* overflow: auto; */
+  position: relative;
+  transition: all 1s ease;
+}
+
+.navbar .main_ul .main_li {
+  float: left;
+  list-style: none;
+  padding: 4px 9px;
+  color: #333;
+  cursor: url("../Icon/pointinghand.svg"), pointer;
+  transition: all 0.1s ease;
+}
+
+.navbar .main_ul .main_li #menu_text {
+  font-size: 16px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  padding: 3px 3px;
+  text-decoration: none;
+  cursor: url("../Icon/pointinghand.svg"), pointer;
+}
+
+.navbar .main_ul .main_li:hover {
+  background-color: #2a85f7;
+  color: #ddd;
+}
+
+.navbar .main_ul .main_li .file_dropdown {
+  padding-bottom: 10px;
+  margin-top: 4px;
+  margin-left: -10px;
+  background: linear-gradient(#e6e5ea, #e9e7ea);
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  width: 170px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  transition: all 1s ease;
+}
+
+.navbar .main_ul .main_li .file_dropdown .file_dropdown_li {
+  display: flex;
+  align-items: flex-start;
+  padding: 2px;
+  padding-left: 10px;
+  color: #333;
+  cursor: url("../Icon/pointinghand.svg"), pointer;
+}
+
+.navbar .main_ul .main_li .file_dropdown .file_dropdown_li:hover {
+  background: linear-gradient(#5a84f6, #1b62f7);
+  color: #ddd;
+}
+
+.navbar .main_ul .main_li .file_dropdown .file_dropdown_li #file_menu_text {
+  font-size: 16px;
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  padding: 3px 3px;
+  text-decoration: none;
+  cursor: url("../Icon/pointinghand.svg"), pointer;
+}
+.navbar .main_ul .main_li .file_dropdown .file_dropdown_li #file_menu_text_shortcut {
+  font-size: 14px;
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 500;
+  padding: 3px 3px;
+  margin-left: 60px;
+  text-decoration: none;
+  cursor: url("../Icon/pointinghand.svg"), pointer;
+}
+
+.utils {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  color: white;
+  width: 40%;
+  /* padding: 12px 75px; */
+}
+
+.user_details {
+  display: flex;
+  align-items: center;
+  margin-right: 5px;
+}
+
+#user_welcome {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 15px;
+  color: #333;
+  transition: all 1s ease;
+}
+
+#clock {
+  margin-right: 10px;
+  color: #333;
+}
+
+.dark_mode_btn_home {
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 100%;
+  margin-right: 3px;
+  background: transparent;
+  border: none;
+  cursor: url("../Icon/pointinghand.svg"), pointer;
+  color: #000;
+  transition: all 0.5s ease;
+  pointer-events: auto;
+}
+
+.dark_mode_btn_home:hover {
+  background: linear-gradient(#5a84f6, #1b62f7);
+  transition: all 0.3s ease;
+}
+
+#btn {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 10px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  cursor: url("../Icon/pointinghand.svg"), pointer;
+  color: #000;
+  transition: all 0.5s ease;
+  pointer-events: auto;
+}
+
+#btn:hover {
+  background: linear-gradient(#5a84f6, #1b62f7);
+  transition: all 0.3s ease;
+}
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+main {
+  min-height: 90vh;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+/*dark mode editor*/
+
+.dark_mode_active {
+  background: #282835;
+  transition: all 1s ease-in-out;
+}
+
+.dark_mode_active .window {
+  background-color: #282835;
+  border-radius: 0.2rem;
+}
+
+.dark_mode_active .window-body {
+  background: #282835;
+}
+
+.dark_mode_active .code-input {
+  background: #282835;
+  color: #ddd;
+  transition: all 0.5s ease-in-out;
+}
+
+.dark_mode_active .code-input:focus{
+  color: rgb(235, 231, 231); 
+}
+
+
+
+
+@keyframes MoveUp {
+  0% {
+    transform: translate(-120%, 130%);
+  }
+
+  90% {
+    transform: translate(0%, 0%);
+  }
+}

@@ -1,26 +1,10 @@
-const form = document.querySelector(".signup form");
-let email = document.getElementById("email");
-let password = document.getElementById("password");
-let error = document.getElementById("error-text");
+const login_form = document.querySelector(".form_login form");
+let email_login = document.getElementById("email_login");
+let password_login = document.getElementById("password_login");
+let error_login = document.getElementById("error-text");
 // let UserVerification = localStorage.getItem("$verfication");
 // let UserIdVerification = localStorage.getItem("User_Id");
 // let UserNameVerification = localStorage.getItem("User_Name");
-
-// Security at startup script
-document.getElementById("loader").style.display = "block";
-document.getElementById("wrapper").style.display = "none";
-
-function StartUp() {
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-                location.replace("TextStorm.html");
-        } else {
-            document.getElementById("loader").style.display = "none";
-            document.getElementById("wrapper").style.display = "block";
-        }
-    })
-}
-StartUp();
 
 
 // if ((UserIdVerification == null) || (UserIdVerification == "")) {
@@ -64,20 +48,30 @@ StartUp();
 //     }
 // }
 
-form.onsubmit = (e) => {
-    e.preventDefault();
-    document.getElementById("loader").style.display = "block";
-    document.getElementById("wrapper").style.display = "none";
-    let email_val = email.value;
-    let password_val = password.value; //Taking value of password
+function move_to_signup() {
+    document.getElementById("login_wrapper").style.display = "none";
+    document.getElementById("signup_wrapper").style.display = "flex";
+}
 
-        firebase.auth().signInWithEmailAndPassword(email_val, password_val)
-            .catch((error) => {
-                document.getElementById("loader").style.display = "none";
-                document.getElementById("wrapper").style.display = "block";
-                document.getElementById("error").innerHTML = error.message;
-                document.getElementById("error").style.display = "block";
-            })
+login_form.onsubmit = (e) => {
+    e.preventDefault();
+    let email_val = email_login.value;
+    let password_val = password_login.value; //Taking value of password
+
+    firebase.auth().signInWithEmailAndPassword(email_val, password_val)
+        .catch((error) => {
+            document.getElementById("error_login").innerHTML = error.message;
+            document.getElementById("error_login").style.display = "block";
+        });
+
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            document.getElementById("hide_while_other").style.visibility = "visible";
+            document.getElementById("login_wrapper").style.display = "none";
+            document.getElementById("email_login").value = "";
+            document.getElementById("password_login").value = "";
+        }
+    });
 
     // let password_val_process = CryptoJS.MD5(password_val_user);        // Converting password to hash
     // let password_val = password_val_process.toString();        //Final value

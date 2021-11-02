@@ -1,0 +1,92 @@
+.textstorm_about_wrapper {
+    display: none;
+    flex-direction: column;
+    justify-self: center;
+    padding-right: 25px;
+    padding-left: 25px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    max-width: 450px;
+    width: 100%;
+    border-radius: 16px;
+    z-index: 8;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
+        0 32px 64px -48px rgba(0, 0, 0, 0.5);
+}
+
+#back_from_textstorm_about{
+    position: absolute;
+    top: 30px;
+    left: 30px;
+}
+
+.textstorm_about{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.top_textstorm_about{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.top_textstorm_about img{
+    width: 100px;
+}
+.top_textstorm_about h2{
+    font-family: "Titillium Web", sans-serif;
+    font-size: 25px;
+}
+.top_textstorm_about small{
+    padding-top: 5px;
+    font-size: 13px;
+}
+
+
+.textstorm_about_report_bug{
+    width: 85%;
+    margin-top: 30px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    border: 4px #ddd solid;
+    cursor: url("../Icon/pointinghand.svg"), pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.textstorm_about_report_bug .bug_img{
+    margin-left: 5px;
+    cursor: url("../Icon/pointinghand.svg"), pointer;
+}
+
+.textstorm_about_report_bug .bug_text{
+    margin-left: 10px;
+    cursor: url("../Icon/pointinghand.svg"), pointer;
+}
+.textstorm_about_report_bug .bug_text p{
+    font-size: 13px;
+    cursor: url("../Icon/pointinghand.svg"), pointer;
+}
+.textstorm_about_report_bug .bug_text h3{
+    cursor: url("../Icon/pointinghand.svg"), pointer;
+}
+.credits_about_textstorm{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

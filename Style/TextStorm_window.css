@@ -1,0 +1,255 @@
+/* MAC $root Window */
+.window {
+    display: flex;
+    flex-direction: column;
+    width: 547px;
+    height: 337px;
+    background: GhostWhite;
+    border-radius: 0.3rem;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: none;
+    min-width: 450px;
+    min-height: 220px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    top: 30%;
+    animation: MoveUp 2.5s linear;
+    resize: both;
+}
+
+/* MAC Window titlebar */
+.window-titlebar {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    max-height: 40px;
+    z-index: 1;
+    /* background: Gainsboro; */
+    background: linear-gradient(#eeeeee, #d1d1d1);
+    position: relative;
+    border: none;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.096);
+}
+
+.action-buttons {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    padding-left: 5px;
+    width: 80%;
+    max-width: 80%;
+    height: 30px;
+    /* position: fixed; */
+}
+
+.cross {
+    /* position: absolute; */
+    background: #d83a56;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    margin: 5px;
+    cursor: url("../Icon/pointinghand.svg"), default;
+}
+
+.max {
+    /* position: absolute; */
+    background: Orange;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    margin: 5px;
+    cursor: url("../Icon/pointinghand.svg"), default;
+}
+
+.min {
+    /* position: absolute; */
+    background: limegreen;
+    border-radius: 50%;
+    width: 14px;
+    height: 14px;
+    margin: 5px;
+    cursor: url("../Icon/pointinghand.svg"), default;
+}
+
+.cross_popup {
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    width: 70px;
+    font-family: "PT Mono", monospace;
+    font-size: 17px;
+    background-color: #d83a56;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 1px 1px;
+    position: absolute;
+    z-index: 1;
+    top: 20%;
+    left: 100px;
+    margin-left: 0px;
+    flex-wrap: wrap;
+    cursor: url("../Icon/pointinghand.svg"), default;
+}
+
+.max_popup {
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    font-family: "PT Mono", monospace;
+    font-size: 17px;
+    background-color: Orange;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 1px 1px;
+    position: absolute;
+    z-index: 1;
+    top: 20%;
+    left: 100px;
+    margin-left: 0px;
+    flex-wrap: wrap;
+    cursor: url("../Icon/pointinghand.svg"), default;
+}
+
+.min_popup {
+    visibility: hidden;
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    font-family: "PT Mono", monospace;
+    font-size: 16px;
+    background-color: limegreen;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    padding: 1px 1px;
+    position: absolute;
+    z-index: 1;
+    top: 20%;
+    left: 100px;
+    margin-left: 0px;
+    flex-wrap: wrap;
+    cursor: url("../Icon/pointinghand.svg"), default;
+}
+
+.cross:hover .cross_popup {
+    visibility: visible;
+}
+
+.max:hover .max_popup {
+    visibility: visible;
+}
+
+.min:hover .min_popup {
+    visibility: visible;
+}
+
+/* File name */
+.filename {
+    width: 10em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-left: 0.8em;
+    margin-top: -1px;
+    text-align: left;
+    border: none;
+    background: transparent;
+    color: rgb(126, 81, 81);
+    font-family: "Ubuntu", sans-serif;
+    font-size: 17px;
+}
+
+.filename:hover {
+    cursor: url("../Icon/pointinghand.svg"), default;
+}
+
+.button_area {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 30px;
+    width: 20%;
+    padding-right: 10px;
+}
+
+.button_area button {
+    height: 28px;
+    width: 45px;
+    font-family: "PT Mono", monospace;
+    font-size: 15px;
+    /* margin: 5px; */
+    margin: 2px;
+    background-color: lightcoral;
+    border: 0px rgb(48, 48, 48) solid;
+    border-radius: 5px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    cursor: url("../Icon/pointinghand.svg"), default;
+}
+
+.button_area button:hover {
+    background-color: #d83a56;
+    transition: all 0.3s ease-in-out;
+}
+
+/* MAC Window body */
+.window-body {
+    display: flex;
+    position: absolute;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    padding-top: 40px;
+    bottom: 0%;
+    transition: all 2s ease;
+}
+
+.code-input {
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 1.2rem;
+    padding-top: 0.8rem;
+    padding-bottom: 1.9rem;
+    border: none;
+    font-family: "Questrial", sans-serif;
+    font-size: 0.9rem;
+    background: transparent;
+    white-space: pre-wrap;
+    line-height: 1.5em;
+    word-wrap: break-word;
+    overflow-y: scroll;
+    transition: all 0.5s ease;
+    opacity: 0.8;
+    margin: 0;
+    color: rgb(153, 153, 153);
+    /* color: #f54747; */
+    resize: none;
+}
+.code-input:focus{
+    color: rgb(105, 105, 105); 
+}
+
+#open {
+    font-family: "Comfortaa", cursive;
+    margin: 5px;
+    display: none;
+    background-color: #d83a56;
+    border: 3px rgb(48, 48, 48) solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    box-shadow: 0 9px 12px rgba(0, 0, 0, 0.2);
+    cursor: url("../Icon/pointinghand.svg"), default;
+}

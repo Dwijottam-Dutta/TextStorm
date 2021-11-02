@@ -1,89 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200&display=swap');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  font-family: 'Poppins', sans-serif;
-}
-body{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  /* background: #f7f7f7; */
-  background: lightcoral;
-  /* background-image: url("../Background/background.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: top; */
-  padding: 0 10px;
-}
-.loader{
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-  background-color: transparent;
-  position: relative;
-}
-.loader>div{
-  height: 100px;
-  width: 100px;
-  border: 15px solid #3d3f42;
-  border-top-color: #ff6767;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200&display=swap");
+
+.signup_wrapper {
+  display: none;
   position: absolute;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  border-radius: 50%;
-  animation: spin 1.5s infinite linear;
-}
-@keyframes spin{
-  100%{
-      transform: rotate(360deg);
-  }
-}
-.wrapper{
-  /* background: #fff; */
-  background: rgba( 255, 255, 255, 0.50 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-backdrop-filter: blur( 4px );
--webkit-backdrop-filter: blur( 4px );
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   max-width: 450px;
   width: 100%;
   border-radius: 16px;
-  box-shadow: 0 0 128px 0 rgba(0,0,0,0.1),
-              0 32px 64px -48px rgba(0,0,0,0.5);
+  top: 50%; right: 50%;
+  transform: translate(50%,-47%);
+  box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
+    0 32px 64px -48px rgba(0, 0, 0, 0.5);
 }
 
 /* Login & Signup Form CSS Start */
-.form{
+.signup_wrapper .form_signup {
   padding: 25px 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  animation: whoosh 1s;
+  
 }
-.form .header header{
+
+@keyframes whoosh {
+  from {
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.signup_wrapper .form_signup .header #trademark_signup {
   font-size: 25px;
   font-weight: 600;
   padding-bottom: 3px;
+  font-family: 'Titillium Web', sans-serif;
 }
-.form .header p{
-    color: #0A1D37;
+.signup_wrapper .form_signup .header {
+  display: block;
+  flex-direction: column;
+  width: 95%;
+}
+.signup_wrapper .form_signup .header p {
+  color: #0a1d37;
   font-size: 15px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #0A1D37;
+  border-bottom: 1px solid #0a1d37;
 }
-.form form{
-  margin: 20px 0;
+.signup_wrapper .form_signup form {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
 }
-.form form #error-text{
+.signup_wrapper .form_signup form #error-text {
   color: #721c24;
   padding: 8px 10px;
   text-align: center;
@@ -93,87 +71,77 @@ backdrop-filter: blur( 4px );
   margin-bottom: 10px;
   display: none;
 }
-.form form .name-details{
+.signup_wrapper .form_signup form .name-details {
   display: flex;
 }
-.form .name-details .field:first-child{
+.signup_wrapper .form_signup .name-details .field:first-child {
   margin-right: 10px;
 }
-.form .name-details .field:last-child{
+.signup_wrapper .form_signup .name-details .field:last-child {
   margin-left: 10px;
 }
-.form form .field{
+.signup_wrapper .form_signup form .field {
   display: flex;
   margin-bottom: 10px;
   flex-direction: column;
   position: relative;
 }
-.form form .field label{
+.signup_wrapper .form_signup form .field label {
   margin-bottom: 2px;
+  font-size: 18px;
 }
-.form form .input input{
+.signup_wrapper .form_signup form .input input {
   height: 40px;
   width: 100%;
   font-size: 16px;
   padding: 0 10px;
   border-radius: 5px;
-  /* background: rgba( 255, 255, 255, 0.10 );
-box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  background: rgba(255, 255, 255, 0.267);
+/* box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 backdrop-filter: blur( 4px ); */
-  border: 1px solid #ccc;
+  border: none;
 }
-.form form .field input{
+.signup_wrapper .form_signup form .field input {
   outline: none;
 }
-.form form .image input{
+.signup_wrapper .form_signup form .image input {
   font-size: 17px;
 }
-.form form .button input{
+.signup_wrapper .form_signup form .button input {
   height: 45px;
   border: none;
   color: #fff;
   font-size: 17px;
+  font-family: "Nunito", sans-serif;
   background: #333;
   border-radius: 5px;
-  cursor:url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Icon/pointinghand.svg"), default;
   margin-top: 13px;
 }
-.form form .field i{
+.signup_wrapper .form_signup form .field i {
   position: absolute;
   right: 15px;
   top: 70%;
-  /* color: #ccc; */
   color: #333;
-  cursor:url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Icon/pointinghand.svg"), default;
   transform: translateY(-50%);
 }
-.form form .field i.active::before{
+.signup_wrapper .form_signup form .field i.active::before {
   color: #333;
   content: "\f070";
 }
-.form .link{
+.signup_wrapper .form_signup .link {
   text-align: center;
-  margin: 0px 0;
+  margin-top: 10px;
   font-size: 17px;
 }
-.form .link a{
-  color: #333;
-}
-.form .link a:hover{
-  text-decoration: underline;
-}
-
-.credits {
-  color: rgb(48, 43, 43);
-  margin-top: 1em;
-  font-size: 0.8em;
-  opacity: 2;
-  padding-bottom: 10px;
-}
-#dev_link{
-  color: rgb(221, 64, 96);
-  cursor:url("../Icon/pointinghand.svg"), default;
+#go_to_login {
+  font-family: 'Titillium Web', sans-serif;
   font-weight: 700;
+  color: #333;
+  font-size: 17px;
 }
-
-
+#go_to_login:hover {
+  text-decoration: underline;
+  cursor: url("../Icon/pointinghand.svg"), default;
+}

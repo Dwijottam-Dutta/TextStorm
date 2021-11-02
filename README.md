@@ -1,21 +1,20 @@
 
 # TextStorm
 
-A simple web text/notes editor with Mac design
+A simple web text/notes editor with Mac UI/UX Design
 
-#### Version 2.1
+#### Version 2.3.9 beta
 
 
 ## Top Features
 
 - Light/dark mode toggle
-- Full Screen for ease of writing notes
-- Notes Rename Features
-- Notes Saving in browser feature
-- Copying Text Feature
-- MAC window design (maximize, minimize, close, restore down buttons)
-- MAC window draggle feature
-- Editing/Viewing Mode feature for ease of presentation
+- Full Screen for cool feel
+- File Rename
+- File Download and Save in Browser
+- Text Manipulation
+- MAC UI/UX design
+- Editing/Viewing Mode feature for presentation
 
   
 ## Developer

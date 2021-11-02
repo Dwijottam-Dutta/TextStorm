@@ -1,4 +1,4 @@
-const form = document.querySelector(".signup form");
+const signup_form = document.querySelector(".form_signup form");
 let ffname = document.getElementById("ffname");
 let llname = document.getElementById("llname");
 let email = document.getElementById("email");
@@ -7,22 +7,22 @@ let password = document.getElementById("password");
 // let UserVerification = localStorage.getItem("$verfication");
 // let UserIdVerification = localStorage.getItem("User_Id");
 // let UserNameVerification = localStorage.getItem("User_Name");
-document.getElementById("loader").style.display = "block";
-document.getElementById("wrapper").style.display = "none";
-function StartUp() {
-  firebase.auth().onAuthStateChanged((user)=>{
-    if(user){
-      setTimeout(function() {
-        location.replace("TextStorm.html");
-      }, 3000);
-    }
-    else{
-      document.getElementById("loader").style.display = "none";
-      document.getElementById("wrapper").style.display = "block";
-    }
-  })
-}
-StartUp();
+// document.getElementById("loader").style.display = "block";
+// document.getElementById("wrapper").style.display = "none";
+
+// function StartUp() {
+//   firebase.auth().onAuthStateChanged((user) => {
+//     if (user) {
+//       setTimeout(function () {
+//         location.replace("TextStorm.html");
+//       }, 3000);
+//     } else {
+//       document.getElementById("loader").style.display = "none";
+//       document.getElementById("wrapper").style.display = "block";
+//     }
+//   })
+// }
+// StartUp();
 
 // Security at startup script
 // if ((UserIdVerification == null) || (UserIdVerification == "")) {
@@ -97,12 +97,13 @@ StartUp();
 //   }
 // }
 
+function move_to_login() {
+  document.getElementById("signup_wrapper").style.display = "none";
+  document.getElementById("login_wrapper").style.display = "flex";
+}
 
-form.onsubmit = (e) => {
+signup_form.onsubmit = (e) => {
   e.preventDefault();
-
-  document.getElementById("loader").style.display = "block";
-  document.getElementById("wrapper").style.display = "none";
   let fname = ffname.value;
   let lname = llname.value;
   let email_val = email.value;
@@ -110,8 +111,6 @@ form.onsubmit = (e) => {
   firebase.auth().createUserWithEmailAndPassword(email_val, password_val)
     .catch((error) => {
       console.log("Something went wrong");
-      document.getElementById("loader").style.display = "none";
-      document.getElementById("wrapper").style.display = "block";
       document.getElementById("error-text").innerHTML = error.message;
       document.getElementById("error-text").style.display = "block";
     });
@@ -120,12 +119,12 @@ form.onsubmit = (e) => {
     if (user) {
       let user_details = {
         User: fname + " " + lname,
-        Email: email_val,
         Data: "Write your text here...",
         File_Data: "Untitled.txt",
         uid: user.uid,
-        email: user.email
+        Email: user.email
       }
+
       function Set_Data(callback) {
         firebase.database().ref('Users_Data/' + user.uid).set(user_details).catch(error => {
           document.getElementById("loader").style.display = "none";
@@ -135,15 +134,21 @@ form.onsubmit = (e) => {
         });
         callback();
       }
+
       function Move_Page() {
-        setTimeout(function() {
-          location.replace("TextStorm.html");
-        }, 3000);
+        var ref = firebase.database().ref("Users_Data/" + user.uid);
+        ref.once("value")
+          .then(function (snapshot) {
+            let data_exists = snapshot.child("uid").exists(); // true
+            if (data_exists) {
+              console.log("WELCOME");
+              document.getElementById("hide_while_other").style.visibility = "visible";
+              document.getElementById("signup_wrapper").style.display = "none";
+            }
+          });
       }
       Set_Data(Move_Page);
 
-    } else {
-      console.warn("Something went wrong !")
     }
   });
 

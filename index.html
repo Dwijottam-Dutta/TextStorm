@@ -2,36 +2,198 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="SignUp to TextStorm">
-  <meta name="keywords" content="TextStorm, Notes, Dwijottam Dutta, SignUp">
+  <title>TextStorm</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A simple text/notes editor with MAC design">
+  <meta name=”robots” content=”index, follow”>
+  <meta property="og:type" content="Text Editor" />
+
+  <meta property="og:title" content="TextStorm" />
+
+  <meta property="og:description" content="A simple text/notes editor with MAC design" />
+
+  <meta property="og:url" content="https://dwijottam-dutta.github.io/TextStorm/" />
+
+  <meta property="og:site_name" content="SITE NAME" />
+  <link rel="canonical" href="https://dwijottam-dutta.github.io/TextStorm/">
   <meta name="author" content="Dwijottam Dutta">
+  <script defer src="Js/boot/$textstorm.boot.sector.js" onerror="boot_failed()"></script>
+  <!-- Font Awesome CDN Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+  <!-- TextStorm - Main CSS File for over all style -->
+  <link rel="stylesheet" href="Style/TextStorm.css" />
+
+  <!-- TextStorm - Main CSS File for content which will be shown in unstable devices -->
+  <link rel="stylesheet" href="Style/TextStorm_unstable.css" />
+
+  <!-- TextStorm - CSS File for Editor Window (Most important thing for TextStorm).... LOL -->
+  <link rel="stylesheet" href="Style/TextStorm_window.css" />
+
+  <!-- TextStorm - CSS File for etc window -->
+  <link rel="stylesheet" href="Style/TextStorm_external_window.css" />
+
+  <!-- TextStorm - CSS File for Website DarkMode Style -->
+  <link rel="stylesheet" href="Style/TextStorm_home_darkmode.css" />
+
+  <!-- TextStorm - CSS File for TextStorm About -->
+  <link rel="stylesheet" href="Style/TextStorm_about.css" />
+
+  <!-- ShortCut Ico -->
+  <link rel="shortcut icon" href="Icon/textstorm.svg" type="image/x-icon" />
+
+  <!-- JAVASCRIPT LIBRARIES -->
+  <script src="Js/lib/win32_drag.js"></script>
+  <script src="Js/lib/FileSaver.js"></script>
+
   <link rel="stylesheet" href="Style/signup.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
-  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-database.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-analytics.js"></script>
-  <script src="Js/signup_initialize.js"></script>
-  <link rel="shortcut icon" href="Icon/textstorm.png" type="image/x-icon" />
-  <title>TextStorm - Sign Up</title>
+  <link rel="stylesheet" href="Style/login.css">
+
+  <!-- JAVASCRIPT Source Files for TextStorm Application -->
+  <script defer src="Js/TextStorm.js" onerror="js_failed()"></script>
+  <script defer src="Js/TextStorm_window.js" onerror="js_failed()"></script>
+  <script defer src="Js/TextStorm_Context_Menu.js" onerror="js_failed()"></script>
+  <script defer src="Js/pass-show-hide.js" onerror="js_failed()"></script>  
+  <script defer src="Js/signup.js" onerror="js_failed()"></script>
+  <script defer src="Js/login.js" onerror="js_failed()"></script>
 </head>
-<style>
-  .loader {
-    display: none;
-  }
-</style>
+
 
 <body>
-  <div class="loader" id="loader">
-    <div></div>
+  <!-- TEXTSTORM STARTUP SCREEN  -->
+  <div class="STARTUP_SCREEN" id="STARTUP_SCREEN">
+    <div class="STARTUP_SCREEN_PARENT" id="STARTUP_SCREEN_PARENT">
+      <img src="Icon/textstorm.svg" id="STARTUP_TRADEMARK_ICON">
+      <p id="STARTUP_TRADEMARK">TextStorm</p>
+      <div class="loader"></div>
+    </div>
   </div>
-  <div class="wrapper" id="wrapper">
-    <section class="form signup">
+
+
+  <!-- HTML FOR UNSTABLE DEVICES -->
+  <div class="phone_wrapper">
+    <header>TextStorm</header>
+    <img src="Icon/textstorm.svg" id="coffee_phone">
+    <p id="sub_text">Sorry, TextStorm is not available for your device</p>
+    <p id="sub_sub_text">Because, TextStorm is supportable for only Laptops & Desktops, as it has many features which
+      are not supported for touch devices</p>
+  </div>
+
+
+
+  <!-- NAVIGATION BAR - TEXTSTORM -->
+  <header>
+    <nav class="navbar none_select" id="navbar">
+      <div class="trademark" onclick="openwindow()">
+        <img src="Icon/textstorm.svg" id="trademark_ico">
+        <p id="trademark_text">TextStorm</p>
+      </div>
+      <ul class="main_ul none_select" id="hide_while_other">
+        <li class="main_li" id="file_menu_parent"><a id="menu_text">File</a>
+          <ul class="file_dropdown" id="file_dropdown">
+            <li class="file_dropdown_li" onclick="newFile()"><a id="file_menu_text">New</a><a id="file_menu_text_shortcut">Ctrl+N</a></li>
+            <li class="file_dropdown_li" onclick="openFile()" id="openfile"><a id="file_menu_text">Open</a><a id="file_menu_text_shortcut">Ctrl+O</a></li>
+            <li class="file_dropdown_li" onclick="saveText()"><a id="file_menu_text">Save</a><a id="file_menu_text_shortcut">Ctrl+S</a></li>
+            <li class="file_dropdown_li" onclick="myCopy()"><a id="file_menu_text">Copy</a><a id="file_menu_text_shortcut">Alt+C</a></li>
+            <li class="file_dropdown_li" onclick="downloadText()"><a id="file_menu_text">Download</a></li>
+          </ul>
+        </li>
+        <li class="main_li" onclick="alert_docs()"><a id="menu_text">Docs</a></li>
+        <li class="main_li" onclick="open_TextStorm_About()"><a id="menu_text">About</a></li>
+      </ul>
+      <div class="utils">
+        <div class="user_details">
+          <p id="user_welcome" onclick="openAccount()"></p>
+          <!-- <a href="#" id="logout">Log out</a> -->
+        </div>
+        <button class="dark_mode_btn_home"><i class="far fa-moon"></i></button>
+        <button id="btn"><i class="fa fa-expand"></i></button>
+        <p id="clock"></p>
+      </div>
+    </nav>
+  </header>
+
+
+
+
+  <!-- TEXTSTORM WINDOW; PARENT AREA -->
+  <main class="view">
+
+    <!-- TEXTSTORM EDITOR WINDOW -->
+    <div class="window" id="editor">
+      <div class="window-titlebar" id="titlebar">
+        <div class="action-buttons">
+
+          <div class="cross" onclick="winClose()">
+            <span class="cross_popup">Close</span>
+          </div>
+
+          <div class="max" onclick="winResize()">
+            <span class="max_popup" id="popup_change">Maximize</span>
+          </div>
+
+
+          <div class="min" onclick="winMinimize()">
+            <span class="min_popup">Minimize</span>
+          </div>
+
+
+          <p class="filename" id="fileid" onclick="renameFile()">Untitled.txt</p>
+        </div>
+        <div class="button_area">
+          <button class="dark_mode_btn"><i class="far fa-moon" aria-hidden="true" id="fontawesome"></i></button>
+          <button onclick="editableOption()" id="editbutton"><i class="far fa-edit"></i></button>
+        </div>
+
+      </div>
+      <div class="window-body" id="body_editor">
+        <textarea class="code-input" id="apnatext">Write your Text here</textarea>
+      </div>
+    </div>
+    <div>
+    </div>
+  </main>
+
+
+
+
+  <!-- LOGIN WINDOW -->
+  <div class="login_wrapper" id="login_wrapper">
+    <section class="form_login">
       <div class="header">
-        <header>TextStorm</header>
+        <h1 id="trademark_login">TextStorm Login</h1>
+        <p>A simple web text/notes editor with Mac design</p>
+      </div>
+      <form action="#" autocomplete="off">
+        <div class="error-text" id="error_login"></div>
+        <div class="field input">
+          <label>Email Address</label>
+          <input type="text" name="email" id="email_login" placeholder="Enter your email" required>
+        </div>
+        <div class="field input">
+          <label>Password</label>
+          <input type="password" name="password" id="password_login" placeholder="Enter your password" required>
+          <i class="fas fa-eye" id="eye_login"></i>
+        </div>
+        <div class="field button">
+          <input type="submit" name="submit" id="button" value="Continue with TextStorm">
+        </div>
+      </form>
+      <div class="link">Don't have an account? <a onclick="move_to_signup()">Sign Up</a></div>
+      <b>V.2.2.1</b>
+    </section>
+  </div>
+
+
+
+
+  <!-- SIGNUP WINDOW -->
+  <div class="signup_wrapper" id="signup_wrapper">
+    <section class="form_signup">
+      <div class="header">
+        <h1 id="trademark_signup">TextStorm Setup</h1>
         <p>A simple web text/notes editor with Mac design</p>
       </div>
       <form action="#" autocomplete="off">
@@ -52,28 +214,268 @@
         </div>
         <div class="field input">
           <label>Password</label>
-          <input type="password" name="password" id="password" placeholder="Enter new password" required>
-          <i class="fas fa-eye"></i>
+          <input type="password" name="password" id="password" placeholder="Create a strong password" required>
+          <i class="fas fa-eye" id="eye"></i>
         </div>
         <!-- <div class="field image">
             <label>Select Image</label>
             <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
           </div> -->
         <div class="field button">
-          <input type="submit" name="submit" id="button" value="Continue with TextStorm">
+          <input type="submit" name="submit" id="button_signup" value="Continue with TextStorm">
         </div>
       </form>
-      <div class="link">Already have an account? <a href="login.html">Login now</a></div>
-      <div class="credits">
-        Developed by <b><u><a id="dev_link" href="https://dwijottam-dutta.github.io/portfolio/about.html">Dwijottam
+      <div class="link">Already have an account? <a id="go_to_login" onclick="move_to_login()">Login now</a></div>
+      <b>V.2.2.1</b>
+    </section>
+  </div>
+
+
+
+
+  <!-- ERROR WINDOW HTML -->
+  <div class="error" id="error_id">
+    <div class="title_error" id="title_error">
+      <div class="error_action">
+        <div class="cross_e" onclick="errorClose()"></div>
+        <div class="max_e"></div>
+        <div class="min_e"></div>
+      </div>
+      <div class="text_error">TextStorm Stability Error 0x5ev9</div>
+    </div>
+    <div class="message">
+      <div class="header_e">
+        <img src="Images/error.png" alt="error" id="error_img">
+        <div class="error_info_text">TextStorm is not stable for your device width and height, but you can bypass this by
+          zooming in and out which is there in your browser's menu...<br>If you have done it then please reboot
+          TextStorm</div>
+      </div>
+      <button class="ok" onclick="location.reload()">Reboot</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- STABILITY WINDOW HTML -->
+  <div class="in_error" id="in_error_id">
+    <div class="in_title_error" id="title_in_error">
+      <div class="in_error_action">
+        <div class="cross_in" onclick="in_errorClose()"></div>
+        <div class="max_in"></div>
+        <div class="min_in"></div>
+      </div>
+      <div class="in_text_error">TextStorm Stability Error 0x5er0</div>
+    </div>
+    <div class="in_message">
+      <div class="in_header" id="error_info">
+        <img src="Images/error.png" alt="error" id="error_img">
+        <div class="error_info_text" id="recommended_change">Some Function may not work, because your browser, doesn't support <u><a href="https://developer.mozilla.org/en-US/docs/web/api/window/showopenfilepicker#browser_compatibility">File System API</a></u> which is used in TextStorm</div>
+      </div>
+      <a id="recommendation" onclick="recommended()">Recommendation</a>
+      <button class="ok" onclick="in_errorBypass()">Bypass</button>
+    </div>
+  </div>
+
+
+
+
+  <!-- FILE SAVED WINDOW HTML  -->
+  <div class="message_two" id="message_id">
+    <div class="title_message" id="title_message">
+      <div class="message_action">
+        <div class="cross_m" onclick="messageClose()"></div>
+        <div class="max_m"></div>
+        <div class="min_m"></div>
+      </div>
+      File System
+    </div>
+    <div class="message_m">
+      <div class="header_m">
+        <img src="Images/save.png" alt="message" id="message_img">
+        Text/Notes saved on Cloud
+      </div>
+      <button class="ok_m" onclick="messageClose()">OK</button>
+    </div>
+  </div>
+
+
+
+  <!-- FILE NEW WINDOW HTML  -->
+  <div class="message_three" id="message_id_three">
+    <div class="title_message_three" id="title_message_three">
+      <div class="message_action">
+        <div class="cross_m_three" onclick="newFileClose()"></div>
+        <div class="max_m_three"></div>
+        <div class="min_m_three"></div>
+      </div>
+      File System
+    </div>
+    <div class="message_m_three">
+      <div class="header_m_three">
+        <div>
+          <b>Warning: </b> By clicking New, this file will be overrided, and will erase the data of this file from cloud as well, because TextStorm is just an editor, and gives a facility to save a single text file on cloud with realtime editing...<br>Do you want to first download it locally on your device, if you have done with the editing of text file ?
+        </div>
+      </div>
+      <div>
+        <button class="ok_m_three" onclick="newFile_after_Download()">Yes</button>
+        <button class="ok_m_three" onclick="newFile_no_Download()">No</button>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- ABOUT_US WINDOW HTML  -->
+  <div class="about_win" id="about_id">
+    <div class="title_about" id="title_about">
+      <div class="about_action">
+        <div class="cross_a" onclick="aboutClose()"></div>
+        <div class="max_a"></div>
+        <div class="min_a"></div>
+      </div>
+      About Us
+    </div>
+    <div class="about_message">
+      <div class="wrapper">
+        <div class="img-area">
+          <div class="inner-area">
+            <img src="Images/dwijottam2.jpg" alt="">
+          </div>
+        </div>
+        <div class="name">Dwijottam Dutta</div>
+        <div class="about">Student at Datta Meghe World Academy</div>
+        <div class="more">I am a 13 years young tech freak student. I like trying new stuffs, which must have struck you
+          already. I can learn and implement anything, I am interested in at a very fast pace.</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- ABOUT TEXTSTORM WINDOW -->
+  <div class="textstorm_about_wrapper" id="textstorm_about_wrapper">
+
+    <i class="fas fa-arrow-left" id="back_from_textstorm_about" onclick="TextStorm_aboutClose()"></i>
+    <section class="textstorm_about">
+      <div class="top_textstorm_about">
+        <img src="Icon/textstorm.svg" alt="trademark_about">
+        <h2>TextStorm</h2>
+        <p>A simple web text/notes editor with Mac design</p>
+        <small>V.2.3.9 beta</small>
+      </div>
+
+      <div class="textstorm_about_report_bug">
+        <div class="bug_img">
+          <img src="Icon/bug_report.svg" alt="Icon">
+        </div>
+        <div class="bug_text" onclick="mailto()">
+          <h3>Report Bug</h2>
+            <p>If you find any errors related to TextStorm, mail at dwijottamdutta@gmail.com</p>
+        </div>
+      </div>
+
+      <div class="credits_about_textstorm">
+        Developed by&nbsp;<b><u><a id="dev_link" onclick="open_About()">Dwijottam
               Dutta</a></u></b>
       </div>
     </section>
   </div>
 
-  <script src="Js/pass-show-hide.js"></script>
-  <script src="Js/signup.js"></script>
 
+
+
+  <!-- ACCOUNT WINDOW HTML -->
+  <div class="account_win" id="account_id">
+    <div class="title_account" id="title_account">
+      <div class="account_action">
+        <div class="cross_ac" onclick="closeAccount()"></div>
+        <div class="max_ac"></div>
+        <div class="min_ac"></div>
+      </div>
+      TextStorm Account
+    </div>
+    <div class="account_message">
+      <div class="wrapper_account">
+        <div class="img-area_account">
+          <div class="inner-area_account">
+            <img src="Images/guest.png" alt="">
+          </div>
+        </div>
+        <div class="user_name_account" id="user_name_account">Guest</div>
+        <div class="user_email_account" id="user_email_account">guest@guest.com</div>
+        <div class="social-icons">
+          <a onclick="deleteAccount()"><i class="fas fa-trash-alt"></i></a>
+        </div>
+        <a id="forgot_password_account" onclick="forgetPassword()">Forgot Password</a>
+        <div class="account_buttons">
+          <button id="logout" onclick="logOutAccount()">Log Out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- CONTEXT MENU -->
+  <div id="contextMenu">
+    
+  </div>
 </body>
+
+
+
+<!-- Firebase SDK JS File source **important  -->
+<script src="https://www.gstatic.com/firebasejs/8.6.4/firebase-app.js" onerror="js_failed()"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.4/firebase-database.js" onerror="js_failed()""></script>
+<script src=" https://www.gstatic.com/firebasejs/8.6.4/firebase-auth.js" onerror="js_failed()"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.4/firebase-analytics.js" onerror="js_failed()"></script>
+<script id="MainScript">
+  var firebaseConfig = {
+    apiKey: "AIzaSyB9-zUZOXPgGduXPQPhllSWeihCP1yCt98",
+    authDomain: "textstorm-88b75.firebaseapp.com",
+    projectId: "textstorm-88b75",
+    storageBucket: "textstorm-88b75.appspot.com",
+    messagingSenderId: "355783594449",
+    appId: "1:355783594449:web:df56c1b95263170532d0f0",
+    measurementId: "G-C86NFR0T5S"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<script>
+  document.onkeydown = function (e) {
+    if (event.keyCode == 123) {
+      return false;
+    }
+    // if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
+    //   return false;
+    // }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
+      return false;
+    }
+    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
+      return false;
+    }
+    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+      return false;
+    }
+  }
+  // If any script doesn't load on time show error
+  function js_failed() {
+    document.getElementById("error_id").style.display = "block";
+    setInterval(() => {
+      document.getElementById("navbar").style.display = "none";
+      setTimeout(() => {
+        document.getElementById("navbar").style.display = "flex";
+      }, 600);
+    }, 30);
+  }
+  function alert_docs() {
+    alert("Documentation will be available in few weeks");
+  }
+</script>
 
 </html>
