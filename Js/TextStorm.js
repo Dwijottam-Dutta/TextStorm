@@ -65,8 +65,6 @@ function openFile() {
 
 // File Menu Save Button Function
 function saveText() {
-    let ifConnected = window.navigator.onLine;
-    if (ifConnected) {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 let filecontent = document.getElementById("fileid").innerHTML;
@@ -80,17 +78,12 @@ function saveText() {
                     .ref("Users_Data/" + user.uid)
                     .update(user_details_updating)
                     .catch((error) => {
-                        alert("Something went wrong");
+                        console.log("Something went wrong");
                     });
                 let errordump = document.getElementById("message_id");
                 errordump.style.display = "flex";
             }
         });
-    } else {
-        alert(
-            "Connection not available, please connect to the Internet and retry !"
-        );
-    }
 }
 
 // Copy Text

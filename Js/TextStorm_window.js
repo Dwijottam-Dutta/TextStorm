@@ -326,6 +326,7 @@ function recommended() {
 
 function logOutAccount() {
 	firebase.auth().signOut();
+	location.reload();
 	closeAccount()
 }
 
