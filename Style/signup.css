@@ -115,7 +115,7 @@ backdrop-filter: blur( 4px ); */
   font-family: "Nunito", sans-serif;
   background: #333;
   border-radius: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
   margin-top: 13px;
 }
 .signup_wrapper .form_signup form .field i {
@@ -123,7 +123,7 @@ backdrop-filter: blur( 4px ); */
   right: 15px;
   top: 70%;
   color: #333;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
   transform: translateY(-50%);
 }
 .signup_wrapper .form_signup form .field i.active::before {
@@ -143,5 +143,5 @@ backdrop-filter: blur( 4px ); */
 }
 #go_to_login:hover {
   text-decoration: underline;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }

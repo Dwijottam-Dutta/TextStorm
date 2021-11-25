@@ -1,31 +1,5 @@
-/* **************************File*Header********************************** 
-
-* File Name: TextStorm.css
-*
-* File Description: Main CSS File for TextStorm
-*
-* Author:   Dwijottam Dutta
-
-* ************************************************************************** */
-
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Questrial&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
-
-:root {
-  --color-1st: LightCoral;
-  --color-2nd: GhostWhite;
-  --color-3rd: Gainsboro;
-}
-
-@font-face {
-  font-family: "MyWebFont";
-  src: url("/fonts/SF-Pro-Display-Medium.otf") format("otf");
-}
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Didact+Gothic&family=Fira+Code:wght@300;400;500&family=JetBrains+Mono:wght@100;200;300&family=Klee+One:wght@400;600&family=Merriweather:wght@300;400&family=Montserrat:wght@100;200;300;400;500;600&family=Noto+Sans&family=Nunito:wght@200;300;400;600;700;800&family=Open+Sans:wght@300;400;500;600&family=Questrial&family=Raleway:wght@100;200;300;400;500;600;700&family=Roboto:wght@100;300;400&family=Rubik:wght@300;400;500;600&family=Shippori+Antique&family=Titillium+Web:wght@200;300;400;600;700&family=Ubuntu:wght@300;400;500;700&family=Work+Sans:wght@300;400&display=swap');
 
 *,
 *:before,
@@ -33,7 +7,7 @@
   box-sizing: border-box;
   padding: 0%;
   margin: 0%;
-  cursor: url("../Icon/cursor.svg"), default;
+  cursor: url("../Cursor/default_cursor.svg"), default;
 }
 
 *:focus {
@@ -49,19 +23,17 @@ body {
   background-position: center;
   font-size: 15px;
   margin: 0;
-  height: 100%;
+  height: 100vh;
   transition: all 1s ease-in-out;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  /* Scroll Bar for Moz */
+  scrollbar-color: rgb(202, 202, 202) #f3f3f3;
+  scrollbar-width: 13px;
 }
 
-/* Navbar Starts from here */
-header {
-  width: 100%;
-  height: 10%;
-  position: relative;
-  z-index: 9;
-  clear: both;
-}
 
 /* Class Styling for No Selection */
 .none_select {
@@ -78,14 +50,6 @@ header {
   user-select: none;
   /* Non-prefixed version, currently
             supported by Chrome, Edge, Opera and Firefox */
-}
-
-#contextMenu{
-  /* width: 100%;
-  height: 130%; */
-  background: linear-gradient(#e6e5ea, #e9e7ea);
-  display: none;
-  position: absolute;
 }
 
 .STARTUP_SCREEN {
@@ -109,31 +73,38 @@ header {
   flex-direction: column;
   top: 50%;
   left: 50%;
-  -ms-transform: translateX(-50%) translateY(-70%);
-  -webkit-transform: translate(-50%, -70%);
-  transform: translate(-50%, -70%);
+  -ms-transform: translateX(-50%) translateY(-60%);
+  -webkit-transform: translate(-50%, -60%);
+  transform: translate(-50%, -60%);
 }
 
 #STARTUP_TRADEMARK_ICON {
-  width: 190px;
+  width: 140px;
 }
 
 #STARTUP_TRADEMARK {
   margin-top: 10px;
   font-family: "Ubuntu", sans-serif;
   font-weight: 700;
-  font-size: 33px;
+  font-size: 30px;
   color: #ddd;
 }
 
 .STARTUP_SCREEN .loader {
-  margin-top: 30px;
+  margin-top: 15px;
   height: 30px;
   width: 30px;
-  border: 9px solid #3d3f42;
-  border-top-color: #ff6767;
+  border: 7px solid transparent;
+  border-top-color: #ff9393ef;
   border-radius: 50%;
   animation: spin 1.5s infinite linear;
+}
+
+.STARTUP_SCREEN #welcome_loader{
+  visibility: hidden;
+  color: #ddd;
+  margin-top: 25px;
+
 }
 
 @keyframes spin {
@@ -142,49 +113,24 @@ header {
   }
 }
 
-/* custom scroll bar */
-::-webkit-scrollbar {
-  width: 10px;
-  height: 100%;
-  cursor: url("../Icon/pointinghand.svg"), pointer;
-  overflow-y: scroll;
-}
-
-::-webkit-scrollbar-track {
-  background: rgb(129, 129, 129);
-  cursor: url("../Icon/pointinghand.svg"), pointer;
-}
-
-::-webkit-scrollbar-thumb {
-  background: rgb(204, 204, 252);
-  cursor: url("../Icon/pointinghand.svg"), pointer;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgb(199, 199, 250);
-  cursor: url("../Icon/pointinghand.svg"), pointer;
-}
-
-.window::-webkit-resizer {
-  z-index: 9;
-  position: initial;
-  border-width: 18px;
-  border-style: solid;
-  border-color: transparent #333 #333 transparent;
-  box-shadow: 9px 8px 15px rgba(0, 0, 0, 0.199);
-  /* outline: 2px solid #333; */
-}
-
 i:before {
-  cursor: url("../Icon/pointinghand.svg"), pointer;
+  cursor: url("../Cursor/pointinghand.svg"), pointer;
 }
 
 i {
-  cursor: url("../Icon/pointinghand.svg"), pointer;
+  cursor: url("../Cursor/pointinghand.svg"), pointer;
+}
+
+/* Navbar Starts from here */
+header {
+  width: 100%;
+  height: 30px;
+  position: relative;
+  z-index: 9;
+  clear: both;
 }
 
 .navbar {
-  /* position: fixed; */
   display: flex;
   clear: both;
   height: 30px;
@@ -216,8 +162,8 @@ i {
   display: flex;
   align-items: center;
   color: #333;
-  width: 60%;
-  /* overflow: auto; */
+  width: 40%;
+  height: 100%;
   position: relative;
   transition: all 1s ease;
 }
@@ -227,7 +173,7 @@ i {
   list-style: none;
   padding: 4px 9px;
   color: #333;
-  cursor: url("../Icon/pointinghand.svg"), pointer;
+  cursor: url("../Cursor/pointinghand.svg"), pointer;
   transition: all 0.1s ease;
 }
 
@@ -237,7 +183,7 @@ i {
   font-weight: 700;
   padding: 3px 3px;
   text-decoration: none;
-  cursor: url("../Icon/pointinghand.svg"), pointer;
+  cursor: url("../Cursor/pointinghand.svg"), pointer;
 }
 
 .navbar .main_ul .main_li:hover {
@@ -266,7 +212,7 @@ i {
   padding: 2px;
   padding-left: 10px;
   color: #333;
-  cursor: url("../Icon/pointinghand.svg"), pointer;
+  cursor: url("../Cursor/pointinghand.svg"), pointer;
 }
 
 .navbar .main_ul .main_li .file_dropdown .file_dropdown_li:hover {
@@ -280,7 +226,7 @@ i {
   font-weight: 700;
   padding: 3px 3px;
   text-decoration: none;
-  cursor: url("../Icon/pointinghand.svg"), pointer;
+  cursor: url("../Cursor/pointinghand.svg"), pointer;
 }
 .navbar .main_ul .main_li .file_dropdown .file_dropdown_li #file_menu_text_shortcut {
   font-size: 14px;
@@ -289,7 +235,16 @@ i {
   padding: 3px 3px;
   margin-left: 60px;
   text-decoration: none;
-  cursor: url("../Icon/pointinghand.svg"), pointer;
+  cursor: url("../Cursor/pointinghand.svg"), pointer;
+}
+
+.navbar .productivity_bar{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 60%;
+  height: 100%;
 }
 
 .utils {
@@ -297,17 +252,26 @@ i {
   justify-content: end;
   align-items: center;
   color: white;
-  width: 40%;
+  height: 100%;
   /* padding: 12px 75px; */
 }
 
 .user_details {
-  display: flex;
-  align-items: center;
   margin-right: 5px;
+  text-overflow: ellipsis;
+  text-align: right;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 #user_welcome {
+  display: flex;
+  text-overflow: ellipsis;
+  text-align: right;
+  white-space: nowrap;
+  justify-content: end;
+  overflow: none;
+  width: 10em;
   font-family: "Ubuntu", sans-serif;
   font-size: 15px;
   color: #333;
@@ -316,7 +280,10 @@ i {
 
 #clock {
   margin-right: 10px;
+  margin-top: -2px;
   color: #333;
+  font-size: 1.1em;
+  font-family: 'Didact Gothic', sans-serif;
 }
 
 .dark_mode_btn_home {
@@ -326,7 +293,7 @@ i {
   margin-right: 3px;
   background: transparent;
   border: none;
-  cursor: url("../Icon/pointinghand.svg"), pointer;
+  cursor: url("../Cursor/pointinghand.svg"), pointer;
   color: #000;
   transition: all 0.5s ease;
   pointer-events: auto;
@@ -344,7 +311,7 @@ i {
   height: 100%;
   background: transparent;
   border: none;
-  cursor: url("../Icon/pointinghand.svg"), pointer;
+  cursor: url("../Cursor/pointinghand.svg"), pointer;
   color: #000;
   transition: all 0.5s ease;
   pointer-events: auto;
@@ -362,50 +329,21 @@ a {
 }
 
 main {
-  min-height: 90vh;
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
-  display: -webkit-flex;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-flex-direction: column;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-/*dark mode editor*/
+/* **************************IMPORTANT************************** 
+*
+* Info: After this there is a file name @TextStorm_window.css
+*
+* Description: Because of ease. That file contains all the
+*              styling of the editor window
+*
+* **************************************************************/
 
-.dark_mode_active {
-  background: #282835;
-  transition: all 1s ease-in-out;
-}
-
-.dark_mode_active .window {
-  background-color: #282835;
-  border-radius: 0.2rem;
-}
-
-.dark_mode_active .window-body {
-  background: #282835;
-}
-
-.dark_mode_active .code-input {
-  background: #282835;
-  color: #ddd;
-  transition: all 0.5s ease-in-out;
-}
-
-.dark_mode_active .code-input:focus{
-  color: rgb(235, 231, 231); 
-}
-
-
-
-
-@keyframes MoveUp {
-  0% {
-    transform: translate(-120%, 130%);
-  }
-
-  90% {
-    transform: translate(0%, 0%);
-  }
-}

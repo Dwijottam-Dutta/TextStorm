@@ -64,25 +64,25 @@
     align-items: center;
     border-radius: 10px;
     border: 4px #ddd solid;
-    cursor: url("../Icon/pointinghand.svg"), pointer;
+    cursor: url("../Cursor/pointinghand.svg"), pointer;
     transition: all 0.5s ease-in-out;
 }
 
 .textstorm_about_report_bug .bug_img{
     margin-left: 5px;
-    cursor: url("../Icon/pointinghand.svg"), pointer;
+    cursor: url("../Cursor/pointinghand.svg"), pointer;
 }
 
 .textstorm_about_report_bug .bug_text{
     margin-left: 10px;
-    cursor: url("../Icon/pointinghand.svg"), pointer;
+    cursor: url("../Cursor/pointinghand.svg"), pointer;
 }
 .textstorm_about_report_bug .bug_text p{
     font-size: 13px;
-    cursor: url("../Icon/pointinghand.svg"), pointer;
+    cursor: url("../Cursor/pointinghand.svg"), pointer;
 }
 .textstorm_about_report_bug .bug_text h3{
-    cursor: url("../Icon/pointinghand.svg"), pointer;
+    cursor: url("../Cursor/pointinghand.svg"), pointer;
 }
 .credits_about_textstorm{
     margin-top: 20px;

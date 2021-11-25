@@ -1,14 +1,3 @@
-/* **************************File*Header********************************** 
-
-* File Name: TextStorm_save_window.css
-*
-* Module Description: CSS File for Save Window 
-*
-* Warnings:
-*
-* Author:   Dwijottam Dutta
-
-* ************************************************************************** */
 
 .message_two {
   flex-direction: column;
@@ -37,7 +26,7 @@
   font-size: 13px;
   text-shadow: 0 0 #fff;
   position: relative;
-  background: Gainsboro;
+  background: linear-gradient(#eeeeee, #d1d1d1);
   transition: all 0.5s ease-in-out;
 }
 
@@ -80,7 +69,7 @@
   width: 14px;
   height: 14px;
   margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .max_m {
@@ -90,7 +79,7 @@
   width: 14px;
   height: 14px;
   margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .min_m {
@@ -100,7 +89,7 @@
   width: 14px;
   height: 14px;
   margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .ok_m {
@@ -110,8 +99,11 @@
   border: none;
   border-radius: 0.3rem;
   box-shadow: 0 8px 12px rgb(0 0 0 / 7%);
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
+
+
+
 
 
 .message_three {
@@ -142,7 +134,7 @@
   font-family: "Ubuntu", sans-serif;
   text-shadow: 0 0 #fff;
   position: relative;
-  background: Gainsboro;
+  background: linear-gradient(#eeeeee, #d1d1d1);
   transition: all 0.5s ease-in-out;
 }
 
@@ -182,7 +174,7 @@
   width: 14px;
   height: 14px;
   margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .max_m_three {
@@ -192,7 +184,7 @@
   width: 14px;
   height: 14px;
   margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .min_m_three {
@@ -202,7 +194,7 @@
   width: 14px;
   height: 14px;
   margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .ok_m_three {
@@ -213,7 +205,7 @@
   border-radius: 0.3rem;
   margin-top: 10px;
   box-shadow: 0 8px 12px rgb(0 0 0 / 7%);
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 
@@ -246,7 +238,7 @@
   font-size: 13px;
   text-shadow: 0 0 #fff;
   position: relative;
-  background: Gainsboro;
+  background: linear-gradient(#eeeeee, #d1d1d1);
   transition: all 0.5s ease-in-out;
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
@@ -303,7 +295,7 @@
   width: 14px;
   height: 14px;
   margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .max_e {
@@ -313,7 +305,7 @@
   width: 14px;
   height: 14px;
   margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .min_e {
@@ -323,7 +315,7 @@
   width: 14px;
   height: 14px;
   margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .ok {
@@ -334,11 +326,14 @@
   border: none;
   border-radius: 0.3rem;
   box-shadow: 0 8px 12px rgb(0 0 0 / 7%);
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
   transition: all 0.5s ease-in-out;
   font-family: "Ubuntu", sans-serif;
   font-size: 14px;
 }
+
+
+
 
 
 /* Stability Window Style */
@@ -368,7 +363,7 @@
   font-size: 13px;
   text-shadow: 0 0 #fff;
   position: relative;
-  background: Gainsboro;
+  background: linear-gradient(#eeeeee, #d1d1d1);
   transition: all 0.5s ease-in-out;
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
@@ -430,7 +425,7 @@
   width: 14px;
   height: 14px;
   margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .max_in {
@@ -440,7 +435,7 @@
   width: 14px;
   height: 14px;
   margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .min_in {
@@ -450,7 +445,7 @@
   width: 14px;
   height: 14px;
   margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .ok {
@@ -461,313 +456,12 @@
   border: none;
   border-radius: 0.3rem;
   box-shadow: 0 8px 12px rgb(0 0 0 / 7%);
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
   transition: all 0.5s ease-in-out;
   font-family: "Ubuntu", sans-serif;
   font-size: 14px;
 }
 
-
-
-/* About Window Style */
-.about_win {
-  flex-direction: column;
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  margin-left: auto;
-  margin-right: auto;
-  width: 394px;
-  height: 430px;
-  border-radius: 0.3rem;
-  /* overflow: hidden; */
-  cursor: move;
-  display: none;
-  z-index: 2;
-}
-
-.title_about {
-  display: flex;
-  border-radius: 0.3rem;
-  align-items: center;
-  width: 100%;
-  height: 65px;
-  color: rgb(126, 81, 81);
-  font-size: 13px;
-  text-shadow: 0 0 #fff;
-  position: relative;
-  background: linear-gradient(#eeeeee, rgb(209, 209, 209));
-  transition: all 0.5s ease-in-out;
-  font-family: "Ubuntu", sans-serif;
-  font-weight: 400;
-  font-size: 17px;
-}
-
-.about_action {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-left: 10px;
-  padding-right: 10px;
-  transition: all 0.5s ease-in-out;
-}
-
-.about_message {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  transition: all 0.5s ease-in-out;
-  background: transparent;
-}
-
-.cross_a {
-  /* position: absolute; */
-  background: #d83a56;
-  border-radius: 50%;
-  width: 14px;
-  height: 14px;
-  margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
-}
-
-.max_a {
-  /* position: absolute; */
-  background: rgb(179, 178, 178);
-  border-radius: 50%;
-  width: 14px;
-  height: 14px;
-  margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
-}
-
-.min_a {
-  /* position: absolute; */
-  background: rgb(206, 206, 206);
-  border-radius: 50%;
-  width: 14px;
-  height: 14px;
-  margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
-}
-
-
-.wrapper,
-.wrapper .img-area,
-.social-icons a,
-.buttons button {
-  background: #ecf0f3;
-  box-shadow: -3px -3px 7px #ffffff,
-    3px 3px 5px #ceced1;
-}
-
-.wrapper {
-  position: relative;
-  width: 350px;
-  padding: 30px;
-  border-radius: 10px;
-  margin-top: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  font-family: 'Poppins', sans-serif;
-}
-
-.wrapper .icon {
-  font-size: 17px;
-  color: #31344b;
-  position: absolute;
-  cursor: pointer;
-  opacity: 0.7;
-  top: 15px;
-  height: 35px;
-  width: 35px;
-  text-align: center;
-  line-height: 35px;
-  border-radius: 50%;
-  font-size: 16px;
-}
-
-.wrapper .icon i {
-  position: relative;
-  z-index: 9;
-}
-
-.wrapper .icon.arrow {
-  left: 15px;
-}
-
-.wrapper .icon.dots {
-  right: 15px;
-}
-
-.wrapper .img-area {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.img-area .inner-area {
-  height: calc(100% - 25px);
-  width: calc(100% - 25px);
-  border-radius: 50%;
-}
-
-.inner-area img {
-  height: 100%;
-  width: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.wrapper .name {
-  font-size: 23px;
-  font-weight: 500;
-  color: #31344b;
-  margin: 10px 0 -2px 0;
-}
-
-.wrapper .about {
-  width: 100%;
-  color: #44476a;
-  font-weight: 400;
-  font-size: 15px;
-  text-align: center;
-}
-
-.wrapper .more {
-  color: #32344d;
-  font-weight: 400;
-  font-size: 11px;
-  text-align: center;
-  margin: 10px 0 5px 0;
-}
-
-.wrapper .social-icons {
-  margin: 15px 0 25px 0;
-}
-
-.social-icons a {
-  position: relative;
-  height: 40px;
-  width: 40px;
-  margin: 0 5px;
-  display: inline-flex;
-  text-decoration: none;
-  border-radius: 50%;
-  cursor: url("../Icon/pointinghand.svg"), default;
-}
-
-.social-icons a:hover::before,
-.wrapper .icon:hover::before,
-.buttons button:hover:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  border-radius: 50%;
-  background: #ecf0f3;
-  box-shadow: inset -3px -3px 7px #ffffff,
-    inset 3px 3px 5px #ceced1;
-}
-
-.buttons button:hover:before {
-  z-index: -1;
-  border-radius: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
-}
-
-.social-icons a i {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  width: 100%;
-  height: 100%;
-  line-height: 40px;
-}
-
-.social-icons a.github i {
-  color: #333;
-}
-
-.wrapper .buttons {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.buttons button {
-  position: relative;
-  width: 100%;
-  border: none;
-  outline: none;
-  padding: 12px 0;
-  color: #31344b;
-  font-size: 17px;
-  font-weight: 400;
-  border-radius: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
-  z-index: 4;
-}
-
-.buttons button:first-child {
-  margin-right: 10px;
-}
-
-.buttons button:last-child {
-  margin-left: 10px;
-}
-
-.wrapper .social-share {
-  display: flex;
-  width: 100%;
-  margin-top: 30px;
-  padding: 0 5px;
-  justify-content: space-between;
-}
-
-.social-share .row {
-  color: #31344b;
-  font-size: 17px;
-  cursor: pointer;
-  position: relative;
-}
-
-.social-share .row::before {
-  position: absolute;
-  content: "";
-  height: 100%;
-  width: 2px;
-  background: #e0e6eb;
-  margin-left: -25px;
-}
-
-.row:first-child::before {
-  background: none;
-}
-
-.social-share .row i.icon-2 {
-  position: absolute;
-  left: 0;
-  top: 50%;
-  color: #31344b;
-  transform: translateY(-50%);
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease;
-}
-
-.row:nth-child(1):hover i.fa-heart,
-.row:nth-child(2):hover i.fa-comment {
-  opacity: 1;
-  pointer-events: auto;
-}
 
 
 
@@ -831,7 +525,7 @@
   width: 14px;
   height: 14px;
   margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), pointer;
+  cursor: url("../Cursor/pointinghand.svg"), pointer;
 }
 
 .max_ac {
@@ -841,7 +535,7 @@
   width: 14px;
   height: 14px;
   margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .min_ac {
@@ -851,7 +545,7 @@
   width: 14px;
   height: 14px;
   margin: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 
@@ -932,6 +626,7 @@
   font-weight: 500;
   color: #31344b;
   margin: 10px 0 -2px 0;
+  text-align: center;
 }
 
 .wrapper_account .user_email_account {
@@ -940,13 +635,14 @@
   font-size: 13px;
   text-align: center;
   margin: 0px 0 5px 0;
+  text-align: center;
 }
 
 .wrapper_account a {
   position: relative;
   text-decoration:underline;
   margin-bottom: 12px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .wrapper_account .social-icons {
@@ -961,7 +657,7 @@
   display: inline-flex;
   text-decoration: none;
   border-radius: 50%;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .social-icons a:hover::before,
@@ -977,7 +673,7 @@
   background: #ecf0f3;
   box-shadow: inset -3px -3px 7px #ffffff,
     inset 3px 3px 5px #ceced1;
-    cursor: url("../Icon/pointinghand.svg"), default;
+    cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .account_buttons button:hover:before {
@@ -993,14 +689,14 @@
   height: 100%;
   line-height: 40px;
   color: #333;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .wrapper_account .account_buttons {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .account_buttons button {
@@ -1014,7 +710,7 @@
   font-size: 17px;
   font-weight: 400;
   border-radius: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
   z-index: 1;
 }
 
@@ -1024,7 +720,7 @@
   margin-top: 30px;
   padding: 0 5px;
   justify-content: space-between;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .social-share .row {

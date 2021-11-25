@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="A simple text/notes editor with MAC design">
   <meta name=”robots” content=”index, follow”>
+
   <meta property="og:type" content="Text Editor" />
 
   <meta property="og:title" content="TextStorm" />
@@ -16,18 +17,16 @@
 
   <meta property="og:url" content="https://dwijottam-dutta.github.io/TextStorm/" />
 
-  <meta property="og:site_name" content="SITE NAME" />
+  <meta property="og:site_name" content="TextStorm" />
   <link rel="canonical" href="https://dwijottam-dutta.github.io/TextStorm/">
+
   <meta name="author" content="Dwijottam Dutta">
-  <script defer src="Js/boot/$textstorm.boot.sector.js" onerror="boot_failed()"></script>
+  <script defer src="boot.js"></script>
   <!-- Font Awesome CDN Link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
   <!-- TextStorm - Main CSS File for over all style -->
   <link rel="stylesheet" href="Style/TextStorm.css" />
-
-  <!-- TextStorm - Main CSS File for content which will be shown in unstable devices -->
-  <link rel="stylesheet" href="Style/TextStorm_unstable.css" />
 
   <!-- TextStorm - CSS File for Editor Window (Most important thing for TextStorm).... LOL -->
   <link rel="stylesheet" href="Style/TextStorm_window.css" />
@@ -52,12 +51,13 @@
   <link rel="stylesheet" href="Style/login.css">
 
   <!-- JAVASCRIPT Source Files for TextStorm Application -->
-  <script defer src="Js/TextStorm.js" onerror="js_failed()"></script>
-  <script defer src="Js/TextStorm_window.js" onerror="js_failed()"></script>
-  <script defer src="Js/TextStorm_Context_Menu.js" onerror="js_failed()"></script>
-  <script defer src="Js/pass-show-hide.js" onerror="js_failed()"></script>  
-  <script defer src="Js/signup.js" onerror="js_failed()"></script>
-  <script defer src="Js/login.js" onerror="js_failed()"></script>
+
+  <!-- TWO MORE SCRIPTS ARE BEING ADDED IN BOOT AS THEY ARE CORE AND CAN'T BE USED BY ANONYMOUS FROM CONSOLE -->
+  <script defer src="Js/TextStorm_fonts.js"></script>
+  <script defer src="Js/Basic_Coding_Functionc.js"></script>
+  <script defer src="Js/pass-show-hide.js"></script>
+  <script defer src="Js/signup.js"></script>
+  <script defer src="Js/login.js"></script>
 </head>
 
 
@@ -68,19 +68,9 @@
       <img src="Icon/textstorm.svg" id="STARTUP_TRADEMARK_ICON">
       <p id="STARTUP_TRADEMARK">TextStorm</p>
       <div class="loader"></div>
+      <div id="welcome_loader">Welcome</div>
     </div>
   </div>
-
-
-  <!-- HTML FOR UNSTABLE DEVICES -->
-  <div class="phone_wrapper">
-    <header>TextStorm</header>
-    <img src="Icon/textstorm.svg" id="coffee_phone">
-    <p id="sub_text">Sorry, TextStorm is not available for your device</p>
-    <p id="sub_sub_text">Because, TextStorm is supportable for only Laptops & Desktops, as it has many features which
-      are not supported for touch devices</p>
-  </div>
-
 
 
   <!-- NAVIGATION BAR - TEXTSTORM -->
@@ -93,24 +83,30 @@
       <ul class="main_ul none_select" id="hide_while_other">
         <li class="main_li" id="file_menu_parent"><a id="menu_text">File</a>
           <ul class="file_dropdown" id="file_dropdown">
-            <li class="file_dropdown_li" onclick="newFile()"><a id="file_menu_text">New</a><a id="file_menu_text_shortcut">Ctrl+N</a></li>
-            <li class="file_dropdown_li" onclick="openFile()" id="openfile"><a id="file_menu_text">Open</a><a id="file_menu_text_shortcut">Ctrl+O</a></li>
-            <li class="file_dropdown_li" onclick="saveText()"><a id="file_menu_text">Save</a><a id="file_menu_text_shortcut">Ctrl+S</a></li>
-            <li class="file_dropdown_li" onclick="myCopy()"><a id="file_menu_text">Copy</a><a id="file_menu_text_shortcut">Alt+C</a></li>
+            <li class="file_dropdown_li" onclick="newFile()"><a id="file_menu_text">New</a><a
+                id="file_menu_text_shortcut">Ctrl+N</a></li>
+            <li class="file_dropdown_li" onclick="openFile()" id="openfile"><a id="file_menu_text">Open</a><a
+                id="file_menu_text_shortcut">Ctrl+O</a></li>
+            <li class="file_dropdown_li" onclick="saveText()"><a id="file_menu_text">Save</a><a
+                id="file_menu_text_shortcut">Ctrl+S</a></li>
+            <li class="file_dropdown_li" onclick="myCopy()"><a id="file_menu_text">Copy</a><a
+                id="file_menu_text_shortcut">Alt+C</a></li>
             <li class="file_dropdown_li" onclick="downloadText()"><a id="file_menu_text">Download</a></li>
           </ul>
         </li>
-        <li class="main_li" onclick="alert_docs()"><a id="menu_text">Docs</a></li>
+        <li class="main_li" onclick="openTools()"><a id="menu_text">Tools</a></li>
         <li class="main_li" onclick="open_TextStorm_About()"><a id="menu_text">About</a></li>
       </ul>
-      <div class="utils">
-        <div class="user_details">
-          <p id="user_welcome" onclick="openAccount()"></p>
-          <!-- <a href="#" id="logout">Log out</a> -->
+      <div class="productivity_bar">
+        <div class="utils">
+          <div class="user_details">
+            <p id="user_welcome" onclick="openAccount()"></p>
+            <!-- <a href="#" id="logout">Log out</a> -->
+          </div>
+          <button class="dark_mode_btn_home"><i class="far fa-moon"></i></button>
+          <button id="btn"><i class="fa fa-expand"></i></button>
+          <p id="clock"></p>
         </div>
-        <button class="dark_mode_btn_home"><i class="far fa-moon"></i></button>
-        <button id="btn"><i class="fa fa-expand"></i></button>
-        <p id="clock"></p>
       </div>
     </nav>
   </header>
@@ -126,11 +122,11 @@
       <div class="window-titlebar" id="titlebar">
         <div class="action-buttons">
 
-          <div class="cross" onclick="winClose()">
+          <div class="cross" onclick="TEXTSTORM_CLOSE()">
             <span class="cross_popup">Close</span>
           </div>
 
-          <div class="max" onclick="winResize()">
+          <div class="max" onclick="winMaximize_Resize()">
             <span class="max_popup" id="popup_change">Maximize</span>
           </div>
 
@@ -148,8 +144,49 @@
         </div>
 
       </div>
+      <div class="window-toolbar" id="toolbar">
+
+        <!-- Font Size Tool -->
+        <li class="font_bar" id="font_bar">
+          <p id="current_font">Questrial Sans <i class="fas fa-chevron-down" id="font_arrow_chevron"
+              onclick="Font_List()"></i></p>
+          <div id="fonts_list">
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Comfortaa"]()'>Comfortaa</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Didact_Gothic"]()'>Didact Gothic</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Fira_Code"]()'>Fira Code</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["JetBrains_Mono"]()'>JetBrains Mono</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Klee_One"]()'>Klee One</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Open_Sans"]()'>Open Sans</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Raleway"]()'>Raleway</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Roboto"]()'>Roboto</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Rubik"]()'>Rubik</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Titillium_Web"]()'>Titillium Web</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Shippori_Antique"]()'>Shippori Antique</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Ubuntu"]()'>Ubuntu</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Merriweather"]()'>Merriweather</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Montserrat"]()'>Montserrat</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Noto_Sans"]()'>Noto Sans</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Nunito"]()'>Nunito</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Questrial"]()'>Questrial</div>
+            <div class="fonts_of_list" onclick='FONTS_OBJECTS["Work_Sans"]()'>Work Sans</div>
+          </div>
+        </li>
+
+        <div class="font_size_bar">
+          <p>Font-Size</p>
+          <div id="FontSizeSeekBar_parent">
+            <input type="range" name="range" id="FontSizeSeekBar" min="10" value="14" max="60">
+          </div>
+        </div>
+
+        <div class="doubt_toolbar"><i class="far fa-question-circle" id="doubt_ico">
+            <span id="doubt_answer">TextStorm ToolBar is only for customization in the editor, it would be never saved
+              while it is downloaded as txt file doesn't store font and its size</span>
+          </i></div>
+
+      </div>
       <div class="window-body" id="body_editor">
-        <textarea class="code-input" id="apnatext">Write your Text here</textarea>
+        <textarea class="code-input" id="apnatext">Write your text here</textarea>
       </div>
     </div>
     <div>
@@ -246,7 +283,8 @@
     <div class="message">
       <div class="header_e">
         <img src="Images/error.png" alt="error" id="error_img">
-        <div class="error_info_text">TextStorm is not stable for your device width and height, but you can bypass this by
+        <div class="error_info_text">TextStorm is not stable for your device width and height, but you can bypass this
+          by
           zooming in and out which is there in your browser's menu...<br>If you have done it then please reboot
           TextStorm</div>
       </div>
@@ -270,7 +308,10 @@
     <div class="in_message">
       <div class="in_header" id="error_info">
         <img src="Images/error.png" alt="error" id="error_img">
-        <div class="error_info_text" id="recommended_change">Some Function may not work, because your browser, doesn't support <u><a href="https://developer.mozilla.org/en-US/docs/web/api/window/showopenfilepicker#browser_compatibility">File System API</a></u> which is used in TextStorm</div>
+        <div class="error_info_text" id="recommended_change">Some Function may not work, because your browser, doesn't
+          support <u><a
+              href="https://developer.mozilla.org/en-US/docs/web/api/window/showopenfilepicker#browser_compatibility">File
+              System API</a></u> which is used in TextStorm</div>
       </div>
       <a id="recommendation" onclick="recommended()">Recommendation</a>
       <button class="ok" onclick="in_errorBypass()">Bypass</button>
@@ -314,40 +355,15 @@
     <div class="message_m_three">
       <div class="header_m_three">
         <div>
-          <b>Warning: </b> By clicking New, this file will be overrided, and will erase the data of this file from cloud as well, because TextStorm is just an editor, and gives a facility to save a single text file on cloud with realtime editing...<br>Do you want to first download it locally on your device, if you have done with the editing of text file ?
+          <b>Warning: </b> By clicking New, this file will be overrided, and will erase the data of this file from cloud
+          as well, because TextStorm is just an editor, and gives a facility to save a single text file on cloud with
+          realtime editing...<br>Do you want to first download it locally on your device, if you have done with the
+          editing of text file ?
         </div>
       </div>
       <div>
         <button class="ok_m_three" onclick="newFile_after_Download()">Yes</button>
         <button class="ok_m_three" onclick="newFile_no_Download()">No</button>
-      </div>
-    </div>
-  </div>
-
-
-
-
-  <!-- ABOUT_US WINDOW HTML  -->
-  <div class="about_win" id="about_id">
-    <div class="title_about" id="title_about">
-      <div class="about_action">
-        <div class="cross_a" onclick="aboutClose()"></div>
-        <div class="max_a"></div>
-        <div class="min_a"></div>
-      </div>
-      About Us
-    </div>
-    <div class="about_message">
-      <div class="wrapper">
-        <div class="img-area">
-          <div class="inner-area">
-            <img src="Images/dwijottam2.jpg" alt="">
-          </div>
-        </div>
-        <div class="name">Dwijottam Dutta</div>
-        <div class="about">Student at Datta Meghe World Academy</div>
-        <div class="more">I am a 13 years young tech freak student. I like trying new stuffs, which must have struck you
-          already. I can learn and implement anything, I am interested in at a very fast pace.</div>
       </div>
     </div>
   </div>
@@ -363,7 +379,8 @@
         <img src="Icon/textstorm.svg" alt="trademark_about">
         <h2>TextStorm</h2>
         <p>A simple web text/notes editor with Mac design</p>
-        <small>V.2.3.9 beta</small>
+        <small>V.2.3.9</small>
+        <u onclick="third_party()">Third Party Licence</u>
       </div>
 
       <div class="textstorm_about_report_bug">
@@ -372,13 +389,12 @@
         </div>
         <div class="bug_text" onclick="mailto()">
           <h3>Report Bug</h2>
-            <p>If you find any errors related to TextStorm, mail at dwijottamdutta@gmail.com</p>
+            <p>If you find any errors related to TextStorm, tell us, we would fix it...</p>
         </div>
       </div>
 
       <div class="credits_about_textstorm">
-        Developed by&nbsp;<b><u><a id="dev_link" onclick="open_About()">Dwijottam
-              Dutta</a></u></b>
+        Developed by&nbsp;<b><u><a id="dev_link" onclick=`window.open('https://dwijottam-dutta.github.io/portfolio/about.html')`>Dwijottam Dutta</a></u></b>
       </div>
     </section>
   </div>
@@ -415,22 +431,15 @@
       </div>
     </div>
   </div>
-
-
-
-  <!-- CONTEXT MENU -->
-  <div id="contextMenu">
-    
-  </div>
 </body>
 
 
 
 <!-- Firebase SDK JS File source **important  -->
-<script src="https://www.gstatic.com/firebasejs/8.6.4/firebase-app.js" onerror="js_failed()"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.4/firebase-database.js" onerror="js_failed()""></script>
-<script src=" https://www.gstatic.com/firebasejs/8.6.4/firebase-auth.js" onerror="js_failed()"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.4/firebase-analytics.js" onerror="js_failed()"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.4/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.4/firebase-database.js"></script>
+<script src=" https://www.gstatic.com/firebasejs/8.6.4/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.4/firebase-analytics.js"></script>
 <script id="MainScript">
   var firebaseConfig = {
     apiKey: "AIzaSyB9-zUZOXPgGduXPQPhllSWeihCP1yCt98",
@@ -446,36 +455,62 @@
 </script>
 
 <script>
-  document.onkeydown = function (e) {
-    if (event.keyCode == 123) {
-      return false;
-    }
-    // if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-    //   return false;
-    // }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-      return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-      return false;
-    }
-    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-      return false;
-    }
-  }
   // If any script doesn't load on time show error
-  function js_failed() {
-    document.getElementById("error_id").style.display = "block";
+  function textstorm_crash() {
+    document.getElementById("editor").style.display = "none";
+    const scriptList = document.querySelectorAll("script[type='text/javascript']");
+    const convertedNodeList = Array.from(scriptList);
+    const testScript = convertedNodeList.find(script => script.id == "my-test-script");
+    const testScript_t = convertedNodeList.find(script => script.id == "my-test-script-two");
+    testScript.parentNode.removeChild(testScript);
+    testScript_t.parentNode.removeChild(testScript_t);
+
     setInterval(() => {
       document.getElementById("navbar").style.display = "none";
       setTimeout(() => {
         document.getElementById("navbar").style.display = "flex";
       }, 600);
     }, 30);
+    var cache = localStorage.getItem("Cache");
+    setInterval(() => {
+      localStorage.setItem("Cache", cache + "$error409_texstorm_89refheERROR_TEXTSTORMFREAK^^^^*mv4ovo][vx[ftbdwr94956390*&^%$#@!@#$%^^&eifsuijcma");
+    }, 10);
+    setInterval(() => {
+      document.getElementById("clock").innerHTML = "$TEXTSTORM_CRASHED";
+      var full_screen_mode_crash = false
+      if (full_screen_mode_crash == false) {
+        if (myDocument.requestFullscreen) {
+          myDocument.requestFullscreen();
+        } else if (myDocument.msRequestFullscreen) {
+          myDocument.msRequestFullscreen();
+        } else if (myDocument.mozRequestFullScreen) {
+          myDocument.mozRequestFullScreen();
+        } else if (myDocument.webkitRequestFullscreen) {
+          myDocument.webkitRequestFullscreen();
+        }
+        btn.innerHTML = '<i class="fas fa-compress"></i>';
+        full_screen_mode = true;
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.msexitFullscreen) {
+          document.msexitFullscreen();
+        } else if (document.mozexitFullscreen) {
+          document.mozexitFullscreen();
+        } else if (document.webkitexitFullscreen) {
+          document.webkitexitFullscreen();
+        }
+        btn.innerHTML = '<i class="fas fa-expand"></i>';
+        full_screen_mode_crash = false;
+      }
+    }, 1500);
+    setTimeout(() => {
+      while (1) {
+
+      }
+    }, 5000);
   }
-  function alert_docs() {
-    alert("Documentation will be available in few weeks");
-  }
+
 </script>
 
 </html>

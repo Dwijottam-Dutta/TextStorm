@@ -6,7 +6,7 @@
     background-attachment: fixed;
     background-size: cover;
     background-position: top;
-    transition: all 0.5s ease;
+    transition: all 1s ease-in-out;
 }
 
 .dark_mode_active_home .navbar {
@@ -60,8 +60,16 @@
     color: #ddd;
 }
 
+
+
+
 .dark_mode_active_home .error {
     background: #282835;
+    color: #ddd;
+}
+
+.dark_mode_active_home .error .title_error{
+    background: linear-gradient(#434240, #363638);
     color: #ddd;
 }
 
@@ -71,6 +79,9 @@
     transition: all 0.5s ease-in-out;
 }
 
+
+
+
 .dark_mode_active_home .message_two {
     background: #282835;
     color: #ddd;
@@ -79,8 +90,81 @@
 .dark_mode_active_home .message_two .message_m {
     background: #282835;
     color: #ddd;
-    transition: all 0.5s ease-in-out;
 }
+.dark_mode_active_home .message_two .title_message {
+    background: linear-gradient(#434240, #363638);
+    color: #ddd;
+}
+
+
+
+.dark_mode_active_home .message_three {
+    background: #282835;
+    color: #ddd;
+}
+
+.dark_mode_active_home .message_three .message_m_three {
+    background: #282835;
+    color: #ddd;
+}
+.dark_mode_active_home .message_three .title_message_three {
+    background: linear-gradient(#434240, #363638);
+    color: #ddd;
+}
+
+
+
+
+.dark_mode_active_home .in_error {
+    background: #282835;
+    color: #ddd;
+}
+
+.dark_mode_active_home .in_error .message_m {
+    background: #282835;
+    color: #ddd;
+}
+.dark_mode_active_home .in_error .in_title_error {
+    background: linear-gradient(#434240, #363638);
+    color: #ddd;
+}
+
+
+
+
+.dark_mode_active_home .message_two {
+    background: #282835;
+    color: #ddd;
+}
+
+.dark_mode_active_home .message_two .message_m {
+    background: #282835;
+    color: #ddd;
+}
+.dark_mode_active_home .message_two .title_message {
+    background: linear-gradient(#434240, #363638);
+    color: #ddd;
+}
+
+
+
+
+.dark_mode_active_home .message_two {
+    background: #282835;
+    color: #ddd;
+}
+
+.dark_mode_active_home .message_two .message_m {
+    background: #282835;
+    color: #ddd;
+}
+.dark_mode_active_home .message_two .title_message {
+    background: linear-gradient(#434240, #363638);
+    color: #ddd;
+}
+
+
+
 
 .dark_mode_active_home .textstorm_about_wrapper .textstorm_about_report_bug{
     border: 4px #333 solid;

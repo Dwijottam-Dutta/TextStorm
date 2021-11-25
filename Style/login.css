@@ -98,7 +98,7 @@ border: none;
   font-size: 17px;
   background: #333;
   border-radius: 5px;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
   font-family: "Nunito", sans-serif;
   margin-top: 13px;
 }
@@ -108,7 +108,7 @@ border: none;
   top: 70%;
   /* color: #ccc; */
   color: #333;
-  cursor: url("../Icon/pointinghand.svg"), default;
+  cursor: url("../Cursor/pointinghand.svg"), default;
   transform: translateY(-50%);
 }
 .form_login form .field i.active::before {

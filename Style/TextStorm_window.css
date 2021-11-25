@@ -4,44 +4,223 @@
     flex-direction: column;
     width: 547px;
     height: 337px;
-    background: GhostWhite;
+    background: transparent;
     border-radius: 0.3rem;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    transition: none;
     min-width: 450px;
     min-height: 220px;
     position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    top: 30%;
-    animation: MoveUp 2.5s linear;
+    animation: MoveUp 3.5s ease-in-out;
     resize: both;
+
+    scrollbar-color: rgb(202, 202, 202), #f3f3f3;
+    scrollbar-width: 13px;
+}
+
+
+/* custom scroll bar */
+::-webkit-scrollbar {
+    width: 13px;
+    height: 100%;
+    cursor: url("../Cursor/pointinghand.svg"), pointer;
+    overflow-y: scroll;
+}
+
+::-webkit-scrollbar-track {
+    background: #f3f3f3;
+    border-left: 2px #e4e4e4 solid;
+    cursor: url("../Cursor/pointinghand.svg"), pointer;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(202, 202, 202);
+    cursor: url("../Cursor/pointinghand.svg"), pointer;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(129, 129, 129);
+    cursor: url("../Cursor/pointinghand.svg"), pointer;
+}
+
+/* Custom Resizer */
+.window::-webkit-resizer {
+    z-index: 9;
+    position: initial;
+    border-width: 28px;
+    border-style: solid;
+    border-color: transparent #333 #333 transparent;
+    border-bottom-right-radius: 3px;
+    box-shadow: 9px 8px 15px rgba(0, 0, 0, 0.199);
+    /* outline: 2px solid #333; */
+}
+
+
+@keyframes MoveUp {
+    0% {
+        transform: translate(-120%, 130%);
+    }
+
+    100% {
+        transform: translate(0%, 0%);
+    }
+}
+
+.window-toolbar {
+    display: none;
+    align-items: center;
+    justify-content: flex-start;
+    height: 35px;
+    margin-right: 13px;
+    min-height: 35px;
+    z-index: 1;
+    color: #333;
+    background: transparent;
+    border: none;
+    font-family: "Ubuntu", sans-serif;
+    position: relative;
+    transition: all 1s ease;
+}
+
+/* Font Select Bar */
+.font_bar {
+    position: relative;
+    margin-left: 5px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    list-style: none;
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 0.5s ease-in-out;
+}
+
+#font_arrow_chevron {
+    margin-left: 5px;
+}
+
+#fonts_list {
+    top: 30px;
+    left: 0px;
+    position: absolute;
+    overflow-y: scroll;
+    height: 240px;
+    width: 180px;
+    display: none;
+    border-radius: 5px;
+    background-color: #fdfdfdd3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease-in-out;
+}
+
+/* custom scroll bar */
+#fonts_list::-webkit-scrollbar {
+    width: 8px;
+    height: 100%;
+    cursor: url("../Cursor/pointinghand.svg"), pointer;
+    overflow-y: scroll;
+}
+
+#fonts_list::-webkit-scrollbar-track {
+    background: #f3f3f3;
+    border-left: 2px #e4e4e4 solid;
+    cursor: url("../Cursor/pointinghand.svg"), pointer;
+}
+
+#fonts_list::-webkit-scrollbar-thumb {
+    background: rgb(219, 219, 219);
+    cursor: url("../Cursor/pointinghand.svg"), pointer;
+}
+
+#fonts_list::-webkit-scrollbar-thumb:hover {
+    background: rgb(192, 192, 192);
+    cursor: url("../Cursor/pointinghand.svg"), pointer;
+}
+
+
+.fonts_of_list {
+    color: #363638;
+    padding: 5px;
+    cursor: url("../Cursor/pointinghand.svg"), default;
+    transition: all 0.5s ease-in-out;
+}
+
+.fonts_of_list:hover{
+    background-color: #1b62f7;
+}
+
+/* Font Size Bar */
+.font_size_bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 3px;
+    transition: all 0.5s ease-in-out;
+
+}
+
+#FontSizeSeekBar_parent {
+    background-color: transparent;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
+#FontSizeSeekBar {
+    -webkit-appearance: none;
+    background-color: transparent;
+    width: 10vw;
+    cursor: url("../Cursor/pointinghand.svg");
+}
+
+.doubt_toolbar {
+    margin-left: 10px;
+}
+
+#doubt_ico {
+    position: relative;
+}
+
+#doubt_ico:hover #doubt_answer {
+    display: block;
+}
+
+#doubt_answer {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    font-family: "Ubuntu", sans-serif;
+    line-height: 20px;
+    padding: 5px;
+    width: 250px;
+    font-size: 13px;
+    border-radius: 5px;
+    z-index: 2;
+    background-color: #fdfdfd;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.096);
 }
 
 /* MAC Window titlebar */
 .window-titlebar {
     display: flex;
     align-items: center;
-    height: 40px;
-    max-height: 40px;
+    height: 45px;
+    min-height: 45px;
     z-index: 1;
-    /* background: Gainsboro; */
     background: linear-gradient(#eeeeee, #d1d1d1);
-    position: relative;
     border: none;
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.096);
+    transition: all 1s ease-in-out;
 }
 
 .action-buttons {
     display: flex;
-    /* justify-content: center; */
     align-items: center;
     padding-left: 5px;
     width: 80%;
     max-width: 80%;
-    height: 30px;
-    /* position: fixed; */
 }
 
 .cross {
@@ -51,7 +230,7 @@
     width: 14px;
     height: 14px;
     margin: 5px;
-    cursor: url("../Icon/pointinghand.svg"), default;
+    cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .max {
@@ -61,7 +240,7 @@
     width: 14px;
     height: 14px;
     margin: 5px;
-    cursor: url("../Icon/pointinghand.svg"), default;
+    cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .min {
@@ -71,7 +250,7 @@
     width: 14px;
     height: 14px;
     margin: 5px;
-    cursor: url("../Icon/pointinghand.svg"), default;
+    cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .cross_popup {
@@ -79,20 +258,19 @@
     display: flex;
     justify-content: center;
     width: 70px;
-    font-family: "PT Mono", monospace;
+    font-family: 'Work Sans', sans-serif;
     font-size: 17px;
     background-color: #d83a56;
     color: #fff;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 1px 1px;
     position: absolute;
     z-index: 1;
-    top: 20%;
-    left: 100px;
+    top: 36px;
     margin-left: 0px;
     flex-wrap: wrap;
-    cursor: url("../Icon/pointinghand.svg"), default;
+    cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .max_popup {
@@ -100,20 +278,19 @@
     display: flex;
     justify-content: center;
     width: 100px;
-    font-family: "PT Mono", monospace;
+    font-family: 'Work Sans', sans-serif;
     font-size: 17px;
     background-color: Orange;
     color: #fff;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 1px 1px;
     position: absolute;
     z-index: 1;
-    top: 20%;
-    left: 100px;
+    top: 36px;
     margin-left: 0px;
     flex-wrap: wrap;
-    cursor: url("../Icon/pointinghand.svg"), default;
+    cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .min_popup {
@@ -121,20 +298,19 @@
     display: flex;
     justify-content: center;
     width: 100px;
-    font-family: "PT Mono", monospace;
+    font-family: 'Work Sans', sans-serif;
     font-size: 16px;
     background-color: limegreen;
     color: #fff;
     text-align: center;
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 1px 1px;
     position: absolute;
     z-index: 1;
-    top: 20%;
-    left: 100px;
+    top: 36px;
     margin-left: 0px;
     flex-wrap: wrap;
-    cursor: url("../Icon/pointinghand.svg"), default;
+    cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .cross:hover .cross_popup {
@@ -162,11 +338,11 @@
     background: transparent;
     color: rgb(126, 81, 81);
     font-family: "Ubuntu", sans-serif;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 .filename:hover {
-    cursor: url("../Icon/pointinghand.svg"), default;
+    cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .button_area {
@@ -189,7 +365,7 @@
     border: 0px rgb(48, 48, 48) solid;
     border-radius: 5px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    cursor: url("../Icon/pointinghand.svg"), default;
+    cursor: url("../Cursor/pointinghand.svg"), default;
 }
 
 .button_area button:hover {
@@ -201,43 +377,43 @@
 .window-body {
     display: flex;
     position: absolute;
+    padding-top: 45px;
+    overflow-wrap: break-word;
+    flex-direction: column;
+    background: #f8f8f8;
+    overflow-y: hidden;
     z-index: 0;
     height: 100%;
     width: 100%;
-    padding-top: 40px;
-    bottom: 0%;
-    transition: all 2s ease;
+    transition: all 1s ease-in-out;
 }
 
 .code-input {
-    display: inline-block;
     justify-content: center;
     align-items: center;
-    position: relative;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     padding-left: 1.2rem;
-    padding-top: 0.8rem;
-    padding-bottom: 1.9rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 40px;
     border: none;
-    font-family: "Questrial", sans-serif;
-    font-size: 0.9rem;
+    font-family: 'Questrial', sans-serif;
+    font-size: 14px;
     background: transparent;
     white-space: pre-wrap;
-    line-height: 1.5em;
+    line-height: 1.8em;
     word-wrap: break-word;
     overflow-y: scroll;
-    transition: all 0.5s ease;
+    overflow-x: hidden;
+    transition: all 0.5s ease-in-out;
     opacity: 0.8;
-    margin: 0;
-    color: rgb(153, 153, 153);
+    color: rgb(128, 126, 126);
     /* color: #f54747; */
-    resize: none;
 }
-.code-input:focus{
-    color: rgb(105, 105, 105); 
+
+.code-input:focus {
+    color: rgb(51, 51, 51);
 }
 
 #open {
@@ -251,5 +427,146 @@
     padding-left: 25px;
     padding-right: 25px;
     box-shadow: 0 9px 12px rgba(0, 0, 0, 0.2);
-    cursor: url("../Icon/pointinghand.svg"), default;
+    cursor: url("../Cursor/pointinghand.svg"), default;
+}
+
+
+
+/* FontSize SeekBar CSS */
+#FontSizeSeekBar::-webkit-slider-runnable-track {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.103);
+    width: 100%;
+    height: 6px;
+    background: rgb(218, 218, 218);
+    border-radius: 2px;
+}
+
+#FontSizeSeekBar::-webkit-slider-thumb {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: #1b62f7;
+    cursor: url("../Cursor/pointinghand.svg"), default;
+    -webkit-appearance: none;
+    margin-top: -5px;
+}
+
+#FontSizeSeekBar::-moz-range-track {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.103);
+    width: 100%;
+    height: 6px;
+    background: rgb(218, 218, 218);
+    border-radius: 2px;
+}
+
+#FontSizeSeekBar::-moz-range-thumb {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: #1b62f7;
+    cursor: url("../Cursor/pointinghand.svg"), default;
+    -webkit-appearance: none;
+    margin-top: -5px;
+}
+
+#FontSizeSeekBar::-ms-track {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.103);
+    width: 100%;
+    height: 6px;
+    background: rgb(218, 218, 218);
+    border-radius: 2px;
+    color: transparent;
+}
+
+#FontSizeSeekBar::-ms-fill-lower {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.103);
+    width: 100%;
+    height: 6px;
+    background: rgb(218, 218, 218);
+    border-radius: 2px;
+}
+
+#FontSizeSeekBar::-ms-fill-upper {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.103);
+    width: 100%;
+    height: 6px;
+    background: rgb(218, 218, 218);
+    border-radius: 2px;
+}
+
+#FontSizeSeekBar::-ms-thumb {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: #1b62f7;
+    cursor: url("../Cursor/pointinghand.svg"), default;
+    -webkit-appearance: none;
+    margin-top: -5px;
+}
+
+#FontSizeSeekBar:focus::-ms-fill-lower {
+    background: #1b62f7;
+}
+
+#FontSizeSeekBar:focus::-ms-fill-upper {
+    background: #1b62f7;
+}
+
+
+
+
+
+/*dark mode editor*/
+.dark_mode_active .window-titlebar {
+    transition: all 2s ease-in-out;
+    background: linear-gradient(#434240, #363638);
+}
+
+.dark_mode_active .filename {
+    color: rgb(207, 207, 207);
+}
+
+.dark_mode_active .window-toolbar {
+    transition: all 0.5s ease-in-out;
+    color: #ddd;
+}
+
+.dark_mode_active .font_bar {
+    transition: all 0.5s ease-in-out;
+    color: #ddd;
+}
+.dark_mode_active #fonts_list {
+    transition: all 0.5s ease-in-out;
+    color: #ddd;
+    background: #171920d7;
+}
+.dark_mode_active .fonts_of_list {
+    transition: all 0.5s ease-in-out;
+    color: #ddd;
+}
+
+.dark_mode_active .font_size_bar {
+    transition: all 0.5s ease-in-out;
+    color: #ddd;
+}
+.dark_mode_active #doubt_answer {
+    transition: all 0.5s ease-in-out;
+    background-color: #171920d7;
+}
+
+.dark_mode_active .window-body {
+    background: #262626;
+    transition: all 1s ease-in-out;
+}
+
+.dark_mode_active .code-input {
+    color: #ddd;
+    transition: all 0.5s ease-in-out;
+}
+
+.dark_mode_active .code-input:focus {
+    color: rgb(235, 231, 231);
 }

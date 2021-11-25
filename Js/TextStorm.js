@@ -22,11 +22,50 @@ file_menu_parent.addEventListener("click", () => {
         file_dropdown.style.display = "flex"
         file_dropdown_on = true;
     }
-})
+});
 
 function newFile() {
     document.getElementById("message_id_three").style.display = "flex";
 }
+
+function newFile_after_Download() {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            downloadText();
+            let user_details_updating = {
+                Data: "Write your text here...",
+                File_Data: "Untitled_New.txt",
+            };
+            firebase
+                .database()
+                .ref("Users_Data/" + user.uid)
+                .update(user_details_updating)
+                .catch((error) => {
+                    alert(error);
+                });
+        }
+    });
+    newFileClose();
+};
+
+function newFile_no_Download() {
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            let user_details_updating = {
+                Data: "Write your text here...",
+                File_Data: "Untitled_New.txt",
+            };
+            firebase
+                .database()
+                .ref("Users_Data/" + user.uid)
+                .update(user_details_updating)
+                .catch((error) => {
+                    alert(error);
+                });
+        }
+    });
+    newFileClose();
+};
 
 
 function downloadText() {
@@ -36,7 +75,7 @@ function downloadText() {
         type: "text/plain;charset=utf-8"
     });
     saveAs(blob, filecontent);
-}
+};
 
 function openFile() {
     const pickerOpts = {
@@ -61,130 +100,47 @@ function openFile() {
         document.getElementById("fileid").innerHTML = "Untitled.txt";
     }
     getTheFile()
-}
+};
 
 // File Menu Save Button Function
 function saveText() {
-        firebase.auth().onAuthStateChanged((user) => {
-            if (user) {
-                let filecontent = document.getElementById("fileid").innerHTML;
-                let content = document.getElementById("apnatext").value;
-                let user_details_updating = {
-                    Data: content,
-                    File_Data: filecontent,
-                };
-                firebase
-                    .database()
-                    .ref("Users_Data/" + user.uid)
-                    .update(user_details_updating)
-                    .catch((error) => {
-                        console.log("Something went wrong");
-                    });
-                let errordump = document.getElementById("message_id");
-                errordump.style.display = "flex";
-            }
+    document.getElementById("message_id").style.zIndex = "3"
+
+    function saveText_process() {
+        return new Promise(function (resolve) {
+            firebase.auth().onAuthStateChanged((user) => {
+                if (user) {
+                    let filecontent = document.getElementById("fileid").innerHTML;
+                    let content = document.getElementById("apnatext").value;
+                    let user_details_updating = {
+                        Data: content,
+                        File_Data: filecontent
+                    };
+                    firebase
+                        .database()
+                        .ref("Users_Data/" + user.uid)
+                        .update(user_details_updating)
+                        .catch((error) => {
+                            console.log("Something went wrong");
+                        });
+                    resolve();
+                }
+            });
         });
-}
+    };
+
+    function saveText_done() {
+        return new Promise(function (resolve) {
+            document.getElementById("message_id").style.display = "flex";
+            success.play();
+        });
+    };
+
+    saveText_process().then(saveText_done);
+};
 
 // Copy Text
 function myCopy() {
-	let copyText = document.getElementById("apnatext").value;
-	navigator.clipboard.writeText(copyText);
-}
-
-// Navigation Bar FullScreen Button Function
-let full_screen_mode = false;
-btn.addEventListener("click", () => {
-    if (full_screen_mode == false) {
-        if (myDocument.requestFullscreen) {
-            myDocument.requestFullscreen();
-        } else if (myDocument.msRequestFullscreen) {
-            myDocument.msRequestFullscreen();
-        } else if (myDocument.mozRequestFullScreen) {
-            myDocument.mozRequestFullScreen();
-        } else if (myDocument.webkitRequestFullscreen) {
-            myDocument.webkitRequestFullscreen();
-        }
-        btn.innerHTML = '<i class="fas fa-compress"></i>';
-        full_screen_mode = true;
-    } else {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.msexitFullscreen) {
-            document.msexitFullscreen();
-        } else if (document.mozexitFullscreen) {
-            document.mozexitFullscreen();
-        } else if (document.webkitexitFullscreen) {
-            document.webkitexitFullscreen();
-        }
-        btn.innerHTML = '<i class="fas fa-expand"></i>';
-        full_screen_mode = false;
-    }
-});
-
-/*dark_mode home*/
-let dark_mode_btn_home = document.querySelector(".dark_mode_btn_home");
-let body = document.querySelector("body");
-let dark_mode_status_home = false;
-dark_mode_btn_home.addEventListener("click", function () {
-    body.classList.toggle("dark_mode_active_home");
-    if (dark_mode_status_home == false) {
-        dark_mode_btn_home.innerHTML =
-            '<i class="far fa-sun"></i>';
-        dark_mode_status_home = true;
-        localStorage.setItem("TextStorm_Mode", "$dark");
-    } else {
-        dark_mode_btn_home.innerHTML =
-            '<i class="far fa-moon"></i>';
-        dark_mode_status_home = false;
-        localStorage.setItem("TextStorm_Mode", "$light");
-    }
-});
-
-
-window.addEventListener('keydown', e => {
-    if(e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)){
-        e.preventDefault();
-        saveText();
-    }
-    if(e.ctrlKey && e.keyCode == 'O'.charCodeAt(0)){
-        e.preventDefault();
-        openFile();
-    }
-    if(e.altKey && e.keyCode == 'C'.charCodeAt(0)){
-        myCopy();
-    }
-    if(e.ctrlKey && e.keyCode == 'N'.charCodeAt(0)){
-        newFile();
-    }
-});
-
-
-// Time Function
-setInterval(showTime, 1000);
-
-function showTime() {
-    let time = new Date();
-    let hour = time.getHours();
-    let min = time.getMinutes();
-    am_pm = "AM";
-
-    if (hour > 12) {
-        hour -= 12;
-        am_pm = "PM";
-    }
-    if (hour == 0) {
-        hr = 12;
-        am_pm = "AM";
-    }
-
-    hour = hour < 10 ? "0" + hour : hour;
-    min = min < 10 ? "0" + min : min;
-
-    let currentTime = hour + ":" +
-        min + " " + am_pm;
-
-    document.getElementById("clock")
-        .innerHTML = currentTime;
-}
-showTime();
+    let copyText = document.getElementById("apnatext").value;
+    navigator.clipboard.writeText(copyText);
+};
