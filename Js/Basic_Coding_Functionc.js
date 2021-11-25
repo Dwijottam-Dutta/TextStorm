@@ -35,7 +35,7 @@ document.getElementById('apnatext').addEventListener('keydown', function (e) {
 
 
 function is_it_code_file() {
-    if (document.getElementById('apnatext').value == "Write your text here" || document.getElementById('apnatext').value == " " || document.getElementById('apnatext').value == "") {
+    if (document.getElementById('apnatext').value == "Write your text here..." || document.getElementById('apnatext').value == " " || document.getElementById('apnatext').value == "") {
 
         // Code for javascript
         if (document.getElementById("fileid").innerHTML.includes(".js")) {

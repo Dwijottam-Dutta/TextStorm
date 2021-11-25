@@ -1,8 +1,5 @@
-<img src="Icon/textstorm.svg" width="35px" align="left"> 
-
 ## &nbsp;<b>TextStorm 2.3.9</b>
-
-###   
+ 
 #### &nbsp;A simple web text/notes editor with Mac UI/UX Design
 <hr>
 

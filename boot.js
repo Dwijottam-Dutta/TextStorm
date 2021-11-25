@@ -195,7 +195,7 @@
                 // create a new notification
                 const notification = new Notification(title_id, {
                     body: body_id,
-                    icon: "../Icon/textstorm.svg"
+                    icon: "Icon/textstorm.svg"
                 });
 
 
