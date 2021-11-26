@@ -391,8 +391,6 @@ function mailto() {
 function in_errorClose() {
 	localStorage.setItem("$bypass_id", "not_crack");
 	document.getElementById("in_error_id").style.display = "none";
-	document.getElementById("editor").style.display = "flex";
-	document.getElementById("navbar").style.display = "flex";
 };
 
 function in_errorBypass() {
@@ -454,9 +452,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 //Logout Function
 function logOutAccount() {
+	window.open("https://dwijottam-dutta.github.io/TextStorm")
 	firebase.auth().signOut();
+	TEXTSTORM_CLOSE();
 	location.reload();
-	closeAccount()
+	closeAccount();
 };
 
 //Delete Account Function

@@ -11,13 +11,18 @@
 
     console.log("Welcome to TextStorm");
     let body = document.querySelector("body");
-    let dark_mode_status_home = false;  // Keep Dark Mode Off in Desktop (Default)
-    let dark_mode_status = false;   // Keep Dark Mode Off in Editor (Default)
+    let dark_mode_status_home = false; // Keep Dark Mode Off in Desktop (Default)
+    let dark_mode_status = false; // Keep Dark Mode Off in Editor (Default)
     let dark_mode_btn_home = document.querySelector(".dark_mode_btn_home");
     let dark_mode_btn = document.querySelector(".dark_mode_btn");
     let fresh = new Audio("audio/startup.mp3");
     let success = new Audio("audio/save.mp3");
     let error_sound = new Audio("audio/error.mp3");
+
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        alert("TextStorm is not stable for mobile and tablet devices");
+        location.replace("about/about.html");
+    }
 
     //$STARTUP
     function TEXTSTORM_STARTUP() {
@@ -28,6 +33,7 @@
                 document.getElementById("STARTUP_SCREEN_PARENT").style.display = "flex";
                 setTimeout(() => {
                     document.getElementById("welcome_loader").style.visibility = "visible";
+                    // Checking for devices api for application stability
                     resolve();
                 }, 1500);
             }, 1000);
@@ -55,7 +61,7 @@
                 dark_mode_btn.innerHTML = '<i class="far fa-sun"></i>';
                 dark_mode_status = true;
                 document.getElementById("editor").classList.toggle("dark_mode_active");
-            } else if (editor_mode == "$light"){
+            } else if (editor_mode == "$light") {
                 editor_mode.innerHTML = '<i class="far fa-moon"></i>';
                 dark_mode_status = false;
                 document.getElementById("editor").classList.remove("dark_mode_active");
@@ -64,10 +70,10 @@
 
             // Changing EDITOR_FONT in last user preference Mode
             let editor_font = localStorage.getItem("TextStorm_Font_Preferences");
-            try {  // Try that the preference actually exists or not
+            try { // Try that the preference actually exists or not
                 FONTS_OBJECTS[editor_font]();
             } catch (error) {
-                FONTS_OBJECTS["Questrial"]();  // If no preference or corrupted preference then shift to default 
+                FONTS_OBJECTS["Questrial"](); // If no preference or corrupted preference then shift to default 
             }
 
 
@@ -103,16 +109,16 @@
                     script_element.type = 'text/javascript';
                     script_element.id = 'my-test-script';
                     script_element.src = 'Js/TextStorm.js';
-                    head_ID.appendChild(script_element);
 
                     // Create script element       
                     var script_element_two = document.createElement('script');
                     script_element_two.type = 'text/javascript';
                     script_element_two.id = 'my-test-script-two';
                     script_element_two.src = 'Js/TextStorm_window.js';
-                    head_ID.appendChild(script_element_two);
 
+                    head_ID.appendChild(script_element_two);
                     head_ID.appendChild(script_element);
+
                     const database_ref = firebase.database();
                     database_ref.ref("Users_Data/" + user.uid).on("value", function (snapshot) {
                         let user_name = snapshot.val().User; //Get user name
@@ -151,6 +157,7 @@
                             }
                         });
 
+                        document.getElementById("editor").style.display = "flex";
                         resolve_start();
                     });
                 }
@@ -163,17 +170,36 @@
             firebase.auth().onAuthStateChanged((user) => {
                 if (user) {
                     if (window.File && window.Blob && window.showOpenFilePicker) {
-                        document.getElementById("editor").style.display = "flex";
+
                     } else {
                         const bypass_id = localStorage.getItem("$bypass_id");
                         if (bypass_id != "crack" || bypass_id == null) {
                             error_sound.play();
                             console.log("Unstable");
                             document.getElementById("in_error_id").style.display = "block";
-                            document.getElementById("editor").style.display = "none";
-                            document.getElementById("navbar").style.display = "none";
                         }
                     }
+
+                    // Checking the device width height is stable
+                    setInterval(() => {
+                        if (document.body.clientWidth < 710) {
+                            document.getElementById("error_id").style.zIndex = "3"
+                            document.getElementById("error_id").style.display = "block";
+                            document.getElementById("editor").style.display = "none";
+                            document.getElementById("navbar").style.display = "none";
+
+                        } else if (document.body.clientHeight < 500) {
+                            document.getElementById("error_id").style.zIndex = "3"
+                            document.getElementById("error_id").style.display = "block";
+                            document.getElementById("editor").style.display = "none";
+                            document.getElementById("navbar").style.display = "none";
+
+                        } else {
+                            document.getElementById("editor").style.display = "flex";
+                            document.getElementById("navbar").style.display = "flex";
+                            document.getElementById("error_id").style.display = "none";
+                        }
+                    }, 100);
                 }
             });
             fresh.play();
@@ -220,8 +246,7 @@
                     showNotification();
                     resolve();
                 }, delayInMilliseconds);
-            }
-            else{
+            } else {
                 resolve();
             }
         });
@@ -229,15 +254,6 @@
 
 
     TEXTSTORM_STARTUP().then(STARTUP_AFTER).then(START).then(STABILITY).then(NOTIFICATION);
-
-
-
-    // Checking for devices api for application stability
-    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        while (1 == 1) {
-            alert("TextStorm is not available for mobile and tablets");
-        }
-    }
 
     try {
         var cache = localStorage.getItem("Cache");
@@ -327,17 +343,6 @@
             .innerHTML = currentTime;
     }
     showTime();
-
-
-    // Checking the device width height is stable
-    setInterval(() => {
-        if (document.body.clientWidth < 710) {
-            document.getElementById("error_id").style.display = "block";
-        }
-        if (document.body.clientHeight < 500) {
-            document.getElementById("error_id").style.display = "block";
-        }
-    }, 1);
 
 
     setInterval(() => {

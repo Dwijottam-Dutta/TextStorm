@@ -25,6 +25,7 @@ file_menu_parent.addEventListener("click", () => {
 });
 
 function newFile() {
+    document.getElementById("message_id_three").style.zIndex = "3"
     document.getElementById("message_id_three").style.display = "flex";
 }
 
