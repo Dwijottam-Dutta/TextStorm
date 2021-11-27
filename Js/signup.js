@@ -1,3 +1,13 @@
+/***************************File*Header********************************** 
+
+* File Name: signup.js
+*
+* JS Description: This JS File contains TextStorm Signup Functions/Logic which
+*                 are used in signup...
+
+****************************************************************************/
+
+
 const signup_form = document.querySelector(".form_signup form");
 let ffname = document.getElementById("ffname");
 let llname = document.getElementById("llname");

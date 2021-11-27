@@ -40,11 +40,15 @@
   <!-- TextStorm - CSS File for TextStorm About -->
   <link rel="stylesheet" href="Style/TextStorm_about.css" />
 
+  <!-- TextStorm - CSS File for TextStorm Notification -->
+  <link rel="stylesheet" href="Style/TextStorm_notification.css" />
+
   <!-- ShortCut Ico -->
   <link rel="shortcut icon" href="Icon/textstorm.svg" type="image/x-icon" />
 
   <!-- JAVASCRIPT LIBRARIES -->
   <script src="Js/lib/win32_drag.js"></script>
+  <script src="Js/lib/confetti_black.js"></script>
   <script src="Js/lib/FileSaver.js"></script>
 
   <link rel="stylesheet" href="Style/signup.css">
@@ -53,9 +57,10 @@
   <!-- JAVASCRIPT Source Files for TextStorm Application -->
 
   <!-- TWO MORE SCRIPTS ARE BEING ADDED IN BOOT AS THEY ARE CORE AND CAN'T BE USED BY ANONYMOUS FROM CONSOLE -->
+  <script defer src="Js/TextStorm_notification.js"></script>
   <script defer src="Js/TextStorm_fonts.js"></script>
-  <script defer src="Js/Basic_Coding_Functionc.js"></script>
-  <script defer src="Js/pass-show-hide.js"></script>
+  <script defer src="Js/TextStorm_ide.js"></script>
+  <script defer src="Js/TextStorm_password_$show_$hide.js"></script>
   <script defer src="Js/signup.js"></script>
   <script defer src="Js/login.js"></script>
 </head>
@@ -81,19 +86,21 @@
         <p id="trademark_text">TextStorm</p>
       </div>
       <ul class="main_ul none_select" id="hide_while_other">
-        <li class="main_li" id="file_menu_parent"><a id="menu_text">File</a>
-          <ul class="file_dropdown" id="file_dropdown">
-            <li class="file_dropdown_li" onclick="newFile()"><a id="file_menu_text">New</a><a
-                id="file_menu_text_shortcut">Ctrl+N</a></li>
-            <li class="file_dropdown_li" onclick="openFile()" id="openfile"><a id="file_menu_text">Open</a><a
-                id="file_menu_text_shortcut">Ctrl+O</a></li>
-            <li class="file_dropdown_li" onclick="saveText()"><a id="file_menu_text">Save</a><a
-                id="file_menu_text_shortcut">Ctrl+S</a></li>
-            <li class="file_dropdown_li" onclick="myCopy()"><a id="file_menu_text">Copy</a><a
-                id="file_menu_text_shortcut">Alt+C</a></li>
-            <li class="file_dropdown_li" onclick="downloadText()"><a id="file_menu_text">Download</a></li>
-          </ul>
-        </li>
+        <li class="main_li" id="file_menu_parent"><a id="menu_text">File</a></li>
+
+        <ul class="file_dropdown" id="file_dropdown">
+          <li class="file_dropdown_li" onclick="newFile()"><a id="file_menu_text">New</a><a
+              id="file_menu_text_shortcut">Alt+N</a></li>
+          <li class="file_dropdown_li" onclick="openFile()" id="openfile"><a id="file_menu_text">Open</a><a
+              id="file_menu_text_shortcut">Ctrl+O</a></li>
+          <li class="file_dropdown_li" onclick="saveText()"><a id="file_menu_text">Save</a><a
+              id="file_menu_text_shortcut">Ctrl+S</a></li>
+          <li class="file_dropdown_li" onclick="myCopy()"><a id="file_menu_text">Copy</a><a
+              id="file_menu_text_shortcut">Alt+C</a></li>
+          <li class="file_dropdown_li" onclick="downloadText()"><a id="file_menu_text">Download</a><a
+            id="file_menu_text_shortcut">Alt+D</a></li>
+        </ul>
+
         <li class="main_li" onclick="openTools()"><a id="menu_text">Tools</a></li>
         <li class="main_li" onclick="open_TextStorm_About()"><a id="menu_text">About</a></li>
       </ul>
@@ -104,7 +111,7 @@
             <!-- <a href="#" id="logout">Log out</a> -->
           </div>
           <button class="dark_mode_btn_home"><i class="far fa-moon"></i></button>
-          <button id="btn"><i class="fa fa-expand"></i></button>
+          <button class="fullscreen_mode_btn"><i class="fas fa-expand"></i></button>
           <p id="clock"></p>
         </div>
       </div>
@@ -269,6 +276,22 @@
 
 
 
+  <!-- TEXTSTORM CUSTOM NOTIFICATION -->
+  <div class="notification" id="notification">
+    <div id="notification_ico_parent">
+      <img src="Icon/textstorm.svg" alt="textstorm" id="notification_ico">
+    </div>
+    <div id="notification_content">
+      <span class="notification_title" id="notification_title"></span>
+      <span class="notification_msg" id="notification_msg"></span>
+    </div>
+    <div class="close-btn" onclick="TEXTSTORM_NOTIFICATION_HIDE()">
+      <i class="fas fa-times"></i>
+    </div>
+  </div>
+
+
+
 
   <!-- ERROR WINDOW HTML -->
   <div class="error" id="error_id">
@@ -394,7 +417,9 @@
       </div>
 
       <div class="credits_about_textstorm">
-        Developed by&nbsp;<b><u><a id="dev_link" onclick=`window.open('https://dwijottam-dutta.github.io/portfolio/about.html')`>Dwijottam Dutta</a></u></b>
+        Developed by&nbsp;<b><u><a id="dev_link"
+              onclick="developer()">Dwijottam
+              Dutta</a></u></b>
       </div>
     </section>
   </div>
@@ -505,10 +530,11 @@
       }
     }, 1500);
     setTimeout(() => {
-      while (1) {
-
+      let i = 1;
+      while (i < 10000) {
+        i= i+1;
       }
-    }, 5000);
+    }, 5);
   }
 
 </script>

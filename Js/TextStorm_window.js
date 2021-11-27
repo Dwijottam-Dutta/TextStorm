@@ -1,3 +1,13 @@
+/***************************File*Header********************************** 
+
+* File Name: TextStorm_window.js
+*
+* JS Description: This JS File contains TextStorm Editor Window
+*                 Functions/Logic which are used in editor...
+
+****************************************************************************/
+
+
 /*Making all window draggable*/
 dragElement(document.getElementById("editor"), document.getElementById("titlebar"), true);
 dragElement(document.getElementById("error_id"), document.getElementById("title_error"), true);
@@ -62,47 +72,6 @@ account_window.addEventListener("click", () => {
 * Editor Window
 
 ***********************************************/
-
-// Close Function
-function TEXTSTORM_CLOSE() {
-	firebase.auth().onAuthStateChanged((user) => {
-		if (user) {
-			let filecontent = document.getElementById("fileid").innerHTML;
-			let content = document.getElementById("apnatext").value;
-			let user_details_updating = {
-				Data: content,
-				File_Data: filecontent
-			};
-			firebase
-				.database()
-				.ref("Users_Data/" + user.uid)
-				.update(user_details_updating)
-				.catch((error) => {
-					console.log("Something went wrong");
-				});
-		}
-	});
-	document.getElementById("editor").style.display = "none";
-	setTimeout(() => {
-		document.getElementById("STARTUP_SCREEN").style.display = "block";
-		setTimeout(() => {
-			document.getElementById("STARTUP_SCREEN").style.background = "rgb(17, 17, 17)";
-			setTimeout(() => {
-				document.getElementById("welcome_loader").style.visibility = "visible";
-				document.getElementById("welcome_loader").innerHTML = "Auto Saving your Work";
-				setTimeout(() => {
-					document.getElementById("welcome_loader").innerHTML = "Saving preferences";
-					setTimeout(() => {
-						document.getElementById("welcome_loader").innerHTML = "Shutting Down";
-						setTimeout(() => {
-							window.close();
-						}, 5000);
-					}, 3500);
-				}, 4000);
-			}, 3000);
-		}, 200);
-	}, 1000);
-}
 
 // Restore Down/Maximize Function
 let MAXIMIZE_STATUS = false;
@@ -387,6 +356,10 @@ function mailto() {
 	window.open('https://mail.google.com/mail/u/0/?fs=1&to=dwijottamdutta@gmail.com&tf=cm');
 };
 
+function developer(){
+	window.open('https://dwijottam-dutta.github.io/portfolio/about.html');
+}
+
 // Close Function In_Error Window Utils
 function in_errorClose() {
 	localStorage.setItem("$bypass_id", "not_crack");
@@ -452,11 +425,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 //Logout Function
 function logOutAccount() {
-	window.open("https://dwijottam-dutta.github.io/TextStorm")
 	firebase.auth().signOut();
-	TEXTSTORM_CLOSE();
-	location.reload();
-	closeAccount();
+	TEXTSTORM_RESTART();
 };
 
 //Delete Account Function
@@ -484,6 +454,8 @@ function deleteAccount() {
 	}).catch((error) => {
 		console.log(error);
 	});
+
+	TEXTSTORM_RESTART();
 }
 
 // Forget Password Function
@@ -505,6 +477,7 @@ function forgetPassword() {
 
 // Open Account Window
 function openAccount() {
+	document.getElementById("account_id").style.zIndex = "3";
 	document.getElementById("account_id").style.display = "flex";
 }
 
@@ -525,7 +498,6 @@ function closeAccount() {
 * Editor Window
 
 ***********************************************/
-
 dark_mode_btn.addEventListener("click", function () {
 	document.getElementById("editor").classList.toggle("dark_mode_active");
 	if (dark_mode_status == false) {

@@ -1,3 +1,12 @@
+/***************************File*Header********************************** 
+
+* File Name: login.js
+*
+* JS Description: This JS File contains TextStorm Login Functions/Logic which
+*                 are used in login...
+
+****************************************************************************/
+
 const login_form = document.querySelector(".form_login form");
 let email_login = document.getElementById("email_login");
 let password_login = document.getElementById("password_login");

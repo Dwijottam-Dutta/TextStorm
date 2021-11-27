@@ -32,11 +32,11 @@
   }
 
 
-  .dark_mode_active_home .navbar .main_ul .main_li .file_dropdown{
+  .dark_mode_active_home .navbar .main_ul .file_dropdown{
     background: linear-gradient(#1f2127ce, #171920d7);
     transition: all 1s ease;
   }
-  .dark_mode_active_home .navbar .main_ul .main_li .file_dropdown .file_dropdown_li{
+  .dark_mode_active_home .navbar .main_ul .file_dropdown .file_dropdown_li{
     color: #ddd;
   }
 
@@ -56,8 +56,9 @@
     transition: all 1s ease;
   }
 
-.dark_mode_active_home #btn {
+.dark_mode_active_home .fullscreen_mode_btn {
     color: #ddd;
+    transition: all 1s ease;
 }
 
 
@@ -131,36 +132,21 @@
 
 
 
-
-.dark_mode_active_home .message_two {
-    background: #282835;
-    color: #ddd;
+.dark_mode_active_home .notification{
+    background:linear-gradient(#434240, #363638);
+    border-left: 8px solid rgb(185, 185, 185);
+    transition: all 1s ease-in-out;
 }
-
-.dark_mode_active_home .message_two .message_m {
-    background: #282835;
+.dark_mode_active_home .notification #notification_content .notification_title{
     color: #ddd;
+    transition: all 1s ease-in-out;
 }
-.dark_mode_active_home .message_two .title_message {
-    background: linear-gradient(#434240, #363638);
-    color: #ddd;
+.dark_mode_active_home .notification #notification_content .notification_msg {
+    color: rgb(207, 207, 207);
+    transition: all 1s ease-in-out;
 }
-
-
-
-
-.dark_mode_active_home .message_two {
-    background: #282835;
-    color: #ddd;
-}
-
-.dark_mode_active_home .message_two .message_m {
-    background: #282835;
-    color: #ddd;
-}
-.dark_mode_active_home .message_two .title_message {
-    background: linear-gradient(#434240, #363638);
-    color: #ddd;
+.dark_mode_active_home .notification .close-btn .fas {
+    color: rgb(173, 173, 173);
 }
 
 

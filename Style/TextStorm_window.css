@@ -45,13 +45,14 @@
 
 /* Custom Resizer */
 .window::-webkit-resizer {
-    z-index: 9;
+    z-index: 5;
     position: initial;
     border-width: 28px;
     border-style: solid;
     border-color: transparent #333 #333 transparent;
     border-bottom-right-radius: 3px;
     box-shadow: 9px 8px 15px rgba(0, 0, 0, 0.199);
+    cursor: url("../Cursor/pointinghand.svg"), pointer;
     /* outline: 2px solid #333; */
 }
 
