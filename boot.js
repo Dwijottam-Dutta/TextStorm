@@ -222,11 +222,13 @@ function STARTUP_NOTIFICATION() {
                 let body_id_final;
                 let title_id;
                 let confetti;
+                let startup_notification_time;
                 const database = firebase.database();
                 database.ref("Notification").once('value', function (snapshot) {
                     body_id = snapshot.val().body;
                     title_id = snapshot.val().title;
                     confetti = snapshot.val().confetti;
+                    startup_notification_time = snapshot.val().time;
                     if (confetti == true) {
                         startit();
                         stopit();
@@ -238,7 +240,7 @@ function STARTUP_NOTIFICATION() {
                         } else {
                             body_id_final = body_id;
                         }
-                        TEXTSTORM_NOTIFICATION_SHOW(null, title_id, body_id_final, 20000, "startup");
+                        TEXTSTORM_NOTIFICATION_SHOW(null, title_id, body_id_final, startup_notification_time, "startup");
                         resolve();
 
                     }, 3000);
