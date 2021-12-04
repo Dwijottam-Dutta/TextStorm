@@ -95,6 +95,18 @@ function TEXTSTORM_RESTART() {
 }
 
 
+// Window Close Function
+function CLOSE_WINDOW(id) {
+    document.getElementById(id).style.display = "none";
+}
+
+// Window Open Function
+function OPEN_WINDOW(id) {
+    document.getElementById(id).style.zIndex = "3"
+    document.getElementById(id).style.display = "flex";
+}
+
+
 
 // Event for checking and doing the Worker; That File Dropdown is on/off or not
 let file_dropdown_on = false;

@@ -264,17 +264,6 @@ function limitText(id, limitNum) {
     }
 }
 
-// Window Close Function
-function CLOSE_WINDOW(id) {
-    document.getElementById(id).style.display = "none";
-}
-
-// Window Open Function
-function OPEN_WINDOW(id) {
-    document.getElementById(id).style.zIndex = "3"
-    document.getElementById(id).style.display = "flex";
-}
-
 
 
 // CORE FUNCTIONS
@@ -398,11 +387,7 @@ function showBattery() {
             }
 
             // Numerical Battery Indicator Conditions
-            if (battery.level == 1) {
-                document.getElementById("battery_level_indication_int").innerHTML = "100%";
-            } else {
-                let battery_exclude_decimal = battery.level.toString().replace("0.", "")
-                document.getElementById("battery_level_indication_int").innerHTML = `${battery_exclude_decimal}%`;
-            }
+            let battery_exclude_decimal = (battery.level * 100).toString();
+            document.getElementById("battery_level_indication_int").innerHTML = `${battery_exclude_decimal}%`;
         });
 }
