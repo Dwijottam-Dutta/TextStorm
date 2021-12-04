@@ -12,8 +12,11 @@ const signup_form = document.querySelector(".form_signup form");
 let ffname = document.getElementById("ffname");
 let llname = document.getElementById("llname");
 let email = document.getElementById("email");
-let error = document.getElementById("error-text");
 let password = document.getElementById("password");
+
+
+
+
 // let UserVerification = localStorage.getItem("$verfication");
 // let UserIdVerification = localStorage.getItem("User_Id");
 // let UserNameVerification = localStorage.getItem("User_Name");
@@ -121,8 +124,7 @@ signup_form.onsubmit = (e) => {
   firebase.auth().createUserWithEmailAndPassword(email_val, password_val)
     .catch((error) => {
       console.log("Something went wrong");
-      document.getElementById("error-text").innerHTML = error.message;
-      document.getElementById("error-text").style.display = "block";
+      TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Setup", error.message, 10000, "error");
     });
 
   firebase.auth().onAuthStateChanged((user) => {
@@ -135,29 +137,12 @@ signup_form.onsubmit = (e) => {
         Email: user.email
       }
 
-      function Set_Data(callback) {
-        firebase.database().ref('Users_Data/' + user.uid).set(user_details).catch(error => {
-          document.getElementById("loader").style.display = "none";
-          document.getElementById("wrapper").style.display = "block";
-          document.getElementById("error-text").innerHTML = error.message;
-          document.getElementById("error-text").style.display = "block";
-        });
-        callback();
-      }
+      firebase.database().ref('Users_Data/' + user.uid).set(user_details).catch(error => {
+        TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Setup", error.message, 5000, "error");
+      });
 
-      function Move_Page() {
-        var ref = firebase.database().ref("Users_Data/" + user.uid);
-        ref.once("value")
-          .then(function (snapshot) {
-            let data_exists = snapshot.child("uid").exists(); // true
-            if (data_exists) {
-              console.log("WELCOME");
-              document.getElementById("hide_while_other").style.visibility = "visible";
-              document.getElementById("signup_wrapper").style.display = "none";
-            }
-          });
-      }
-      Set_Data(Move_Page);
+      document.getElementById("hide_while_other").style.visibility = "visible";
+      document.getElementById("signup_wrapper").style.display = "none";
 
     }
   });

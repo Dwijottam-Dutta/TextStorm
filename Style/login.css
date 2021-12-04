@@ -13,8 +13,9 @@
   max-width: 440px;
   width: 100%;
   border-radius: 16px;
-  top: 50%; right: 50%;
-  transform: translate(50%,-50%);
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
   box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
     0 32px 64px -48px rgba(0, 0, 0, 0.5);
 }
@@ -28,69 +29,75 @@
   align-items: center;
   justify-content: center;
 }
+
 .form_login .header #trademark_login {
   font-size: 25px;
   font-weight: 600;
   padding-bottom: 3px;
   font-family: 'Titillium Web', sans-serif;
 }
+
 .form_login .header p {
   color: #0a1d37;
   font-size: 15px;
   padding-bottom: 10px;
   border-bottom: 1px solid #0a1d37;
 }
+
 .form_login form {
-  margin: 20px 0;
+  margin: 0;
+  margin-top: 20px;
+  margin-bottom: 10px;
   width: 90%;
 }
-.form_login form #error_login {
-  color: #721c24;
-  padding: 8px 10px;
-  text-align: center;
-  border-radius: 5px;
-  background: #f8d7da;
-  border: 1px solid #f5c6cb;
-  margin-bottom: 10px;
-  display: none;
-}
+
 .form_login form .name-details {
   display: flex;
 }
+
 .form_login .name-details .field:first-child {
   margin-right: 10px;
 }
+
 .form_login .name-details .field:last-child {
   margin-left: 10px;
 }
+
 .form_login form .field {
   display: flex;
   margin-bottom: 10px;
   flex-direction: column;
   position: relative;
 }
+
 .form_login form .field label {
   margin-bottom: 2px;
   font-size: 18px;
+  font-family: 'Work Sans', sans-serif;
 }
+
 .form_login form .input input {
-  height: 40px;
+  height: 36px;
   width: 100%;
   font-size: 16px;
   padding: 0 10px;
   border-radius: 5px;
+  font-family: 'Klee One', cursive;
   background: rgba(255, 255, 255, 0.267);
   /* background: rgba( 255, 255, 255, 0.10 );
 box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
 backdrop-filter: blur( 4px ); */
-border: none;
+  border: none;
 }
+
 .form_login form .field input {
   outline: none;
 }
+
 .form_login form .image input {
   font-size: 17px;
 }
+
 .form_login form .button input {
   height: 45px;
   border: none;
@@ -102,6 +109,7 @@ border: none;
   font-family: "Nunito", sans-serif;
   margin-top: 13px;
 }
+
 .form_login form .field i {
   position: absolute;
   right: 15px;
@@ -111,19 +119,34 @@ border: none;
   cursor: url("../Cursor/pointinghand.svg"), default;
   transform: translateY(-50%);
 }
+
 .form_login form .field i.active::before {
   color: #333;
   content: "\f070";
 }
+
 .form_login .link {
   text-align: center;
   margin: 0px 0;
   font-size: 17px;
 }
+
 .form_login .link a {
   color: #333;
 }
+
 .form_login .link a:hover {
   text-decoration: underline;
 }
 
+#go_to_signup {
+  font-family: 'Titillium Web', sans-serif;
+  font-weight: 700;
+  color: #333;
+  font-size: 17px;
+}
+
+#go_to_signup:hover {
+  text-decoration: underline;
+  cursor: url("../Cursor/pointinghand.svg"), default;
+}

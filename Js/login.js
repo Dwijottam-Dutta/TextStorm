@@ -10,7 +10,6 @@
 const login_form = document.querySelector(".form_login form");
 let email_login = document.getElementById("email_login");
 let password_login = document.getElementById("password_login");
-let error_login = document.getElementById("error-text");
 // let UserVerification = localStorage.getItem("$verfication");
 // let UserIdVerification = localStorage.getItem("User_Id");
 // let UserNameVerification = localStorage.getItem("User_Name");
@@ -69,8 +68,7 @@ login_form.onsubmit = (e) => {
 
     firebase.auth().signInWithEmailAndPassword(email_val, password_val)
         .catch((error) => {
-            document.getElementById("error_login").innerHTML = error.message;
-            document.getElementById("error_login").style.display = "block";
+            TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Login", error.message, 10000, "error");
         });
 
     firebase.auth().onAuthStateChanged((user) => {

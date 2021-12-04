@@ -20,9 +20,13 @@
   <link rel="canonical" href="https://dwijottam-dutta.github.io/TextStorm/">
 
   <meta name="author" content="Dwijottam Dutta">
+
+  <!-- TextStorm - $Boot -->
   <script defer src="boot.js"></script>
-  <!-- Font Awesome CDN Link -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+
+  <!-- FontAwesome - CSS -->
+  <link rel="stylesheet" href="Style/icon/all.css" />
 
   <!-- TextStorm - Main CSS File for over all style -->
   <link rel="stylesheet" href="Style/TextStorm.css" />
@@ -67,8 +71,8 @@
 
 <body>
   <!-- TEXTSTORM STARTUP SCREEN  -->
-  <div class="STARTUP_SCREEN" id="STARTUP_SCREEN">
-    <div class="STARTUP_SCREEN_PARENT" id="STARTUP_SCREEN_PARENT">
+  <div class="STARTUP_SCREEN none_select" id="STARTUP_SCREEN">
+    <div class="STARTUP_SCREEN_PARENT none_select" id="STARTUP_SCREEN_PARENT">
       <img src="Icon/textstorm.svg" id="STARTUP_TRADEMARK_ICON">
       <p id="STARTUP_TRADEMARK">TextStorm</p>
       <div class="loader"></div>
@@ -80,7 +84,7 @@
   <!-- NAVIGATION BAR - TEXTSTORM -->
   <header>
     <nav class="navbar none_select" id="navbar">
-      <div class="trademark" onclick="openwindow()">
+      <div class="trademark" onclick='OPEN_WINDOW("editor")'>
         <img src="Icon/textstorm.svg" id="trademark_ico">
         <p id="trademark_text">TextStorm</p>
       </div>
@@ -97,18 +101,23 @@
           <li class="file_dropdown_li" onclick="myCopy()"><a id="file_menu_text">Copy</a><a
               id="file_menu_text_shortcut">Alt+C</a></li>
           <li class="file_dropdown_li" onclick="downloadText()"><a id="file_menu_text">Download</a><a
-            id="file_menu_text_shortcut">Alt+D</a></li>
+              id="file_menu_text_shortcut">Alt+D</a></li>
         </ul>
 
         <li class="main_li" onclick="openTools()"><a id="menu_text">Tools</a></li>
-        <li class="main_li" onclick="open_TextStorm_About()"><a id="menu_text">About</a></li>
+        <li class="main_li" onclick='OPEN_WINDOW("textstorm_about_wrapper")'><a id="menu_text">About</a></li>
       </ul>
       <div class="productivity_bar">
         <div class="utils">
           <div class="user_details">
-            <p id="user_welcome" onclick="openAccount()"></p>
-            <!-- <a href="#" id="logout">Log out</a> -->
+            <button id="user_welcome_button" onclick='OPEN_WINDOW("account_id")'>
+              <i class="far fa-user-circle"></i></button>
           </div>
+          <button class="battery_indicator_button" id="battery_indicator_button">
+            <i class="fas fa-battery-empty"></i>
+          </button>
+          <p id="battery_level_indication_int"></p>
+
           <button class="dark_mode_btn_home"><i class="far fa-moon"></i></button>
           <button class="fullscreen_mode_btn"><i class="fas fa-expand"></i></button>
           <p id="clock"></p>
@@ -145,7 +154,10 @@
           <p class="filename" id="fileid" onclick="renameFile()">Untitled.txt</p>
         </div>
         <div class="button_area">
-          <button class="dark_mode_btn"><i class="far fa-moon" aria-hidden="true" id="fontawesome"></i></button>
+          <div class="chill_button" onclick="transparent_BG_editor()">
+            <i class="fas fa-air-freshener"></i>
+          </div>
+          <button class="dark_mode_btn"><i class="far fa-moon" aria-hidden="true"></i></button>
           <button onclick="editableOption()" id="editbutton"><i class="far fa-edit"></i></button>
         </div>
 
@@ -181,7 +193,7 @@
         <div class="font_size_bar">
           <p>Font-Size</p>
           <div id="FontSizeSeekBar_parent">
-            <input type="range" name="range" id="FontSizeSeekBar" min="10" value="14" max="60">
+            <input type="range" name="range" id="FontSizeSeekBar" min="10" value="16" max="70">
           </div>
         </div>
 
@@ -206,11 +218,10 @@
   <div class="login_wrapper" id="login_wrapper">
     <section class="form_login">
       <div class="header">
-        <h1 id="trademark_login">TextStorm Login</h1>
+        <h1 id="trademark_login">TextStorm Login <small id="version">V.2.3.9</small></h1>
         <p>A simple web text/notes editor with Mac design</p>
       </div>
       <form action="#" autocomplete="off">
-        <div class="error-text" id="error_login"></div>
         <div class="field input">
           <label>Email Address</label>
           <input type="text" name="email" id="email_login" placeholder="Enter your email" required>
@@ -224,8 +235,8 @@
           <input type="submit" name="submit" id="button" value="Continue with TextStorm">
         </div>
       </form>
-      <div class="link">Don't have an account? <a onclick="move_to_signup()">Sign Up</a></div>
-      <b>V.2.3.9</b>
+      <div class="link">Don't have an account ?</div>
+      <a id="go_to_signup" onclick="move_to_signup()">Sign Up</a>
     </section>
   </div>
 
@@ -236,19 +247,20 @@
   <div class="signup_wrapper" id="signup_wrapper">
     <section class="form_signup">
       <div class="header">
-        <h1 id="trademark_signup">TextStorm Setup</h1>
+        <h1 id="trademark_signup">TextStorm Setup <small id="version">V.2.3.9</small></h1>
         <p>A simple web text/notes editor with Mac design</p>
       </div>
       <form action="#" autocomplete="off">
-        <div id="error-text"></div>
-        <div class="name-details" id="login_out">
+        <div class="name-details">
           <div class="field input">
             <label>First Name</label>
-            <input type="text" name="ffname" id="ffname" placeholder="First name" required>
+            <input type="text" name="ffname" id="ffname" placeholder="First name" onkeydown="limitText(this, 20)"
+              onkeyup="limitText(this, 20)" required>
           </div>
           <div class="field input">
             <label>Last Name</label>
-            <input type="text" name="llname" id="llname" placeholder="Last name" required>
+            <input type="text" name="llname" id="llname" placeholder="Last name" onkeydown="limitText(this, 13)"
+              onkeyup="limitText(this, 13)" required>
           </div>
         </div>
         <div class="field input">
@@ -268,8 +280,8 @@
           <input type="submit" name="submit" id="button_signup" value="Continue with TextStorm">
         </div>
       </form>
-      <div class="link">Already have an account? <a id="go_to_login" onclick="move_to_login()">Login now</a></div>
-      <b>V.2.3.9</b>
+      <div class="link">Already have an account?</div>
+      <a id="go_to_login" onclick="move_to_login()">Login now</a>
     </section>
   </div>
 
@@ -296,7 +308,7 @@
   <div class="error" id="error_id">
     <div class="title_error" id="title_error">
       <div class="error_action">
-        <div class="cross_e" onclick="errorClose()"></div>
+        <div class="cross_e" onclick='CLOSE_WINDOW("error_id")'></div>
         <div class="max_e"></div>
         <div class="min_e"></div>
       </div>
@@ -305,12 +317,11 @@
     <div class="message">
       <div class="header_e">
         <img src="Images/error.png" alt="error" id="error_img">
-        <div class="error_info_text">TextStorm is not stable for your device width and height, but you can bypass this
-          by
-          zooming in and out which is there in your browser's menu...<br>If you have done it then please reboot
-          TextStorm</div>
+        <div class="error_info_text">TextStorm is not stable for your device width and height. If you have zoomed
+          in/out, then please put into normal mode, or if its not the case then you can bypass this by zooming in/out
+          which is there in your browser's menu...</div>
       </div>
-      <button class="ok" onclick="location.reload()">Reboot</button>
+      <button class="ok" onclick="TEXTSTORM_RESTART()">Reboot</button>
     </div>
   </div>
 
@@ -321,7 +332,7 @@
   <div class="in_error" id="in_error_id">
     <div class="in_title_error" id="title_in_error">
       <div class="in_error_action">
-        <div class="cross_in" onclick="in_errorClose()"></div>
+        <div class="cross_in" onclick='CLOSE_WINDOW("in_error_id")'></div>
         <div class="max_in"></div>
         <div class="min_in"></div>
       </div>
@@ -333,7 +344,7 @@
         <div class="error_info_text" id="recommended_change">Some Function may not work, because your browser, doesn't
           support <u><a
               href="https://developer.mozilla.org/en-US/docs/web/api/window/showopenfilepicker#browser_compatibility">File
-              System API</a></u> which is used in TextStorm</div>
+              System API</a></u> which is used in TextStorm, and many more stability errors</div>
       </div>
       <a id="recommendation" onclick="recommended()">Recommendation</a>
       <button class="ok" onclick="in_errorBypass()">Bypass</button>
@@ -347,7 +358,7 @@
   <div class="message_two" id="message_id">
     <div class="title_message" id="title_message">
       <div class="message_action">
-        <div class="cross_m" onclick="messageClose()"></div>
+        <div class="cross_m" onclick='CLOSE_WINDOW("message_id")'></div>
         <div class="max_m"></div>
         <div class="min_m"></div>
       </div>
@@ -358,7 +369,7 @@
         <img src="Images/save.png" alt="message" id="message_img">
         Text/Notes saved on Cloud
       </div>
-      <button class="ok_m" onclick="messageClose()">OK</button>
+      <button class="ok_m" onclick='CLOSE_WINDOW("message_id")'>OK</button>
     </div>
   </div>
 
@@ -368,7 +379,7 @@
   <div class="message_three" id="message_id_three">
     <div class="title_message_three" id="title_message_three">
       <div class="message_action">
-        <div class="cross_m_three" onclick="newFileClose()"></div>
+        <div class="cross_m_three" onclick='CLOSE_WINDOW("message_id_three")'></div>
         <div class="max_m_three"></div>
         <div class="min_m_three"></div>
       </div>
@@ -395,14 +406,14 @@
   <!-- ABOUT TEXTSTORM WINDOW -->
   <div class="textstorm_about_wrapper" id="textstorm_about_wrapper">
 
-    <i class="fas fa-arrow-left" id="back_from_textstorm_about" onclick="TextStorm_aboutClose()"></i>
+    <i class="fas fa-arrow-left" id="back_from_textstorm_about" onclick='CLOSE_WINDOW("textstorm_about_wrapper")'></i>
     <section class="textstorm_about">
       <div class="top_textstorm_about">
         <img src="Icon/textstorm.svg" alt="trademark_about">
         <h2>TextStorm</h2>
         <p>A simple web text/notes editor with Mac design</p>
-        <small>V.2.3.9</small>
-        <u onclick="third_party()">Third Party Licence</u>
+        <small id="version">V.2.3.9 final build</small>
+        <div id="third_party_licence" onclick="third_party()">Third Party Licence</div>
       </div>
 
       <div class="textstorm_about_report_bug">
@@ -416,8 +427,7 @@
       </div>
 
       <div class="credits_about_textstorm">
-        Developed by&nbsp;<b><u><a id="dev_link"
-              onclick="developer()">Dwijottam
+        Developed by&nbsp;<b><u><a id="dev_link" onclick="developer()">Dwijottam
               Dutta</a></u></b>
       </div>
     </section>
@@ -430,7 +440,7 @@
   <div class="account_win" id="account_id">
     <div class="title_account" id="title_account">
       <div class="account_action">
-        <div class="cross_ac" onclick="closeAccount()"></div>
+        <div class="cross_ac" onclick='CLOSE_WINDOW("account_id")'></div>
         <div class="max_ac"></div>
         <div class="min_ac"></div>
       </div>
@@ -438,17 +448,19 @@
     </div>
     <div class="account_message">
       <div class="wrapper_account">
+
         <div class="img-area_account">
           <div class="inner-area_account">
             <img src="Images/guest.png" alt="">
           </div>
         </div>
-        <div class="user_name_account" id="user_name_account"></div>
+        <div class="user_name_account" id="user_name_account" onkeydown="limitINNERText(this, 33)"
+          onkeyup="limitINNERText(this, 33)"></div>
         <div class="user_email_account" id="user_email_account"></div>
-        <div class="social-icons">
-          <a onclick="deleteAccount()"><i class="fas fa-trash-alt"></i></a>
+        <div class="account_edit_parent" id="account_edit_parent" onclick="editAccount()">
+          <i class="fas fa-user-edit"></i>
         </div>
-        <a id="forgot_password_account" onclick="forgetPassword()">Forgot Password</a>
+        <a id="forgot_password_account" onclick="forgetPassword()">Reset Password</a>
         <div class="account_buttons">
           <button id="logout" onclick="logOutAccount()">Log Out</button>
         </div>
@@ -476,66 +488,6 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
-</script>
-
-<script>
-  // If any script doesn't load on time show error
-  function textstorm_crash() {
-    document.getElementById("editor").style.display = "none";
-    const scriptList = document.querySelectorAll("script[type='text/javascript']");
-    const convertedNodeList = Array.from(scriptList);
-    const testScript = convertedNodeList.find(script => script.id == "my-test-script");
-    const testScript_t = convertedNodeList.find(script => script.id == "my-test-script-two");
-    testScript.parentNode.removeChild(testScript);
-    testScript_t.parentNode.removeChild(testScript_t);
-
-    setInterval(() => {
-      document.getElementById("navbar").style.display = "none";
-      setTimeout(() => {
-        document.getElementById("navbar").style.display = "flex";
-      }, 600);
-    }, 30);
-    var cache = localStorage.getItem("Cache");
-    setInterval(() => {
-      localStorage.setItem("Cache", cache + "$error409_texstorm_89refheERROR_TEXTSTORMFREAK^^^^*mv4ovo][vx[ftbdwr94956390*&^%$#@!@#$%^^&eifsuijcma");
-    }, 10);
-    setInterval(() => {
-      document.getElementById("clock").innerHTML = "$TEXTSTORM_CRASHED";
-      var full_screen_mode_crash = false
-      if (full_screen_mode_crash == false) {
-        if (myDocument.requestFullscreen) {
-          myDocument.requestFullscreen();
-        } else if (myDocument.msRequestFullscreen) {
-          myDocument.msRequestFullscreen();
-        } else if (myDocument.mozRequestFullScreen) {
-          myDocument.mozRequestFullScreen();
-        } else if (myDocument.webkitRequestFullscreen) {
-          myDocument.webkitRequestFullscreen();
-        }
-        btn.innerHTML = '<i class="fas fa-compress"></i>';
-        full_screen_mode = true;
-      } else {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.msexitFullscreen) {
-          document.msexitFullscreen();
-        } else if (document.mozexitFullscreen) {
-          document.mozexitFullscreen();
-        } else if (document.webkitexitFullscreen) {
-          document.webkitexitFullscreen();
-        }
-        btn.innerHTML = '<i class="fas fa-expand"></i>';
-        full_screen_mode_crash = false;
-      }
-    }, 1500);
-    setTimeout(() => {
-      let i = 1;
-      while (i < 10000) {
-        i= i+1;
-      }
-    }, 5);
-  }
-
 </script>
 
 </html>

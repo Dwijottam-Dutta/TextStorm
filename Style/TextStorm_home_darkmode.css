@@ -26,19 +26,21 @@
 .dark_mode_active_home .navbar .main_ul {
     color: #ddd;
     transition: all 1s ease;
-  }
+}
+
 .dark_mode_active_home .navbar .main_ul .main_li {
     color: #ddd;
-  }
+}
 
 
-  .dark_mode_active_home .navbar .main_ul .file_dropdown{
+.dark_mode_active_home .navbar .main_ul .file_dropdown {
     background: linear-gradient(#1f2127ce, #171920d7);
     transition: all 1s ease;
-  }
-  .dark_mode_active_home .navbar .main_ul .file_dropdown .file_dropdown_li{
+}
+
+.dark_mode_active_home .navbar .main_ul .file_dropdown .file_dropdown_li {
     color: #ddd;
-  }
+}
 
 
 .dark_mode_active_home .dark_mode_btn_home {
@@ -46,17 +48,27 @@
     transition: all 1s ease;
 }
 
-.dark_mode_active_home #user_welcome {
+.dark_mode_active_home #clock {
     color: #ddd;
     transition: all 1s ease;
 }
 
-.dark_mode_active_home #clock {
+.dark_mode_active_home .fullscreen_mode_btn {
     color: #ddd;
     transition: all 1s ease;
-  }
+}
 
-.dark_mode_active_home .fullscreen_mode_btn {
+.dark_mode_active_home #user_welcome_button {
+    color: #ddd;
+    transition: all 1s ease;
+}
+
+.dark_mode_active_home .battery_indicator_button {
+    color: #ddd;
+    transition: all 1s ease;
+}
+
+.dark_mode_active_home #battery_level_indication_int {
     color: #ddd;
     transition: all 1s ease;
 }
@@ -69,7 +81,7 @@
     color: #ddd;
 }
 
-.dark_mode_active_home .error .title_error{
+.dark_mode_active_home .error .title_error {
     background: linear-gradient(#434240, #363638);
     color: #ddd;
 }
@@ -92,6 +104,7 @@
     background: #282835;
     color: #ddd;
 }
+
 .dark_mode_active_home .message_two .title_message {
     background: linear-gradient(#434240, #363638);
     color: #ddd;
@@ -108,6 +121,7 @@
     background: #282835;
     color: #ddd;
 }
+
 .dark_mode_active_home .message_three .title_message_three {
     background: linear-gradient(#434240, #363638);
     color: #ddd;
@@ -125,6 +139,7 @@
     background: #282835;
     color: #ddd;
 }
+
 .dark_mode_active_home .in_error .in_title_error {
     background: linear-gradient(#434240, #363638);
     color: #ddd;
@@ -132,19 +147,22 @@
 
 
 
-.dark_mode_active_home .notification{
-    background:linear-gradient(#434240, #363638);
+.dark_mode_active_home .notification {
+    background: linear-gradient(#434240, #363638);
     border-left: 8px solid rgb(185, 185, 185);
     transition: all 1s ease-in-out;
 }
-.dark_mode_active_home .notification #notification_content .notification_title{
+
+.dark_mode_active_home .notification #notification_content .notification_title {
     color: #ddd;
     transition: all 1s ease-in-out;
 }
+
 .dark_mode_active_home .notification #notification_content .notification_msg {
     color: rgb(207, 207, 207);
     transition: all 1s ease-in-out;
 }
+
 .dark_mode_active_home .notification .close-btn .fas {
     color: rgb(173, 173, 173);
 }
@@ -152,7 +170,7 @@
 
 
 
-.dark_mode_active_home .textstorm_about_wrapper .textstorm_about_report_bug{
+.dark_mode_active_home .textstorm_about_wrapper .textstorm_about_report_bug {
     border: 4px #333 solid;
     transition: all 0.5s ease-in-out;
 }

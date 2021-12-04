@@ -7,14 +7,12 @@
 
 ****************************************************************************/
 
-
-/*Making all window draggable*/
-dragElement(document.getElementById("editor"), document.getElementById("titlebar"), true);
-dragElement(document.getElementById("error_id"), document.getElementById("title_error"), true);
-dragElement(document.getElementById("message_id"), document.getElementById("title_message"), true);
-dragElement(document.getElementById("message_id_three"), document.getElementById("title_message_three"), true);
-dragElement(document.getElementById("in_error_id"), document.getElementById("title_in_error"), true);
-dragElement(document.getElementById("account_id"), document.getElementById("title_account"), true);
+dragElement(document.getElementById("editor"), document.getElementById("titlebar"));
+dragElement(document.getElementById("error_id"), document.getElementById("title_error"));
+dragElement(document.getElementById("message_id"), document.getElementById("title_message"));
+dragElement(document.getElementById("message_id_three"), document.getElementById("title_message_three"));
+dragElement(document.getElementById("in_error_id"), document.getElementById("title_in_error"));
+dragElement(document.getElementById("account_id"), document.getElementById("title_account"));
 
 
 let editor = document.getElementById("editor");
@@ -48,18 +46,6 @@ account_window.addEventListener("click", () => {
 	editor.style.zIndex = "1"
 	error_window.style.zIndex = "1"
 });
-
-// LEGACY LOL
-// function limitText(limitField, limitNum) {
-// 	if (limitField.value.length > limitNum) {
-// 		limitField.value = limitField.value.substring(0, limitNum);
-// 		let errordump = document.getElementById("error_id");
-// 		errordump.style.display = "flex";
-// 	}
-// }
-
-
-
 
 
 
@@ -98,7 +84,9 @@ function winMaximize_Resize() {
 		editor.style.resize = 'none';
 
 		document.getElementById("popup_change").style.width = '140px';
-		document.getElementById("popup_change").innerHTML = "Restore Down"
+		document.getElementById("popup_change").innerHTML = "Restore Down";
+		document.onmouseup = null;
+		document.onmousemove = null;
 		MAXIMIZE_STATUS = true;
 	} else {
 		// Restore Down the Window
@@ -108,14 +96,12 @@ function winMaximize_Resize() {
 		editor.style.top = current_top_of_window;
 		editor.style.resize = 'both';
 		document.getElementById("popup_change").style.width = '100px';
-		document.getElementById("popup_change").innerHTML = "Maximize"
+		document.getElementById("popup_change").innerHTML = "Maximize";
 		MAXIMIZE_STATUS = false;
 	}
 }
 
 // Minimize Function Window Utils
-let minimize_status = false;
-
 function winMinimize() {
 	document.getElementById("editor").style.display = "none";
 	// LEGACY
@@ -160,11 +146,6 @@ function renameFile() {
 }
 
 
-// Open Function Window Utils
-function openwindow() {
-	document.getElementById("editor").style.display = "flex";
-};
-
 // Editing/Viewing Function Window Utils
 let EDIT_MODE = false;
 let text_edit = document.getElementById("apnatext");
@@ -183,6 +164,8 @@ function editableOption() {
 		EDIT_MODE = false;
 	}
 }
+
+
 
 
 
@@ -227,37 +210,10 @@ window.addEventListener('keydown', e => {
 // 2
 // Double Clicking TitleBar event listener 
 document.getElementById("titlebar").ondblclick = function () {
-	let editor = document.getElementById("editor");
-	if (MAXIMIZE_STATUS == false) {
-
-		// Storing last Height, Width, Top, Left
-		current_height_of_window = editor.style.height;
-		current_width_of_window = editor.style.width;
-		current_top_of_window = editor.style.top;
-		current_left_of_window = editor.style.left;
-
-		// Maximize the Window
-		editor.style.width = '100%';
-		editor.style.height = '100%';
-		editor.style.left = '0px';
-		editor.style.top = '0px';
-		editor.style.resize = 'none';
-
-		document.getElementById("popup_change").style.width = '140px';
-		document.getElementById("popup_change").innerHTML = "Restore Down"
-		MAXIMIZE_STATUS = true;
-	} else {
-		// Restore Down the Window
-		editor.style.width = current_width_of_window;
-		editor.style.height = current_height_of_window;
-		editor.style.left = current_left_of_window;
-		editor.style.top = current_top_of_window;
-		editor.style.resize = 'both';
-		document.getElementById("popup_change").style.width = '100px';
-		document.getElementById("popup_change").innerHTML = "Maximize"
-		MAXIMIZE_STATUS = false;
-	}
+	winMaximize_Resize();
 };
+
+
 
 
 
@@ -285,7 +241,7 @@ function openTools() {
 		TOOL_MODE = true;
 	} else if (TOOL_MODE == true) {
 		document.getElementById("toolbar").style.display = "none";
-		document.getElementById("apnatext").style.paddingTop = "1rem";
+		document.getElementById("apnatext").style.paddingTop = "0.8rem";
 		TOOL_MODE = false;
 	}
 };
@@ -317,6 +273,8 @@ FontSizeSeekBar.addEventListener('change', () => {
 
 
 
+
+
 /**************Section*Header****************** 
 
 * Section Name: OTHER WINDOW 
@@ -327,44 +285,14 @@ FontSizeSeekBar.addEventListener('change', () => {
 
 ***********************************************/
 
-function messageClose() {
-	document.getElementById("message_id").style.display = "none";
-};
-
-function newFileClose() {
-	document.getElementById("message_id_three").style.display = "none";
-};
-
-// CLose Function Error Window Utils
-function errorClose() {
-	let errordump = document.getElementById("error_id");
-	errordump.style.display = "none";
-};
-
-// Open TextStorm About Window
-function open_TextStorm_About() {
-	document.getElementById("textstorm_about_wrapper").style.display = "flex";
-};
-
-// Close TextStorm Function About Window
-function TextStorm_aboutClose() {
-	document.getElementById("textstorm_about_wrapper").style.display = "none";
-};
-
 //MAIL TO
 function mailto() {
 	window.open('https://mail.google.com/mail/u/0/?fs=1&to=dwijottamdutta@gmail.com&tf=cm');
 };
 
-function developer(){
+function developer() {
 	window.open('https://dwijottam-dutta.github.io/portfolio/about.html');
 }
-
-// Close Function In_Error Window Utils
-function in_errorClose() {
-	localStorage.setItem("$bypass_id", "not_crack");
-	document.getElementById("in_error_id").style.display = "none";
-};
 
 function in_errorBypass() {
 	localStorage.setItem("$bypass_id", "crack");
@@ -376,7 +304,6 @@ function in_errorBypass() {
 
 //Recommendation
 let recommended_open = false;
-
 function recommended() {
 	if (recommended_open == false) {
 		document.getElementById("recommended_change").innerHTML = "We highly recommend you to use Chrome, Edge, Brave or any Chromium-based Browsers, for running TextStorm with all features and enjoyment..."
@@ -413,6 +340,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 
+
+
 /**************Section*Header****************** 
 
 * Section Name: ACCOUNT WINDOW
@@ -426,37 +355,37 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 //Logout Function
 function logOutAccount() {
 	firebase.auth().signOut();
-	TEXTSTORM_RESTART();
+	location.reload();
 };
 
-//Delete Account Function
-function deleteAccount() {
-	firebase.auth().onAuthStateChanged((user) => {
-		if (user) {
-			let user_details = {
-				ACCOUNT_STATUS: "DELETED"
-			}
+// //Delete Account Function
+// function deleteAccount() {
+// 	firebase.auth().onAuthStateChanged((user) => {
+// 		if (user) {
+// 			let user_details = {
+// 				ACCOUNT_STATUS: "DELETED"
+// 			}
 
-			firebase.database().ref('Users_Data/' + user.uid).update(user_details).catch(error => {
-				console.log(error);
-			});
+// 			firebase.database().ref('Users_Data/' + user.uid).update(user_details).catch(error => {
+// 				console.log(error);
+// 			});
 
 
 
-		} else {
-			console.warn("Something went wrong !")
-		}
-	});
-	const user = firebase.auth().currentUser;
+// 		} else {
+// 			console.warn("Something went wrong !")
+// 		}
+// 	});
+// 	const user = firebase.auth().currentUser;
 
-	user.delete().then(() => {
-		console.log("DONE DELETE");
-	}).catch((error) => {
-		console.log(error);
-	});
+// 	user.delete().then(() => {
+// 		console.log("DONE DELETE");
+// 	}).catch((error) => {
+// 		console.log(error);
+// 	});
 
-	TEXTSTORM_RESTART();
-}
+// 	location.reload();
+// }
 
 // Forget Password Function
 function forgetPassword() {
@@ -464,8 +393,7 @@ function forgetPassword() {
 		if (user) {
 			firebase.auth().sendPasswordResetEmail(user.email)
 				.then(() => {
-					alert("Reset link sent to your email, you have to again sign in with your new password after you change the password");
-					logOutAccount();
+					TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Account", "Reset link sent to your email, you have to again sign in with your new password after you change the password...", 10000, "success");
 					location.reload();
 				})
 				.catch((error) => {
@@ -475,15 +403,49 @@ function forgetPassword() {
 	});
 }
 
-// Open Account Window
-function openAccount() {
-	document.getElementById("account_id").style.zIndex = "3";
-	document.getElementById("account_id").style.display = "flex";
+// Limiting Name for User Account while editing
+function limitINNERText(id, limitNum) {
+	if (id.innerHTML.length > limitNum) {
+		id.innerHTML = "";
+	}
 }
 
-// Close Account Window
-function closeAccount() {
-	document.getElementById("account_id").style.display = "none";
+let editAccount_mode = false;
+function editAccount() {
+	if (editAccount_mode == false) {
+		document.getElementById("user_name_account").contentEditable = true;
+		document.getElementById("user_name_account").style.borderBottom = "2px #333 solid";
+		document.getElementById("account_edit_parent").innerHTML = `<i class="fas fa-check"></i>`;
+		editAccount_mode = true;
+	}
+	else {
+		if (window.navigator.onLine) {
+			firebase.auth().onAuthStateChanged((user) => {
+				if (user) {
+					let currentName = document.getElementById("user_name_account").innerHTML;
+					let user_name_details = {
+						User: currentName
+					};
+					firebase
+						.database()
+						.ref("Users_Data/" + user.uid)
+						.update(user_name_details)
+						.catch((error) => {
+							TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Account", error, 10000, "error");
+						});
+
+					TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Account", `Your Account name has been changed to ${currentName}`, 10000, "success");
+				}
+			});
+			document.getElementById("user_name_account").contentEditable = false;
+			document.getElementById("user_name_account").style.borderBottom = "0px #333 solid";
+			document.getElementById("account_edit_parent").innerHTML = `<i class="fas fa-user-edit"></i>`;
+			editAccount_mode = false;
+		} else {
+			TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Account", "Please have a stable connection for editing your account...", 10000, "error");
+		}
+
+	}
 }
 
 
@@ -502,12 +464,21 @@ dark_mode_btn.addEventListener("click", function () {
 	document.getElementById("editor").classList.toggle("dark_mode_active");
 	if (dark_mode_status == false) {
 		dark_mode_btn.innerHTML = '<i class="far fa-sun"></i>';
+		document.getElementById("body_editor").style.background = `rgba(38, 38, 38, 1)`;
 		dark_mode_status = true;
 		localStorage.setItem("TextStorm_Editor_Mode", "$dark");
 	} else {
-		dark_mode_btn.innerHTML =
-			'<i class="far fa-moon"></i>';
+		dark_mode_btn.innerHTML = '<i class="far fa-moon"></i>';
+		document.getElementById("body_editor").style.background = `rgba(248, 248, 248, 1)`;
 		dark_mode_status = false;
 		localStorage.setItem("TextStorm_Editor_Mode", "$light");
 	}
 });
+
+function transparent_BG_editor() {
+	if (dark_mode_status == false) {
+		document.getElementById("body_editor").style.background = `rgba(248, 248, 248, 0.8)`;
+	} else {
+		document.getElementById("body_editor").style.background = `rgba(38, 38, 38, 0.8)`;
+	}
+}

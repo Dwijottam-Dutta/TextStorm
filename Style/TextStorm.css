@@ -162,7 +162,7 @@ header {
   display: flex;
   align-items: center;
   color: #333;
-  width: 40%;
+  width: 200px;
   height: 100%;
   transition: all 1s ease;
 }
@@ -250,22 +250,24 @@ header {
 .navbar .productivity_bar{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: end;
   align-items: flex-end;
-  width: 60%;
+  width: 100%;
   height: 100%;
 }
 
 .utils {
   display: flex;
-  justify-content: end;
-  align-items: center;
   color: white;
   height: 100%;
   /* padding: 12px 75px; */
 }
 
 .user_details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   margin-right: 5px;
   text-overflow: ellipsis;
   text-align: right;
@@ -273,37 +275,76 @@ header {
   overflow: hidden;
 }
 
-#user_welcome {
-  display: flex;
-  text-overflow: ellipsis;
-  text-align: right;
-  white-space: nowrap;
-  justify-content: end;
-  overflow: none;
-  width: 10em;
-  font-family: "Ubuntu", sans-serif;
-  font-size: 15px;
-  color: #333;
-  transition: all 1s ease;
-}
-
-#clock {
-  margin-right: 10px;
-  margin-top: -2px;
-  color: #333;
-  font-size: 1.1em;
-  font-family: 'Didact Gothic', sans-serif;
-}
-
-.dark_mode_btn_home {
-  padding-left: 10px;
-  padding-right: 10px;
+#user_welcome_button{
+  font-size: 20px;
+  padding-left: 7px;
+  padding-right: 7px;
   height: 100%;
-  margin-right: 3px;
   background: transparent;
   border: none;
   cursor: url("../Cursor/pointinghand.svg"), pointer;
-  color: #000;
+  color: #333;
+  transition: all 0.5s ease;
+  pointer-events: auto;
+}
+
+#user_welcome_button:hover {
+  background: linear-gradient(#5a84f6, #1b62f7);
+  transition: all 0.3s ease;
+}
+
+#clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 95%;
+  margin-right: 3px;
+  color: #333;
+  font-size: 1em;
+  font-family: 'Work Sans', sans-serif; 
+}
+
+.battery_indicator_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 4px;
+  padding-right: 4px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  cursor: url("../Cursor/pointinghand.svg"), pointer;
+  color: #333;
+  transition: all 0.5s ease;
+  pointer-events: auto;
+}
+
+#battery_level_indication_int{
+  padding-left: 4px;
+  padding-right: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #333;
+  font-size: 13px;
+  font-family: 'Work Sans', sans-serif; 
+  height: 95%;
+  background: transparent;
+  border: none;
+  cursor: url("../Cursor/pointinghand.svg"), pointer;
+}
+
+.dark_mode_btn_home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  cursor: url("../Cursor/pointinghand.svg"), pointer;
+  color: #333;
   transition: all 0.5s ease;
   pointer-events: auto;
 }
@@ -314,6 +355,9 @@ header {
 }
 
 .fullscreen_mode_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding-left: 10px;
   padding-right: 10px;
   margin-right: 10px;
@@ -321,7 +365,7 @@ header {
   background: transparent;
   border: none;
   cursor: url("../Cursor/pointinghand.svg"), pointer;
-  color: #000;
+  color: #333;
   transition: all 0.5s ease;
   pointer-events: auto;
 }

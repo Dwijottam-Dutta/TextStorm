@@ -8,12 +8,6 @@
 ****************************************************************************/
 
 // getting few global variables
-let myDocument = document.documentElement;
-let UserData = localStorage.getItem("User's Data");
-let FileData = localStorage.getItem("File Name");
-let edit_button = document.getElementById("editbutton");
-let user_welcome = document.getElementById("user_welcome");
-let unlimited = document.getElementById("apnatext");
 let file_menu_parent = document.getElementById("file_menu_parent");
 let file_dropdown = document.getElementById("file_dropdown");
 
@@ -21,90 +15,84 @@ let file_dropdown = document.getElementById("file_dropdown");
 // TEXTSTORM $ROOT FUNCTIONS FROM NAVBAR TO OPTIMIZATIONS
 
 
-
 // Close Function
 function TEXTSTORM_CLOSE() {
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-            let filecontent = document.getElementById("fileid").innerHTML;
-            let content = document.getElementById("apnatext").value;
-            let user_details_updating = {
-                Data: content,
-                File_Data: filecontent
-            };
-            firebase
-                .database()
-                .ref("Users_Data/" + user.uid)
-                .update(user_details_updating)
-                .catch((error) => {
-                    console.log("Something went wrong");
-                });
-        }
-    });
-    document.getElementById("editor").style.display = "none";
-    setTimeout(() => {
-        document.getElementById("STARTUP_SCREEN").style.display = "block";
+    if (window.navigator.onLine) {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                let filecontent = document.getElementById("fileid").innerHTML;
+                let content = document.getElementById("apnatext").value;
+                let user_details_updating = {
+                    Data: content,
+                    File_Data: filecontent
+                };
+                firebase
+                    .database()
+                    .ref("Users_Data/" + user.uid)
+                    .update(user_details_updating)
+                    .catch((error) => {
+                        console.log("Something went wrong");
+                    });
+            }
+        });
         setTimeout(() => {
-            document.getElementById("STARTUP_SCREEN").style.background = "rgb(17, 17, 17)";
+            document.getElementById("STARTUP_SCREEN").style.display = "block";
             setTimeout(() => {
-                document.getElementById("welcome_loader").style.visibility = "visible";
-                document.getElementById("welcome_loader").innerHTML = "Shutting Down";
+                document.getElementById("STARTUP_SCREEN").style.background = "rgb(17, 17, 17)";
                 setTimeout(() => {
-                    try{
-                        window.close();
-                    }
-                    catch{
-                        document.getElementById("STARTUP_SCREEN").style.display = "none";
-                        TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Shutdown Error", "You have to shutdown, TextStorm manually as this is only the tab you have opened in your browser...\nBrowser doesn't give permission to close whole window", 20000, "error");
-                    }
-                }, 7000);
-            }, 3000);
-        }, 200);
-    }, 1000);
-}
+                    document.getElementById("welcome_loader").style.visibility = "visible";
+                    document.getElementById("welcome_loader").innerHTML = "Shutting Down";
+                    setTimeout(() => {
+                            window.close();
+                    }, 7000);
+                }, 3000);
+            }, 200);
+        }, 1000);
+    }
+    else {
+        TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Shutdown", "Can't shutdown securely by saving preferences, please have a stable connection", 10000, "error");
+    }
+};
 
 
 // Restart Function
 function TEXTSTORM_RESTART() {
-    firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-            let filecontent = document.getElementById("fileid").innerHTML;
-            let content = document.getElementById("apnatext").value;
-            let user_details_updating = {
-                Data: content,
-                File_Data: filecontent
-            };
-            firebase
-                .database()
-                .ref("Users_Data/" + user.uid)
-                .update(user_details_updating)
-                .catch((error) => {
-                    console.log("Something went wrong");
-                });
-        }
-    });
-    document.getElementById("editor").style.display = "none";
-    setTimeout(() => {
-        document.getElementById("STARTUP_SCREEN").style.display = "block";
+    if (window.navigator.onLine) {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                let filecontent = document.getElementById("fileid").innerHTML;
+                let content = document.getElementById("apnatext").value;
+                let user_details_updating = {
+                    Data: content,
+                    File_Data: filecontent
+                };
+                firebase
+                    .database()
+                    .ref("Users_Data/" + user.uid)
+                    .update(user_details_updating)
+                    .catch((error) => {
+                        console.log("Something went wrong");
+                    });
+            }
+        });
         setTimeout(() => {
-            document.getElementById("STARTUP_SCREEN").style.background = "rgb(17, 17, 17)";
+            document.getElementById("STARTUP_SCREEN").style.display = "block";
             setTimeout(() => {
-                document.getElementById("welcome_loader").style.visibility = "visible";
-                document.getElementById("welcome_loader").innerHTML = "Auto Saving your Work";
+                document.getElementById("STARTUP_SCREEN").style.background = "rgb(17, 17, 17)";
                 setTimeout(() => {
-                    document.getElementById("welcome_loader").innerHTML = "Saving preferences";
+                    document.getElementById("welcome_loader").style.visibility = "visible";
+                    document.getElementById("welcome_loader").innerHTML = "Restarting";
                     setTimeout(() => {
-                        document.getElementById("welcome_loader").innerHTML = "Rebooting";
-                        setTimeout(() => {
-                            location.reload();
-                        }, 5000);
-                    }, 3500);
-                }, 4000);
-            }, 3000);
-        }, 200);
-    }, 1000);
+                        location.reload();
+                    }, 7000);
+                }, 3000);
+            }, 200);
+        }, 1000);
+    }
+    else {
+        TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Reboot", "Can't restart, please have a stable connection while restarting TextStorm...", 10000, "error")
+    }
 }
-
 
 
 
@@ -121,8 +109,7 @@ file_menu_parent.addEventListener("click", () => {
 });
 
 function newFile() {
-    document.getElementById("message_id_three").style.zIndex = "3"
-    document.getElementById("message_id_three").style.display = "flex";
+    OPEN_WINDOW("message_id_three");
 }
 
 function newFile_after_Download() {
@@ -142,8 +129,8 @@ function newFile_after_Download() {
                 });
         }
     });
-    newFileClose();
-    if (navigator.onLine) {
+    CLOSE_WINDOW("message_id_three");
+    if (window.navigator.onLine) {
         TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm File System", "New File has been created successfully...", 10000, "success");
     } else {
         TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm File System", "Can't create a new file on Cloud... Please make sure that you have a stable internet connection for saving your file", 20000, "error")
@@ -166,8 +153,8 @@ function newFile_no_Download() {
                 });
         }
     });
-    newFileClose();
-    if (navigator.onLine) {
+    CLOSE_WINDOW("message_id_three");
+    if (window.navigator.onLine) {
         TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm File System", "New File has been created successfully...", 10000, "success");
     } else {
         TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm File System", "Can't create a new file on Cloud... Please make sure that you have a stable internet connection for saving your file", 20000, "error")
@@ -182,6 +169,7 @@ function downloadText() {
         type: "text/plain;charset=utf-8"
     });
     saveAs(blob, filecontent);
+    TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm File System", "Downloaded your file in your local system, it is saved on your Desktop, or the directory you have chosen in the prompt", 20000, "success");
 };
 
 function openFile() {
@@ -206,13 +194,11 @@ function openFile() {
         document.getElementById("apnatext").value = fileText;
         document.getElementById("fileid").innerHTML = "Untitled.txt";
     }
-    getTheFile()
+    getTheFile();
 };
 
 // File Menu Save Button Function
 function saveText() {
-    document.getElementById("message_id").style.zIndex = "3"
-
     function saveText_process() {
         return new Promise(function (resolve) {
             firebase.auth().onAuthStateChanged((user) => {
@@ -238,8 +224,8 @@ function saveText() {
 
     function saveText_done() {
         return new Promise(function (resolve) {
-            if (navigator.onLine) {
-                document.getElementById("message_id").style.display = "flex";
+            if (window.navigator.onLine) {
+                OPEN_WINDOW("message_id");
             } else {
                 TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm File System", "Can't Save File on Cloud... Please make sure that you have a stable internet connection for saving your file", 20000, "error")
             }

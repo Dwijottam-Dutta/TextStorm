@@ -50,8 +50,17 @@
     font-size: 25px;
 }
 .top_textstorm_about small{
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 600;
     padding-top: 5px;
-    font-size: 13px;
+    font-size: 15px;
+}
+#third_party_licence{
+    margin-top: 5px;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    text-decoration: underline;
+    cursor: url("../Cursor/pointinghand.svg"), pointer;
 }
 
 

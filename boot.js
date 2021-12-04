@@ -41,7 +41,6 @@ function TEXTSTORM_STARTUP() {
             document.getElementById("STARTUP_SCREEN_PARENT").style.display = "flex";
             setTimeout(() => {
                 document.getElementById("welcome_loader").style.visibility = "visible";
-                // Checking for devices api for application stability
                 resolve();
             }, 1500);
         }, 1000);
@@ -103,7 +102,6 @@ function START() {
         firebase.auth().onAuthStateChanged((user) => {
             if (!user) {
                 document.getElementById("hide_while_other").style.visibility = "hidden";
-                document.getElementById("user_welcome").style.display = "none";
                 document.getElementById("STARTUP_SCREEN").style.display = "none";
                 document.getElementById("editor").style.display = "none";
                 document.getElementById("signup_wrapper").style.display = "block"; // SignUp Window would appear
@@ -137,8 +135,6 @@ function START() {
                     user_first_name = split_username[0]; // Getting first name by removing last name  
                     localStorage.setItem("TextStorm_User", user_first_name);
 
-                    document.getElementById("user_welcome").style.display = "flex";
-                    user_welcome.innerHTML = user_first_name; //Changing user name
                     document.getElementById("fileid").innerHTML = user_filename; //Changing file name
                     document.title = "TextStorm | " + user_filename; //Changing website tab title
                     document.getElementById("apnatext").value = user_data; //Changing text/notes data
@@ -170,7 +166,7 @@ function START() {
                         }
                     });
 
-                    document.getElementById("editor").style.display = "flex";
+                    OPEN_WINDOW("editor");
                     resolve_start();
                 });
             }
@@ -183,30 +179,24 @@ function STABILITY() {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 if (window.File && window.Blob && window.showOpenFilePicker) {
-
+                    console.log("TEXTSTORM IS STABLE IN YOUR BROWSER AS YOU ARE USING CHROME");
                 } else {
                     const bypass_id = localStorage.getItem("$bypass_id");
                     if (bypass_id != "crack" || bypass_id == null) {
                         error_audio.play();
-                        console.log("Unstable");
-                        document.getElementById("in_error_id").style.display = "block";
+                        OPEN_WINDOW("in_error_id");
+                        console.log("TEXTSTORM IS LITTLE UNSTABLE IN YOUR BROWSER AS YOU ARE USING FIREFOX/SAFARI/INTERNET EXPLORER");
                     }
                 }
 
                 setInterval(() => {
-                    if (document.body.clientWidth < 710) {
-                        document.getElementById("error_id").style.zIndex = "3"
-                        document.getElementById("error_id").style.display = "block";
+                    if (document.body.clientWidth < 620 || document.body.clientHeight < 510) {
+                        OPEN_WINDOW("error_id");
+                        document.getElementById("navbar").style.display = "none";
                     } else {
-                        document.getElementById("error_id").style.display = "none";
+                        CLOSE_WINDOW("error_id");
+                        document.getElementById("navbar").style.display = "flex";
                     }
-                    if (document.body.clientHeight < 500) {
-                        document.getElementById("error_id").style.zIndex = "3"
-                        document.getElementById("error_id").style.display = "block";
-                    } else {
-                        document.getElementById("error_id").style.display = "none";
-                    }
-
                 }, 1000);
             }
         });
@@ -250,17 +240,7 @@ function STARTUP_NOTIFICATION() {
     });
 }
 
-
-
 TEXTSTORM_STARTUP().then(SETTING).then(START).then(STABILITY).then(STARTUP_NOTIFICATION);
-
-try {
-    var cache = localStorage.getItem("Cache");
-    localStorage.setItem("Cache", cache + cache + cache + cache + cache + cache + cache + cache + cache + cache + cache + cache + cache + cache + cache + cache + cache + cache + cache + cache + cache + cache + cache + "CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE_CACHE");
-} catch (error) {
-    localStorage.removeItem("Cache")
-}
-
 
 
 // Confetti Functions initialize !
@@ -277,10 +257,29 @@ const stopit = () => {
 };
 
 
+// Keeping Limit Function in boot as it would be required while boot
+function limitText(id, limitNum) {
+    if (id.value.length > limitNum) {
+        id.value = id.value.substring(0, limitNum);
+    }
+}
+
+// Window Close Function
+function CLOSE_WINDOW(id) {
+    document.getElementById(id).style.display = "none";
+}
+
+// Window Open Function
+function OPEN_WINDOW(id) {
+    document.getElementById(id).style.zIndex = "3"
+    document.getElementById(id).style.display = "flex";
+}
+
+
 
 // CORE FUNCTIONS
-
 // Navigation Bar FullScreen Button Function
+let myDocument = document.documentElement;
 let full_screen_mode = false;
 fullscreen_mode_btn.addEventListener("click", () => {
     if (full_screen_mode == false) {
@@ -331,10 +330,18 @@ dark_mode_btn_home.addEventListener("click", function () {
 // Time Function
 setInterval(showTime, 1000);
 
+if (navigator.getBattery) {
+    setInterval(showBattery, 1000);
+}
+else {
+    document.getElementById("battery_indicator_button").style.display = "none";
+    document.getElementById("battery_level_indication_int").style.display = "none";
+}
+
 function showTime() {
-    let time = new Date();
-    let hour = time.getHours();
-    let min = time.getMinutes();
+    let var_date = new Date();
+    let hour = var_date.getHours();
+    let min = var_date.getMinutes();
     am_pm = "AM";
 
     if (hour > 12) {
@@ -346,6 +353,17 @@ function showTime() {
         am_pm = "AM";
     }
 
+    const weekday = new Array(7);
+    weekday[0] = "Sun";
+    weekday[1] = "Mon";
+    weekday[2] = "Tue";
+    weekday[3] = "Wed";
+    weekday[4] = "Thu";
+    weekday[5] = "Fri";
+    weekday[6] = "Sat";
+
+    let current_day = weekday[var_date.getDay()];
+
     hour = hour < 10 ? "0" + hour : hour;
     min = min < 10 ? "0" + min : min;
 
@@ -353,6 +371,38 @@ function showTime() {
         min + " " + am_pm;
 
     document.getElementById("clock")
-        .innerHTML = currentTime;
+        .innerHTML = `<b>` + current_day + `</b>` + "&nbsp;" + currentTime;
 }
 showTime();
+
+function showBattery() {
+    navigator.getBattery()
+        .then(function (battery) {
+
+            // Icon Battery Indicator Conditions
+            let battery_ico = document.getElementById("battery_indicator_button");
+            if (battery.level > 0.94) {
+                battery_ico.innerHTML = `<i class="fas fa-battery-full"></i>`;
+            }
+            else if (battery.level < 0.96 && battery.level > 0.69) {
+                battery_ico.innerHTML = `<i class="fas fa-battery-three-quarters"></i>`;
+            }
+            else if (battery.level < 0.71 && battery.level > 0.29) {
+                battery_ico.innerHTML = `<i class="fas fa-battery-half"></i>`;
+            }
+            else if (battery.level < 0.31 && battery.level > 0.09) {
+                battery_ico.innerHTML = `<i class="fas fa-battery-quarter"></i>`;
+            }
+            else if (battery.level < 0.11) {
+                battery_ico.innerHTML = `<i class="fas fa-battery-empty"></i>`;
+            }
+
+            // Numerical Battery Indicator Conditions
+            if (battery.level == 1) {
+                document.getElementById("battery_level_indication_int").innerHTML = "100%";
+            } else {
+                let battery_exclude_decimal = battery.level.toString().replace("0.", "")
+                document.getElementById("battery_level_indication_int").innerHTML = `${battery_exclude_decimal}%`;
+            }
+        });
+}
