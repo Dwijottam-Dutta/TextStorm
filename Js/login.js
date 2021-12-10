@@ -71,9 +71,10 @@ login_form.onsubmit = (e) => {
             TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Login", error.message, 10000, "error");
         });
 
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onIdTokenChanged((user) => {
         if (user) {
             document.getElementById("hide_while_other").style.visibility = "visible";
+            document.getElementById("user_welcome_button").style.visibility = "visible";
             document.getElementById("login_wrapper").style.display = "none";
             document.getElementById("email_login").value = "";
             document.getElementById("password_login").value = "";

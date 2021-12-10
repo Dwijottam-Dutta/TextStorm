@@ -99,14 +99,14 @@ var user_first_name;
 
 function START() {
     return new Promise(function (resolve_start) {
-        firebase.auth().onAuthStateChanged((user) => {
+        firebase.auth().onIdTokenChanged((user) => {
             if (!user) {
                 document.getElementById("hide_while_other").style.visibility = "hidden";
+                document.getElementById("user_welcome_button").style.visibility = "hidden";
                 document.getElementById("STARTUP_SCREEN").style.display = "none";
                 document.getElementById("editor").style.display = "none";
                 document.getElementById("signup_wrapper").style.display = "block"; // SignUp Window would appear
                 localStorage.setItem("TextStorm_User", "Guest");
-                resolve_start();
             } else {
                 // Get the head tag
                 var head_ID = document.getElementsByTagName("head")[0];
@@ -166,7 +166,7 @@ function START() {
                         }
                     });
 
-                    OPEN_WINDOW("editor");
+                    document.getElementById("editor").style.display = "flex";
                     resolve_start();
                 });
             }
@@ -176,7 +176,7 @@ function START() {
 
 function STABILITY() {
     return new Promise(function (resolve) {
-        firebase.auth().onAuthStateChanged((user) => {
+        firebase.auth().onIdTokenChanged((user) => {
             if (user) {
                 if (window.File && window.Blob && window.showOpenFilePicker) {
                     console.log("TEXTSTORM IS STABLE IN YOUR BROWSER AS YOU ARE USING CHROME");
@@ -206,7 +206,7 @@ function STABILITY() {
 
 function STARTUP_NOTIFICATION() {
     return new Promise(function (resolve) {
-        firebase.auth().onAuthStateChanged((user) => {
+        firebase.auth().onIdTokenChanged((user) => {
             if (user) {
                 let body_id;
                 let body_id_final;

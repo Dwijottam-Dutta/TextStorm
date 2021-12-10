@@ -24,7 +24,7 @@ let password = document.getElementById("password");
 // document.getElementById("wrapper").style.display = "none";
 
 // function StartUp() {
-//   firebase.auth().onAuthStateChanged((user) => {
+//   firebase.auth().onIdTokenChanged((user) => {
 //     if (user) {
 //       setTimeout(function () {
 //         location.replace("TextStorm.html");
@@ -127,7 +127,7 @@ signup_form.onsubmit = (e) => {
       TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Setup", error.message, 10000, "error");
     });
 
-  firebase.auth().onAuthStateChanged((user) => {
+  firebase.auth().onIdTokenChanged((user) => {
     if (user) {
       let user_details = {
         User: fname + " " + lname,
@@ -142,6 +142,7 @@ signup_form.onsubmit = (e) => {
       });
 
       document.getElementById("hide_while_other").style.visibility = "visible";
+      document.getElementById("user_welcome_button").style.visibility = "visible";
       document.getElementById("signup_wrapper").style.display = "none";
 
     }

@@ -12,13 +12,10 @@ let file_menu_parent = document.getElementById("file_menu_parent");
 let file_dropdown = document.getElementById("file_dropdown");
 
 
-// TEXTSTORM $ROOT FUNCTIONS FROM NAVBAR TO OPTIMIZATIONS
-
-
 // Close Function
 function TEXTSTORM_CLOSE() {
     if (window.navigator.onLine) {
-        firebase.auth().onAuthStateChanged((user) => {
+        firebase.auth().onIdTokenChanged((user) => {
             if (user) {
                 let filecontent = document.getElementById("fileid").innerHTML;
                 let content = document.getElementById("apnatext").value;
@@ -43,7 +40,7 @@ function TEXTSTORM_CLOSE() {
                     document.getElementById("welcome_loader").style.visibility = "visible";
                     document.getElementById("welcome_loader").innerHTML = "Shutting Down";
                     setTimeout(() => {
-                            window.close();
+                        window.close();
                     }, 7000);
                 }, 3000);
             }, 200);
@@ -58,7 +55,7 @@ function TEXTSTORM_CLOSE() {
 // Restart Function
 function TEXTSTORM_RESTART() {
     if (window.navigator.onLine) {
-        firebase.auth().onAuthStateChanged((user) => {
+        firebase.auth().onIdTokenChanged((user) => {
             if (user) {
                 let filecontent = document.getElementById("fileid").innerHTML;
                 let content = document.getElementById("apnatext").value;
@@ -106,8 +103,6 @@ function OPEN_WINDOW(id) {
     document.getElementById(id).style.display = "flex";
 }
 
-
-
 // Event for checking and doing the Worker; That File Dropdown is on/off or not
 let file_dropdown_on = false;
 file_menu_parent.addEventListener("click", () => {
@@ -125,7 +120,7 @@ function newFile() {
 }
 
 function newFile_after_Download() {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onIdTokenChanged((user) => {
         if (user) {
             downloadText();
             let user_details_updating = {
@@ -137,7 +132,7 @@ function newFile_after_Download() {
                 .ref("Users_Data/" + user.uid)
                 .update(user_details_updating)
                 .catch((error) => {
-                    alert(error);
+                    TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm File System", error, 10000, "error");
                 });
         }
     });
@@ -150,7 +145,7 @@ function newFile_after_Download() {
 };
 
 function newFile_no_Download() {
-    firebase.auth().onAuthStateChanged((user) => {
+    firebase.auth().onIdTokenChanged((user) => {
         if (user) {
             let user_details_updating = {
                 Data: "Write your text here...",
@@ -161,27 +156,31 @@ function newFile_no_Download() {
                 .ref("Users_Data/" + user.uid)
                 .update(user_details_updating)
                 .catch((error) => {
-                    alert(error);
+                    TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm File System", error, 10000, "error");
                 });
+            CLOSE_WINDOW("message_id_three");
+            if (window.navigator.onLine) {
+                TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm File System", "New File has been created successfully...", 10000, "success");
+            } else {
+                TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm File System", "Can't create a new file on Cloud... Please make sure that you have a stable internet connection for saving your file", 20000, "error")
+            }
         }
     });
-    CLOSE_WINDOW("message_id_three");
-    if (window.navigator.onLine) {
-        TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm File System", "New File has been created successfully...", 10000, "success");
-    } else {
-        TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm File System", "Can't create a new file on Cloud... Please make sure that you have a stable internet connection for saving your file", 20000, "error")
-    }
 };
 
 
 function downloadText() {
-    let filecontent = document.getElementById("fileid").innerHTML;
-    let content = document.getElementById("apnatext").value;
-    const blob = new Blob([content], {
-        type: "text/plain;charset=utf-8"
+    firebase.auth().onIdTokenChanged((user) => {
+        if (user) {
+            let filecontent = document.getElementById("fileid").innerHTML;
+            let content = document.getElementById("apnatext").value;
+            const blob = new Blob([content], {
+                type: "text/plain;charset=utf-8"
+            });
+            saveAs(blob, filecontent);
+            TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm File System", "Downloaded your file in your local system, it is saved on your Desktop, or the directory you have chosen in the prompt", 20000, "success");
+        }
     });
-    saveAs(blob, filecontent);
-    TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm File System", "Downloaded your file in your local system, it is saved on your Desktop, or the directory you have chosen in the prompt", 20000, "success");
 };
 
 function openFile() {
@@ -213,7 +212,7 @@ function openFile() {
 function saveText() {
     function saveText_process() {
         return new Promise(function (resolve) {
-            firebase.auth().onAuthStateChanged((user) => {
+            firebase.auth().onIdTokenChanged((user) => {
                 if (user) {
                     let filecontent = document.getElementById("fileid").innerHTML;
                     let content = document.getElementById("apnatext").value;

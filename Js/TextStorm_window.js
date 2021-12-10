@@ -360,7 +360,7 @@ function logOutAccount() {
 
 // //Delete Account Function
 // function deleteAccount() {
-// 	firebase.auth().onAuthStateChanged((user) => {
+// 	firebase.auth().onIdTokenChanged((user) => {
 // 		if (user) {
 // 			let user_details = {
 // 				ACCOUNT_STATUS: "DELETED"
@@ -389,7 +389,7 @@ function logOutAccount() {
 
 // Forget Password Function
 function forgetPassword() {
-	firebase.auth().onAuthStateChanged((user) => {
+	firebase.auth().onIdTokenChanged((user) => {
 		if (user) {
 			firebase.auth().sendPasswordResetEmail(user.email)
 				.then(() => {
@@ -397,7 +397,7 @@ function forgetPassword() {
 					location.reload();
 				})
 				.catch((error) => {
-					document.getElementById("error").innerHTML = error.message
+					TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Account", error, 10000, "error");
 				});
 		}
 	});
@@ -420,7 +420,7 @@ function editAccount() {
 	}
 	else {
 		if (window.navigator.onLine) {
-			firebase.auth().onAuthStateChanged((user) => {
+			firebase.auth().onIdTokenChanged((user) => {
 				if (user) {
 					let currentName = document.getElementById("user_name_account").innerHTML;
 					let user_name_details = {
