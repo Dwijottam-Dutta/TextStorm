@@ -1,7 +1,6 @@
 .dark_mode_active_home {
     background: #1c1c25;
     background-image: url("../Background/background_night.jpg");
-    /* background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), url("../Background/background.jpg"); */
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;

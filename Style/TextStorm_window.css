@@ -13,6 +13,8 @@
     max-height: 100%;
     position: absolute;
     animation: MoveUp 3s ease-in-out;
+    transition: transform 1s cubic-bezier(.31,1.21,.64,1.02);
+    z-index: 1;
     resize: both;
     scrollbar-color: rgb(202, 202, 202), #f3f3f3;
     scrollbar-width: 13px;
@@ -49,11 +51,10 @@
     position: initial;
     border-width: 28px;
     border-style: solid;
-    border-color: transparent #333 #333 transparent;
+    border-color: transparent transparent transparent transparent;
     border-bottom-right-radius: 3px;
-    box-shadow: 9px 8px 15px rgba(0, 0, 0, 0.199);
+    box-shadow: 9px 8px 15px transparent;
     cursor: url("../Cursor/pointinghand.svg"), pointer;
-    /* outline: 2px solid #333; */
 }
 
 
@@ -400,7 +401,6 @@
     flex-direction: column;
     background: rgba(248, 248, 248, 1);
     overflow-y: hidden;
-    z-index: 0;
     height: 100%;
     width: 100%;
     transition: all 1s ease-in-out;

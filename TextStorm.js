@@ -1,16 +1,18 @@
 /***************************File*Header********************************** 
  
-* File Name: boot.js
+* File Name: TextStorm.js
 *
-* JS Description: This JS File will boot TextStorm and init All the Things...
+* JS Description: This JS File is the major JS File, which contains boot
+*                 background processes, major functions, etc...
 *
-* THE MOST IMPORTANT FILE FOR TEXTSTORM FOR STARTUP
+* *** IMPORTANT: THE MOST PRECIOUS FILE FOR TEXTSTORM
  
 ****************************************************************************/
 
 console.log("Welcome to TextStorm");
+const VERSION = "v.2.4";
 
-// GLOBAL VARIABLES
+
 
 // Global Modes
 let dark_mode_status_home = false; // Keep Dark Mode Off in Desktop (Default)
@@ -32,7 +34,6 @@ if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
     location.replace("about/about.html");
 }
 
-//$STARTUP
 function TEXTSTORM_STARTUP() {
     document.getElementById("editor").style.display = "none"; // CSS with JS
     return new Promise(function (resolve) {
@@ -108,13 +109,11 @@ function START() {
                 document.getElementById("signup_wrapper").style.display = "block"; // SignUp Window would appear
                 localStorage.setItem("TextStorm_User", "Guest");
             } else {
-                // Get the head tag
-                var head_ID = document.getElementsByTagName("head")[0];
-                // Create script element       
+                var head_ID = document.getElementsByTagName("head")[0];      
                 var script_element = document.createElement('script');
                 script_element.type = 'text/javascript';
                 script_element.id = 'my-test-script';
-                script_element.src = 'Js/TextStorm.js';
+                script_element.src = 'Js/TextStorm_main.js';
 
                 // Create script element       
                 var script_element_two = document.createElement('script');
@@ -240,6 +239,7 @@ function STARTUP_NOTIFICATION() {
     });
 }
 
+// $BOOT
 TEXTSTORM_STARTUP().then(SETTING).then(START).then(STABILITY).then(STARTUP_NOTIFICATION);
 
 
@@ -266,7 +266,89 @@ function limitText(id, limitNum) {
 
 
 
-// CORE FUNCTIONS
+// $ROOT FUNCTIONS
+// Close Function
+function TEXTSTORM_CLOSE() {
+    if (window.navigator.onLine) {
+        firebase.auth().onIdTokenChanged((user) => {
+            if (user) {
+                let filecontent = document.getElementById("fileid").innerHTML;
+                let content = document.getElementById("apnatext").value;
+                let user_details_updating = {
+                    Data: content,
+                    File_Data: filecontent
+                };
+                firebase
+                    .database()
+                    .ref("Users_Data/" + user.uid)
+                    .update(user_details_updating)
+                    .catch((error) => {
+                        console.log("Something went wrong");
+                    });
+            }
+        });
+        setTimeout(() => {
+            document.getElementById("STARTUP_SCREEN").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("STARTUP_SCREEN").style.background = "rgb(17, 17, 17)";
+                setTimeout(() => {
+                    document.getElementById("welcome_loader").style.visibility = "visible";
+                    document.getElementById("welcome_loader").innerHTML = "Shutting Down";
+                    setTimeout(() => {
+                        window.close();
+                    }, 7000);
+                }, 3000);
+            }, 200);
+        }, 1000);
+    }
+    else {
+        TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Shutdown", "Can't shutdown securely by saving preferences, please have a stable connection", 10000, "error");
+    }
+};
+
+
+// Restart Function
+function TEXTSTORM_RESTART() {
+    if (window.navigator.onLine) {
+        firebase.auth().onIdTokenChanged((user) => {
+            if (user) {
+                let filecontent = document.getElementById("fileid").innerHTML;
+                let content = document.getElementById("apnatext").value;
+                let user_details_updating = {
+                    Data: content,
+                    File_Data: filecontent
+                };
+                firebase
+                    .database()
+                    .ref("Users_Data/" + user.uid)
+                    .update(user_details_updating)
+                    .catch((error) => {
+                        console.log("Something went wrong");
+                    });
+            }
+        });
+        setTimeout(() => {
+            document.getElementById("STARTUP_SCREEN").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("STARTUP_SCREEN").style.background = "rgb(17, 17, 17)";
+                setTimeout(() => {
+                    document.getElementById("welcome_loader").style.visibility = "visible";
+                    document.getElementById("welcome_loader").innerHTML = "Restarting";
+                    setTimeout(() => {
+                        location.reload();
+                    }, 7000);
+                }, 3000);
+            }, 200);
+        }, 1000);
+    }
+    else {
+        TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Reboot", "Can't restart, please have a stable connection while restarting TextStorm...", 10000, "error")
+    }
+}
+
+
+
+// $MAIN FUNCTIONS
 // Navigation Bar FullScreen Button Function
 let myDocument = document.documentElement;
 let full_screen_mode = false;
@@ -313,6 +395,8 @@ dark_mode_btn_home.addEventListener("click", function () {
         localStorage.setItem("TextStorm_Mode", "$light");
     }
 });
+
+
 
 
 // $BACKGROUND PROCESSES
@@ -388,6 +472,6 @@ function showBattery() {
 
             // Numerical Battery Indicator Conditions
             let battery_exclude_decimal = (battery.level * 100).toString();
-            document.getElementById("battery_level_indication_int").innerHTML = `${battery_exclude_decimal}%`;
+            document.getElementById("battery_level_indication_int").innerHTML = `${Math.round(battery_exclude_decimal)}%`;
         });
 }

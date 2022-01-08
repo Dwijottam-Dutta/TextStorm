@@ -4,6 +4,9 @@
 *
 * JS Description: This JS File contains TextStorm Editor Window
 *                 Functions/Logic which are used in editor...
+*
+* IMPORTANT: This file gets loaded after successful boot of TextStorm
+*            due to console security reasons
 
 ****************************************************************************/
 
@@ -46,6 +49,31 @@ account_window.addEventListener("click", () => {
 	editor.style.zIndex = "1"
 	error_window.style.zIndex = "1"
 });
+
+
+/**************Section*Header****************** 
+
+* Section Name: GLOBAL WINDOW FUNCTION
+*
+* Description: 
+* This Section contains functions which are 
+* needed by all windows
+
+***********************************************/
+
+// Window Close Function
+function CLOSE_WINDOW(id) {
+    document.getElementById(id).style.display = "none";
+}
+
+// Window Open Function
+function OPEN_WINDOW(id) {
+    document.getElementById(id).style.zIndex = "3"
+    document.getElementById(id).style.display = "flex";
+}
+
+
+
 
 
 
@@ -130,6 +158,8 @@ function winMinimize() {
 
 // Rename File Function
 function renameFile() {
+	fullscreen_mode_btn.innerHTML = '<i class="fas fa-expand"></i>';
+        full_screen_mode = false;
 	let file_name_prompt = prompt("Enter your file name: ", document.getElementById("fileid").innerHTML);
 	if (file_name_prompt != null) {
 		if (file_name_prompt.includes(".")) {
@@ -357,35 +387,6 @@ function logOutAccount() {
 	firebase.auth().signOut();
 	location.reload();
 };
-
-// //Delete Account Function
-// function deleteAccount() {
-// 	firebase.auth().onIdTokenChanged((user) => {
-// 		if (user) {
-// 			let user_details = {
-// 				ACCOUNT_STATUS: "DELETED"
-// 			}
-
-// 			firebase.database().ref('Users_Data/' + user.uid).update(user_details).catch(error => {
-// 				console.log(error);
-// 			});
-
-
-
-// 		} else {
-// 			console.warn("Something went wrong !")
-// 		}
-// 	});
-// 	const user = firebase.auth().currentUser;
-
-// 	user.delete().then(() => {
-// 		console.log("DONE DELETE");
-// 	}).catch((error) => {
-// 		console.log(error);
-// 	});
-
-// 	location.reload();
-// }
 
 // Forget Password Function
 function forgetPassword() {

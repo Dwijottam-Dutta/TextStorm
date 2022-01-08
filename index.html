@@ -2,27 +2,16 @@
 <html lang="en">
 
 <head>
-  <title>TextStorm</title>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A simple text/notes editor with MAC design">
-
-  <meta property="og:type" content="Text Editor" />
-
-  <meta property="og:title" content="TextStorm" />
-
-  <meta property="og:description" content="A simple text/notes editor with MAC design" />
-
-  <meta property="og:url" content="https://dwijottam-dutta.github.io/TextStorm/" />
-
-  <meta property="og:site_name" content="TextStorm" />
-  <link rel="canonical" href="https://dwijottam-dutta.github.io/TextStorm/">
-
+  <meta name="description" content="A simple online text editor with MAC UI design">
   <meta name="author" content="Dwijottam Dutta">
+  <title>TextStorm</title>
+  <link rel="shortcut icon" href="Icon/textstorm.svg" type="image/x-icon" />
 
-  <!-- TextStorm - $Boot -->
-  <script defer src="boot.js"></script>
+  <!-- TextStorm - MAJOR -->
+  <script defer src="TextStorm.js"></script>
 
 
   <!-- FontAwesome - CSS -->
@@ -31,7 +20,7 @@
   <!-- TextStorm - Main CSS File for over all style -->
   <link rel="stylesheet" href="Style/TextStorm.css" />
 
-  <!-- TextStorm - CSS File for Editor Window (Most important thing for TextStorm).... LOL -->
+  <!-- TextStorm - CSS File for Editor Window -->
   <link rel="stylesheet" href="Style/TextStorm_window.css" />
 
   <!-- TextStorm - CSS File for etc window -->
@@ -46,38 +35,38 @@
   <!-- TextStorm - CSS File for TextStorm Notification -->
   <link rel="stylesheet" href="Style/TextStorm_notification.css" />
 
-  <!-- ShortCut Ico -->
-  <link rel="shortcut icon" href="Icon/textstorm.svg" type="image/x-icon" />
+  <!-- TextStorm - CSS File for TextStorm SignUp -->
+  <link rel="stylesheet" href="Style/signup.css">
 
-  <!-- JAVASCRIPT LIBRARIES -->
+  <!-- TextStorm - CSS File for TextStorm Login -->
+  <link rel="stylesheet" href="Style/login.css">
+
+  <!-- JS LIBRARIES -->
   <script src="Js/lib/win32_drag.js"></script>
   <script src="Js/lib/confetti_black.js"></script>
   <script src="Js/lib/FileSaver.js"></script>
 
-  <link rel="stylesheet" href="Style/signup.css">
-  <link rel="stylesheet" href="Style/login.css">
 
-  <!-- JAVASCRIPT Source Files for TextStorm Application -->
-
-  <!-- TWO MORE SCRIPTS ARE BEING ADDED IN BOOT AS THEY ARE CORE AND CAN'T BE USED BY ANONYMOUS FROM CONSOLE WHILE BOOT-->
+  <!-- JS Files for TextStorm Application -->
   <script defer src="Js/TextStorm_notification.js"></script>
   <script defer src="Js/TextStorm_fonts.js"></script>
   <script defer src="Js/TextStorm_ide.js"></script>
   <script defer src="Js/TextStorm_password_$show_$hide.js"></script>
-  <!-- <script defer src="imp.js"></script> -->
   <script defer src="Js/signup.js"></script>
   <script defer src="Js/login.js"></script>
+
+
 </head>
 
 
 <body>
   <!-- TEXTSTORM STARTUP SCREEN  -->
-  <div class="STARTUP_SCREEN none_select" id="STARTUP_SCREEN">
-    <div class="STARTUP_SCREEN_PARENT none_select" id="STARTUP_SCREEN_PARENT">
+  <div class="STARTUP_SCREEN" id="STARTUP_SCREEN">
+    <div class="STARTUP_SCREEN_PARENT" id="STARTUP_SCREEN_PARENT">
       <img src="Icon/textstorm.svg" id="STARTUP_TRADEMARK_ICON">
-      <p id="STARTUP_TRADEMARK">TextStorm</p>
+      <p id="STARTUP_TRADEMARK" class="none_select">TextStorm</p>
       <div class="loader"></div>
-      <div id="welcome_loader">Welcome</div>
+      <div id="welcome_loader" class="none_select">Welcome</div>
     </div>
   </div>
 
@@ -110,15 +99,11 @@
       </ul>
       <div class="productivity_bar">
         <div class="utils">
-          <div class="user_details">
-            <button id="user_welcome_button" onclick='OPEN_WINDOW("account_id")'>
-              <i class="far fa-user-circle"></i></button>
-          </div>
-          <button class="battery_indicator_button" id="battery_indicator_button">
-            <i class="fas fa-battery-empty"></i>
-          </button>
+          <button class="user_welcome_button" id="user_welcome_button" onclick='OPEN_WINDOW("account_id")'><i
+              class="far fa-user-circle"></i></button>
+          <button class="battery_indicator_button" id="battery_indicator_button"><i
+              class="fas fa-battery-empty"></i></button>
           <p id="battery_level_indication_int"></p>
-
           <button class="dark_mode_btn_home"><i class="far fa-moon"></i></button>
           <button class="fullscreen_mode_btn"><i class="fas fa-expand"></i></button>
           <p id="clock"></p>
@@ -219,7 +204,7 @@
   <div class="login_wrapper" id="login_wrapper">
     <section class="form_login">
       <div class="header">
-        <h1 id="trademark_login">TextStorm Login <small id="version">V.2.3.9</small></h1>
+        <h1 id="trademark_login">TextStorm Login <small id="version">V.2.4</small></h1>
         <p>A simple web text/notes editor with Mac design</p>
       </div>
       <form action="#" autocomplete="off">
@@ -248,7 +233,7 @@
   <div class="signup_wrapper" id="signup_wrapper">
     <section class="form_signup">
       <div class="header">
-        <h1 id="trademark_signup">TextStorm Setup <small id="version">V.2.3.9</small></h1>
+        <h1 id="trademark_signup">TextStorm Setup <small id="version">V.2.4</small></h1>
         <p>A simple web text/notes editor with Mac design</p>
       </div>
       <form action="#" autocomplete="off">
@@ -273,10 +258,6 @@
           <input type="password" name="password" id="password" placeholder="Create a strong password" required>
           <i class="fas fa-eye" id="eye"></i>
         </div>
-        <!-- <div class="field image">
-            <label>Select Image</label>
-            <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
-          </div> -->
         <div class="field button">
           <input type="submit" name="submit" id="button_signup" value="Continue with TextStorm">
         </div>
@@ -413,7 +394,7 @@
         <img src="Icon/textstorm.svg" alt="trademark_about">
         <h2>TextStorm</h2>
         <p>A simple web text/notes editor with Mac design</p>
-        <small id="version">V.2.3.9 final build</small>
+        <small id="version">V.2.4</small>
         <div id="third_party_licence" onclick="third_party()">Third Party Licence</div>
       </div>
 

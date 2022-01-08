@@ -2,8 +2,11 @@
 
 * File Name: TextStorm.js
 *
-* JS Description: This JS File contains TextStorm Global Functions which
+* JS Description: This JS File contains TextStorm 2nd Major Functions which
 *                 are in navbar and desktop...
+*
+* IMPORTANT: This file gets loaded after successful boot of TextStorm
+*            due to console security reasons
 
 ****************************************************************************/
 
@@ -11,97 +14,6 @@
 let file_menu_parent = document.getElementById("file_menu_parent");
 let file_dropdown = document.getElementById("file_dropdown");
 
-
-// Close Function
-function TEXTSTORM_CLOSE() {
-    if (window.navigator.onLine) {
-        firebase.auth().onIdTokenChanged((user) => {
-            if (user) {
-                let filecontent = document.getElementById("fileid").innerHTML;
-                let content = document.getElementById("apnatext").value;
-                let user_details_updating = {
-                    Data: content,
-                    File_Data: filecontent
-                };
-                firebase
-                    .database()
-                    .ref("Users_Data/" + user.uid)
-                    .update(user_details_updating)
-                    .catch((error) => {
-                        console.log("Something went wrong");
-                    });
-            }
-        });
-        setTimeout(() => {
-            document.getElementById("STARTUP_SCREEN").style.display = "block";
-            setTimeout(() => {
-                document.getElementById("STARTUP_SCREEN").style.background = "rgb(17, 17, 17)";
-                setTimeout(() => {
-                    document.getElementById("welcome_loader").style.visibility = "visible";
-                    document.getElementById("welcome_loader").innerHTML = "Shutting Down";
-                    setTimeout(() => {
-                        window.close();
-                    }, 7000);
-                }, 3000);
-            }, 200);
-        }, 1000);
-    }
-    else {
-        TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Shutdown", "Can't shutdown securely by saving preferences, please have a stable connection", 10000, "error");
-    }
-};
-
-
-// Restart Function
-function TEXTSTORM_RESTART() {
-    if (window.navigator.onLine) {
-        firebase.auth().onIdTokenChanged((user) => {
-            if (user) {
-                let filecontent = document.getElementById("fileid").innerHTML;
-                let content = document.getElementById("apnatext").value;
-                let user_details_updating = {
-                    Data: content,
-                    File_Data: filecontent
-                };
-                firebase
-                    .database()
-                    .ref("Users_Data/" + user.uid)
-                    .update(user_details_updating)
-                    .catch((error) => {
-                        console.log("Something went wrong");
-                    });
-            }
-        });
-        setTimeout(() => {
-            document.getElementById("STARTUP_SCREEN").style.display = "block";
-            setTimeout(() => {
-                document.getElementById("STARTUP_SCREEN").style.background = "rgb(17, 17, 17)";
-                setTimeout(() => {
-                    document.getElementById("welcome_loader").style.visibility = "visible";
-                    document.getElementById("welcome_loader").innerHTML = "Restarting";
-                    setTimeout(() => {
-                        location.reload();
-                    }, 7000);
-                }, 3000);
-            }, 200);
-        }, 1000);
-    }
-    else {
-        TEXTSTORM_NOTIFICATION_SHOW(null, "TextStorm Reboot", "Can't restart, please have a stable connection while restarting TextStorm...", 10000, "error")
-    }
-}
-
-
-// Window Close Function
-function CLOSE_WINDOW(id) {
-    document.getElementById(id).style.display = "none";
-}
-
-// Window Open Function
-function OPEN_WINDOW(id) {
-    document.getElementById(id).style.zIndex = "3"
-    document.getElementById(id).style.display = "flex";
-}
 
 // Event for checking and doing the Worker; That File Dropdown is on/off or not
 let file_dropdown_on = false;

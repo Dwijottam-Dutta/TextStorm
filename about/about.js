@@ -1,3 +1,6 @@
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    document.getElementById("btn_temp").style.display = "none";
+}
 $(document).ready(function(){
     $(window).scroll(function(){
         // sticky navbar on scroll script

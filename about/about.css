@@ -156,7 +156,7 @@ section .title::after{
     background: crimson;
     color: #fff;
     font-size: 20px;
-    padding: 9px 16px;
+    padding: 9px 10px;
     margin-top: 20px;
     font-weight: 400;
     border-radius: 6px;
@@ -185,12 +185,9 @@ section .title::after{
     width: 55%;
 }
 .about .about-content .right .text{
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
     margin-bottom: 10px;
-}
-.about .about-content .right .text span{
-    color: crimson;
 }
 .about .about-content .right p{
     font-size: 15px;
@@ -199,7 +196,7 @@ section .title::after{
 }
 .about .about-content .right a{
     display: block;
-    width: 175px;    
+    width: 170px;    
     background: crimson;
     color: #fff;
     font-size: 20px;

@@ -36,6 +36,7 @@ function dragElement(gui, titlebar) {
     function elementDrag(e) {
         e = e || window.event;
         e.preventDefault();
+
         // calculate the new cursor position:
         pos1 = pos3 - e.clientX;
         pos2 = pos4 - e.clientY;
@@ -56,6 +57,7 @@ function dragElement(gui, titlebar) {
         // stop moving when mouse button is released:
         document.onmouseup = null;
         document.onmousemove = null;
+        document.getElementById("editor").style.transform = `none`;
         return;
     }
 }

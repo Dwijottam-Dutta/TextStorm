@@ -121,7 +121,7 @@ i {
   cursor: url("../Cursor/pointinghand.svg"), pointer;
 }
 
-/* Navbar Starts from here */
+
 header {
   width: 100%;
   height: 32px;
@@ -263,24 +263,13 @@ header {
   /* padding: 12px 75px; */
 }
 
-.user_details {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  margin-right: 5px;
-  text-overflow: ellipsis;
-  text-align: right;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-#user_welcome_button{
+.user_welcome_button{
   font-size: 20px;
   padding-left: 7px;
   padding-right: 7px;
   height: 100%;
   background: transparent;
+  margin-right: 5px;
   border: none;
   cursor: url("../Cursor/pointinghand.svg"), pointer;
   color: #333;
@@ -288,7 +277,7 @@ header {
   pointer-events: auto;
 }
 
-#user_welcome_button:hover {
+.user_welcome_button:hover {
   background: linear-gradient(#5a84f6, #1b62f7);
   transition: all 0.3s ease;
 }
@@ -390,13 +379,4 @@ main {
   align-items: center;
   justify-content: center;
 }
-
-/* **************************IMPORTANT************************** 
-*
-* Info: After this there is a file name @TextStorm_window.css
-*
-* Description: Because of ease. That file contains all the
-*              styling of the editor window
-*
-* **************************************************************/
 
