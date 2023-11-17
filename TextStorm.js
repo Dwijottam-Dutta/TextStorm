@@ -30,8 +30,8 @@ let success_audio = new Audio("audio/success.mp3");
 let error_audio = new Audio("audio/error.mp3");
 
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    alert("TextStorm is not stable for mobile and tablet devices");
-    location.replace("about/about.html");
+    alert("We are currently working on integrating TextStorm for tablet & mobile devices. The update will be releasing soon.. STAY TUNED !!");
+    location.replace("https://dwijottam-dutta.github.io/portfolio#textstorm");
 }
 
 function TEXTSTORM_STARTUP() {
