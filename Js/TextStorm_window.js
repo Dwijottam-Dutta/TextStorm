@@ -317,11 +317,11 @@ FontSizeSeekBar.addEventListener('change', () => {
 
 //MAIL TO
 function mailto() {
-	window.open('https://mail.google.com/mail/u/0/?fs=1&to=dwijottamdutta@gmail.com&tf=cm');
+	window.open('https://dwijottam-dutta.github.io/portfolio#contact');
 };
 
 function developer() {
-	window.open('https://dwijottam-dutta.github.io/portfolio/about.html');
+	window.open('https://dwijottam-dutta.github.io');
 }
 
 function in_errorBypass() {
@@ -347,19 +347,27 @@ function recommended() {
 };
 
 
-function third_party() {
-	alert(`1. FILESAVER.JS
+function whats_new_bro() {
+
+	// ADDED THESE LINES SO THAT THIS UPDATES THE ICON AND STATUS OF FULL SCREEN
+	fullscreen_mode_btn.innerHTML = '<i class="fas fa-expand"></i>';
+	full_screen_mode = false;
+
+
+	alert(`##+## What's New in V.2.5 ##+##
+17th November 2023
 -----------------------------
-The MIT License
+> Fixed Full Screen mode issue while toggle
+> Fixed Database structure, so you see slight smoothness while running TextStorm
+> Password Reset made easy for begginers
+-----------------------------
 
-Copyright © 2016 Eli Grey.
+##+## Things we are working right now ##+##
+-----------------------------
+> Our application is still on Firebase 8 [deprecated], which was last updated on August 19, 2021 by Google. The major problem we are currently facing on, is upgrading to Firebase 10, as we have to rewrite our code base, again from scratch.. So the next update may take times for us.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files(the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and / or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
------------------------------`)
+STAY TUNED !!
+`)
 };
 
 
