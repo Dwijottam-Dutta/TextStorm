@@ -1,7 +1,7 @@
-## <b>Contributing</b>
-<hr>
+<img align="right" src="Icon/textstorm.svg"/>
 
-First off, thank you for considering contributing to TextStorm.
+# <b>Contributing</b>
+First off, thank you for  contributing to TextStorm.
 
 <br>
 

@@ -1,15 +1,31 @@
-## &nbsp;<b>TextStorm 2.4</b>
- 
-#### &nbsp;A simple web text/notes editor with Mac UI/UX Design
-<hr>
+<img align="right" src="Icon/textstorm.svg"/>
 
-<br>
+# TextStorm V.2.5
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+A simple web text/notes editor with Mac UI/UX Design by [Dwijottam Dutta](https://dwijottam-dutta.github.io)
+
+## Prerequisites
+
+TextStorm is build with core HTML, Vanilla CSS and Javascript and uses [Firebase 8](https://firebase.google.com/support/release-notes/js)
+(deprecated). We are still upgrading to FIrebase 10, which is kinda headache.
+
+### Contributing
+
+```sh
+# clone the repo
+$ git clone https://github.com/Dwijottam-Dutta/TextStorm.git
+
+# change the working directory to api
+$ cd TextStorm
+
+```
+
+*P.S. Please do check [CONTRIBUTING.md](CONTRIBUTING.md) for getting more information on contributing on this project
+<!-- 
 ### <b>Interface :</b>
-<img src="Images/README_IMG/TEXTSTORM_SCREENSHOT.png" width="100%" align="center">
-
-<br>
-
+<img src="Images/README_IMG/TEXTSTORM_SCREENSHOT.png" width="100%" align="center"> -->
 
 ### <b>Top Features</b>
 > * Desktop Feel
@@ -21,20 +37,12 @@
 > * Battery Indicator for ease while in full screen mode
 > * Editing/Viewing Mode feature for presentation
 
-
 <br>
 
-### <b>Developer/Maintainer :</b>
-> [Dwijottam Dutta](https://github.com/Dwijottam-Dutta)
+## License
 
-<br>
+MIT © Dwijottam Dutta
 
-### <b>Contributing:</b>
->For Contributing adn Distributing, please check [CONTRIBUTING.md](CONTRIBUTING.md)
-
-<br>
-
-### <b>License :</b>
-> TextStorm is licensed under [Apache-2.0 License](https://choosealicense.com/licenses/apache-2.0/).
+Creator - [Dwijottam Dutta](https://github.com/Dwijottam-Dutta)
 
   
